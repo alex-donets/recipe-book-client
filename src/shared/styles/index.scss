@@ -1,0 +1,74 @@
+@import "variables";
+
+.wrapper {
+    max-width: 800px;
+    margin: 7em auto 4em;
+    flex: 1 0 auto;
+}
+
+.custom-header {
+    background-color: $dark-blue !important;
+}
+
+.custom-footer {
+    bottom: 0;
+    margin: 5em 0 0;
+    padding: 5em 0;
+    background-color: $dark-blue !important;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: $light-beige;
+}
+
+.menu-wrapper {
+    max-width: 800px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-text {
+    white-space: pre-line;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+p {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+.tiny-gray-text {
+    font-size: 0.8em !important;
+    color: rgba(0, 0, 0, .4);
+}
+
+.login-button {
+    background-color: $dark-olive !important;
+    opacity: 0.9;
+    color: white !important;
+}
+
+.login-text {
+    color: $dark-olive !important;
+    text-align: center;
+}
+
+.create-post-container {
+    padding: 2rem;
+}
