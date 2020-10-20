@@ -5,13 +5,10 @@ import {
     LOGOUT_PENDING,
     LOGOUT_SUCCESS,
     LOGOUT_ERROR,
-    SET_PASSWORD_PENDING,
-    SET_PASSWORD_SUCCESS,
-    SET_PASSWORD_ERROR,
-    REFRESH_TOKEN_PENDING,
-    REFRESH_TOKEN_SUCCESS,
-    REFRESH_TOKEN_ERROR,
     SET_USER_INFO,
+    REGISTER_PENDING,
+    REGISTER_SUCCESS,
+    REGISTER_ERROR,
     CLEAR,
 } from "./constants";
 
@@ -30,18 +27,18 @@ export const loginError = (error: any) => ({
     payload: error,
 });
 
-export const setPassword = (data: any) => ({
-    type: SET_PASSWORD_PENDING,
+export const register = (data: any) => ({
+    type: REGISTER_PENDING,
     payload: data,
 });
 
-export const setPasswordSuccess = (data: any) => ({
-    type: SET_PASSWORD_SUCCESS,
+export const registerSuccess = (data: any) => ({
+    type: REGISTER_SUCCESS,
     payload: data,
 });
 
-export const setPasswordError = (error: any) => ({
-    type: SET_PASSWORD_ERROR,
+export const registerError = (error: any) => ({
+    type: REGISTER_ERROR,
     payload: error,
 });
 

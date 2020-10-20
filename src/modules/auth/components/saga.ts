@@ -1,28 +1,45 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import { push } from "connected-react-router";
+import axios from "axios";
 
 import {
     loginSuccess,
     loginError,
     logoutSuccess,
     logoutError,
+    registerSuccess, registerError,
 } from "./actions";
 
-import { LOGIN_PENDING, LOGOUT_PENDING, REFRESH_TOKEN_ERROR, SET_PASSWORD_PENDING } from "./constants";
+import { LOGIN_PENDING, LOGOUT_PENDING, REGISTER_PENDING } from "./constants";
 
 import { apiClient } from "../../../backend/services";
 import { removeAuthToken, setAuthToken } from "../../../utils/localStorage";
+import { loginFormToQuery, registerFormToQuery } from "./helpers";
 
 function* handleLogin ({ payload }: any) {
     try {
-        const { data } = yield apiClient.post('/login/', payload);
+        const body = loginFormToQuery(payload);
+        const { data } = yield apiClient.post('/users/login', body);
 
-        yield call(setAuthToken, data);
+        //yield call(setAuthToken, data);
 
         yield put(loginSuccess(data));
-        yield put(push('/data-sync'));
+        yield put(push('/home'));
     } catch (error) {
         yield put(loginError(error));
+    }
+}
+
+function* handleRegister ({ payload }: any) {
+    try {
+        const body = registerFormToQuery(payload);
+
+        const { data } = yield apiClient.post('/users/register', body);
+
+        yield put(registerSuccess(data));
+        yield put(push('/home'));
+    } catch (error) {
+        yield put(registerError(error));
     }
 }
 
@@ -37,6 +54,7 @@ function* handleLogout() {
 }
 
 export function* authSaga() {
-    yield takeEvery(LOGIN_PENDING, handleLogin);
+    yield takeEvery([LOGIN_PENDING], handleLogin);
+    yield takeEvery([REGISTER_PENDING], handleRegister);
     yield takeEvery([LOGOUT_PENDING], handleLogout);
 }

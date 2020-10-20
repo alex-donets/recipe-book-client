@@ -13,7 +13,7 @@ const LoginForm = (props: any) => {
 
     const handleOnSubmit = (e: any) => {
         e.preventDefault();
-        console.log('props', props)
+
         handleSubmit();
     };
 
@@ -21,19 +21,19 @@ const LoginForm = (props: any) => {
         <Form size="large" onSubmit={handleOnSubmit}>
             <Segment stacked>
                 <Form.Input
-                    id="email-input"
+                    id="login-email-input"
                     name="email"
                     fluid
                     icon="user"
                     iconPosition="left"
-                    placeholder="E-mail address"
+                    placeholder="Email address"
                     value={email}
                     onChange={handleChange}
-                    error={Boolean(errors.email)}
+                    error={touched.email && errors.email}
                 />
                 <Form.Input
+                    id="login-password-input"
                     fluid
-                    id="password-input"
                     type="password"
                     name="password"
                     icon="lock"
@@ -41,7 +41,7 @@ const LoginForm = (props: any) => {
                     placeholder="Password"
                     value={password}
                     onChange={handleChange}
-                    error={Boolean(errors.password)}
+                    error={touched.password && errors.password}
                 />
                 <Button type="submit" className="login-button" fluid size="large">
                     Login

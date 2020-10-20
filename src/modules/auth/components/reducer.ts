@@ -11,10 +11,9 @@ import {
     REFRESH_TOKEN_SUCCESS,
     REFRESH_TOKEN_ERROR,
     SET_USER_INFO,
-    LOGIN_ERROR_MESSAGE,
-    SET_PASSWORD_PENDING,
-    SET_PASSWORD_SUCCESS,
-    SET_PASSWORD_ERROR,
+    REGISTER_PENDING,
+    REGISTER_SUCCESS,
+    REGISTER_ERROR,
     CLEAR,
 } from "./constants";
 
@@ -45,24 +44,24 @@ export default createReducer(initialState, {
         errors: null
     }),
 
-    // [LOGIN_ERROR]: (state, { payload }) => ({
-    //     ...state,
-    //     errors: LOGIN_ERROR_MESSAGE,
-    //     isLoading: false,
-    // }),
+    [LOGIN_ERROR]: (state, { payload }) => ({
+        ...state,
+        errors: payload,
+        isLoading: false,
+    }),
 
-    [SET_PASSWORD_PENDING]: (state) => ({
+    [REGISTER_PENDING]: (state) => ({
         ...state,
         isLoading: true,
     }),
 
-    [SET_PASSWORD_SUCCESS]: (state) => ({
+    [REGISTER_SUCCESS]: (state) => ({
         ...state,
         isLoading: false,
         errors: null
     }),
 
-    [SET_PASSWORD_ERROR]: (state, { payload }) => ({
+    [REGISTER_ERROR]: (state, { payload }) => ({
         ...state,
         errors: payload,
         isLoading: false,

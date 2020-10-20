@@ -1,21 +1,21 @@
 import React from 'react';
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
+import RegisterForm from "./components/Form/RegisterForm";
 import { Grid, Header, Message } from "semantic-ui-react";
-import { formInitialValues, formValidationSchema } from "./constants";
-import { login } from "../actions";
 import { Formik } from "formik";
-import LoginForm from "./components/Form/LoginForm";
+import { formInitialValues, formValidationSchema } from "./constants";
+import { register } from "../actions";
 import { trimFormValues } from "../../../../utils/helpers";
 
-const SignIn = () => {
+const SignUp = () => {
     const dispatch = useDispatch();
 
-    const renderForm = (props: any) => <LoginForm {...props} />;
+    const renderForm = (props: any) => <RegisterForm {...props} />;
 
     const handleOnSubmit = (formData: any) => {
         const formDataPayload = trimFormValues(formData);
 
-        dispatch(login(formDataPayload));
+        dispatch(register(formDataPayload));
     };
 
     return (
@@ -25,10 +25,10 @@ const SignIn = () => {
             verticalAlign="middle"
         >
             <Grid.Column
-                style={{ maxWidth: 450}}
+                style={{ maxWidth: 450 }}
             >
                 <Header as="h2" className="login-text">
-                    Log-in to your account
+                    Creating a new profile
                 </Header>
 
                 <Formik
@@ -40,12 +40,12 @@ const SignIn = () => {
                 />
 
                 <Message>
-                    New to us?
-                    <a href="/register"> Sign Up</a>
+                    Already with us?
+                    <a href="/login"> Sign In</a>
                 </Message>
             </Grid.Column>
         </Grid>
     );
 };
 
-export default SignIn;
+export default SignUp;
