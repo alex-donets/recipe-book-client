@@ -39,7 +39,7 @@ export default createReducer(initialState, {
         isLoading: false,
         isLoggedIn: true,
         email: payload.email,
-        fullName: payload['full_name'],
+        fullName: payload.fullName,
         role: payload.role,
         errors: null
     }),

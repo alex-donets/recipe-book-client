@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import { Grid, Header, Message } from "semantic-ui-react";
 import { formInitialValues, formValidationSchema } from "./constants";
-import { login } from "../actions";
+import { login } from "../../actions";
 import { Formik } from "formik";
 import LoginForm from "./components/Form/LoginForm";
 import { trimFormValues } from "../../../../utils/helpers";

@@ -42,9 +42,8 @@ export const registerError = (error: any) => ({
     payload: error,
 });
 
-export const logout = (data: any) => ({
+export const logout = () => ({
     type: LOGOUT_PENDING,
-    payload: data,
 });
 
 export const logoutSuccess = () => ({

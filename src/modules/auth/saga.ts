@@ -1,6 +1,5 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import { push } from "connected-react-router";
-import axios from "axios";
 
 import {
     loginSuccess,
@@ -12,8 +11,8 @@ import {
 
 import { LOGIN_PENDING, LOGOUT_PENDING, REGISTER_PENDING } from "./constants";
 
-import { apiClient } from "../../../backend/services";
-import { removeAuthToken, setAuthToken } from "../../../utils/localStorage";
+import { apiClient } from "../../backend/services";
+import { removeAuthToken, setAuthToken } from "../../utils/localStorage";
 import { loginFormToQuery, registerFormToQuery } from "./helpers";
 
 function* handleLogin ({ payload }: any) {
@@ -21,7 +20,7 @@ function* handleLogin ({ payload }: any) {
         const body = loginFormToQuery(payload);
         const { data } = yield apiClient.post('/users/login', body);
 
-        //yield call(setAuthToken, data);
+        yield call(setAuthToken, data.token);
 
         yield put(loginSuccess(data));
         yield put(push('/home'));
@@ -37,7 +36,7 @@ function* handleRegister ({ payload }: any) {
         const { data } = yield apiClient.post('/users/register', body);
 
         yield put(registerSuccess(data));
-        yield put(push('/home'));
+        yield put(push('/login'));
     } catch (error) {
         yield put(registerError(error));
     }

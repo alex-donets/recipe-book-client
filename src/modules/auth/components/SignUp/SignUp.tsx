@@ -4,7 +4,7 @@ import RegisterForm from "./components/Form/RegisterForm";
 import { Grid, Header, Message } from "semantic-ui-react";
 import { Formik } from "formik";
 import { formInitialValues, formValidationSchema } from "./constants";
-import { register } from "../actions";
+import { register } from "../../actions";
 import { trimFormValues } from "../../../../utils/helpers";
 
 const SignUp = () => {

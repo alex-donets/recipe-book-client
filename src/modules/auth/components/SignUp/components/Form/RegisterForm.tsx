@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Checkbox, Form, Segment} from "semantic-ui-react";
 import { useSelector } from "react-redux";
-import { getLoading } from "../../../selectors";
+import { getLoading } from "../../../../selectors";
 
 const RegisterForm = (props: any) => {
     const {

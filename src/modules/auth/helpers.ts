@@ -4,7 +4,7 @@ export const registerFormToQuery = ({
     password,
     agreeTaC
 }: any) => ({
-    username: name,
+    fullName: name,
     email,
     password,
     agreeTaC
