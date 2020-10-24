@@ -110,8 +110,9 @@ export default createReducer(initialState, {
         ...state,
         isLoggedIn: true,
         email: payload.email,
-        fullName: payload.full_name,
-        role: payload.role
+        fullName: payload.fullName,
+        role: payload.role,
+        token: payload.token
     }),
 
     [CLEAR]: () => ({ ...initialState }),

@@ -20,8 +20,7 @@ function* handleLogin ({ payload }: any) {
         const body = loginFormToQuery(payload);
         const { data } = yield apiClient.post('/users/login', body);
 
-        yield call(setAuthToken, data.token);
-
+        yield call(setAuthToken, data);
         yield put(loginSuccess(data));
         yield put(push('/home'));
     } catch (error) {
