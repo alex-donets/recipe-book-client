@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getErrorMessage } from "../../../modules/app/selectors";
 import { clearErrorMessage } from "../../../modules/app/actions";
 
-const DislpayError = () => {
+const DisplayError = () => {
     const dispatch = useDispatch();
     const errorMessage = useSelector(getErrorMessage);
 
@@ -37,4 +37,4 @@ const DislpayError = () => {
     );
 };
 
-export default DislpayError;
+export default DisplayError;

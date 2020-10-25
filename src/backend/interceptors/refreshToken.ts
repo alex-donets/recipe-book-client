@@ -7,7 +7,6 @@ const successHandler = (response: any) => response;
 
 const errorHandler = (error: any) => {
     const { dispatch } = store;
-    console.log('error', error.response)
 
     if (error.response.status === 401) {
         dispatch(logout());

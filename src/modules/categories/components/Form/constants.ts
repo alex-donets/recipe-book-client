@@ -1,0 +1,19 @@
+import * as Yup from "yup";
+
+const FILE_SIZE = 5000000; // 5 Mb
+const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+
+export const formInitialValues = {
+    name: '',
+    photo: null,
+};
+
+export const formValidationSchema = Yup.object({
+    name: Yup.string()
+        .trim()
+        .required('Please enter a category name'),
+    photo: Yup.mixed()
+        .required('Please add a photo')
+        .test('fileSize', "File size is too large", value => value && value.size <= FILE_SIZE)
+        .test('fileType', "Unsupported File Format", value => value && SUPPORTED_FORMATS.includes(value.type) )
+});

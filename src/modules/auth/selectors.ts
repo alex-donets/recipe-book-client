@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { USER_ROLES } from "./constants";
 
 export const getState = ({ auth }: any) => auth;
 
@@ -13,6 +14,8 @@ export const getExpires = createSelector([getState], ({ expires }) => expires);
 export const getIsLoggedIn = createSelector([getState], ({ isLoggedIn }) => isLoggedIn);
 
 export const getUserRole = createSelector([getState], ({ role }) => role);
+
+export const getIsAdmin = createSelector([getState], ({ role }) => role === USER_ROLES.ADMIN);
 
 export const getUserEmail = createSelector([getState], ({ email }) => email);
 

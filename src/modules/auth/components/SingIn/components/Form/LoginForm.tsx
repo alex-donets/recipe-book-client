@@ -8,7 +8,6 @@ const LoginForm = (props: any) => {
         touched,
         handleSubmit,
         handleChange,
-        loginError
     } = props;
 
     const handleOnSubmit = (e: any) => {

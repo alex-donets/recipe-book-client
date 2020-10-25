@@ -17,3 +17,8 @@ export const REFRESH_TOKEN_ERROR = 'auth/REFRESH_TOKEN_ERROR';
 export const SET_USER_INFO = 'auth/SET_USER_INFO';
 
 export const CLEAR = 'auth/CLEAR';
+
+export const USER_ROLES = {
+    ADMIN: 'admin',
+    USER: 'user'
+};

@@ -72,14 +72,8 @@ export default createReducer(initialState, {
         isLoading: true,
     }),
 
-    [LOGOUT_SUCCESS]: (state) => ({
-        ...state,
-        token: initialState.token,
-        isLoggedIn: false,
-        isLoading: false,
-        email: initialState.email,
-        fullName: initialState.fullName,
-        role: initialState.role
+    [LOGOUT_SUCCESS]: () => ({
+        ...initialState
     }),
 
     [LOGOUT_ERROR]: (state, { payload }) => ({
