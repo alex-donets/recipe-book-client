@@ -2,8 +2,9 @@ import { logout } from "../../modules/auth/actions";
 
 import { store } from "../../core/redux/store";
 import { setErrorMessage } from "../../modules/app/actions";
+import { AxiosResponse } from "axios";
 
-const successHandler = (response: any) => response;
+const successHandler = (response: AxiosResponse) => response;
 
 const errorHandler = (error: any) => {
     const { dispatch } = store;

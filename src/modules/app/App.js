@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../../shared/styles/index.scss';
+import '../../shared/styles/global-styles.scss';
 
 import Header from "../../shared/components/Header/Header";
 import Main from "../../shared/components/Main/Main";
@@ -21,13 +21,13 @@ function App() {
         }
     }, []);
 
-  return (
-      <div className="main-container">
-        <Header />
-        <Main />
-        <Footer />
-      </div>
-  );
+    return (
+        <div className="main-container">
+            <Header />
+            <Main />
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

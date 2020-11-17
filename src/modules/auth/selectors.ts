@@ -1,15 +1,14 @@
 import { createSelector } from "reselect";
 import { USER_ROLES } from "./constants";
+import { RootReducerTypes } from "../../core/redux/types";
 
-export const getState = ({ auth }: any) => auth;
+export const getState = ({ auth }: RootReducerTypes) => auth;
 
 export const getLoading = createSelector([getState], ({ isLoading }) => isLoading);
 
 export const getErrors = createSelector([getState], ({ errors }) => errors);
 
 export const getToken = createSelector([getState], ({ token }) => token);
-
-export const getExpires = createSelector([getState], ({ expires }) => expires);
 
 export const getIsLoggedIn = createSelector([getState], ({ isLoggedIn }) => isLoggedIn);
 

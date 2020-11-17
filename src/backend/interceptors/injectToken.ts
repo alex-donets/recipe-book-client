@@ -1,8 +1,9 @@
 import set from "lodash/set";
 
 import { getAuthToken } from "../../utils/localStorage";
+import { AxiosError, AxiosRequestConfig } from "axios";
 
-const successHandler = (config: any) => {
+const successHandler = (config: AxiosRequestConfig) => {
   const authToken = getAuthToken();
 
   if (authToken) {
@@ -12,6 +13,6 @@ const successHandler = (config: any) => {
   return config;
 };
 
-const errorHandler = (error: any) => Promise.reject(error);
+const errorHandler = (error: AxiosError) => Promise.reject(error);
 
 export default { successHandler, errorHandler };

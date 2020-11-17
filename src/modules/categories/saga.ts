@@ -3,11 +3,11 @@ import { apiClient } from "../../backend/services";
 
 import {
     addCategoryError,
-    addCategorySuccess,
+    addCategorySuccess, clear,
     deleteCategoryError,
     deleteCategorySuccess,
     fetchCategoriesError,
-    fetchCategoriesSuccess,
+    fetchCategoriesSuccess, setDeleteDialogIsVisible,
     updateCategoryError,
     updateCategorySuccess
 } from "./actions";
@@ -20,6 +20,7 @@ import {
 } from "./constants";
 
 import { formToQueryAdd, formToQueryUpdate } from "./helpers";
+import { AddCategory, DeleteCategory, UpdateCategory } from "./types";
 
 function* handleFetchCategories() {
     try {
@@ -30,42 +31,45 @@ function* handleFetchCategories() {
     }
 }
 
-function* handleAddCategory({ payload }: any) {
+function* handleAddCategory({ payload }: AddCategory) {
     const body = formToQueryAdd(payload);
 
     try {
         const { data } = yield apiClient.post(`/categories/add`, body);
 
+        console.log('data', data)
+
         yield put(addCategorySuccess(data));
-        //yield put(setSuccessMessageIsVisible(true));
+        yield put(clear());
     } catch (error) {
         yield put(addCategoryError(error));
     }
 }
 
-function* handleUpdateCategory({ payload, payload: { id } }: any) {
+function* handleUpdateCategory({ payload }: UpdateCategory) {
     const body = formToQueryUpdate(payload);
+    const { _id } = payload;
 
     try {
-        const { data } = yield apiClient.put(`/categories/${id}/`, body);
+        const { data } = yield apiClient.post(`/categories/update/${_id}/`, body);
 
         yield put(updateCategorySuccess(data));
-        //yield put(setSuccessMessageIsVisible(true));
+        yield put(clear());
     } catch (error) {
         yield put(updateCategoryError(error));
     }
 }
 
-function* handleDeleteCategory({ payload: id }: any) {
+function* handleDeleteCategory({ payload: id }: DeleteCategory) {
     try {
         yield apiClient.delete(`/categories/${id}/`);
 
         yield put(deleteCategorySuccess(id));
+        yield put(clear());
     } catch (error) {
         yield put(deleteCategoryError(error));
     } finally {
-        //yield put(setOpenedCategoryId(null));
-        //yield put(setDeleteDialogIsVisible(false));
+        yield put(setDeleteDialogIsVisible(false));
     }
 }
 

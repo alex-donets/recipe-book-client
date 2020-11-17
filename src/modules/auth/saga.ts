@@ -14,8 +14,9 @@ import { LOGIN_PENDING, LOGOUT_PENDING, REGISTER_PENDING } from "./constants";
 import { apiClient } from "../../backend/services";
 import { removeAuthToken, setAuthToken } from "../../utils/localStorage";
 import { loginFormToQuery, registerFormToQuery } from "./helpers";
+import { HandleLogin, HandleRegister } from "./types";
 
-function* handleLogin ({ payload }: any) {
+function* handleLogin ({ payload }: HandleLogin) {
     try {
         const body = loginFormToQuery(payload);
         const { data } = yield apiClient.post('/users/login', body);
@@ -28,13 +29,13 @@ function* handleLogin ({ payload }: any) {
     }
 }
 
-function* handleRegister ({ payload }: any) {
+function* handleRegister ({ payload }: HandleRegister) {
     try {
         const body = registerFormToQuery(payload);
 
-        const { data } = yield apiClient.post('/users/register', body);
+        yield apiClient.post('/users/register', body);
 
-        yield put(registerSuccess(data));
+        yield put(registerSuccess());
         yield put(push('/login'));
     } catch (error) {
         yield put(registerError(error));

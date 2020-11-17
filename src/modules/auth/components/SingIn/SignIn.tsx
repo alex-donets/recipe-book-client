@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles.scss';
 import { useDispatch } from "react-redux";
 import { Grid, Header, Message } from "semantic-ui-react";
 import { formInitialValues, formValidationSchema } from "./constants";
@@ -6,13 +7,14 @@ import { login } from "../../actions";
 import { Formik } from "formik";
 import LoginForm from "./components/Form/LoginForm";
 import { trimFormValues } from "../../../../utils/helpers";
+import { LoginFormValues } from "../../types";
 
 const SignIn = () => {
     const dispatch = useDispatch();
 
     const renderForm = (props: any) => <LoginForm {...props} />;
 
-    const handleOnSubmit = (formData: any) => {
+    const handleOnSubmit = (formData: LoginFormValues) => {
         const formDataPayload = trimFormValues(formData);
 
         dispatch(login(formDataPayload));
@@ -21,11 +23,11 @@ const SignIn = () => {
     return (
         <Grid
             textAlign="center"
-            style={{ height: '100%' }}
+            className="auth-wrapper"
             verticalAlign="middle"
         >
             <Grid.Column
-                style={{ maxWidth: 450}}
+                className="auth-holder"
             >
                 <Header as="h2" className="login-text">
                     Log-in to your account

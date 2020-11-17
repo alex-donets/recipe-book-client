@@ -14,6 +14,17 @@ export const DELETE_CATEGORY_PENDING = 'categories/DELETE_CATEGORY_PENDING';
 export const DELETE_CATEGORY_SUCCESS = 'categories/DELETE_CATEGORY_SUCCESS';
 export const DELETE_CATEGORY_ERROR = 'categories/DELETE_CATEGORY_ERROR';
 
-export const SET_CATEGORY_PHOTO = 'categories/SET_CATEGORY_PHOTO';
+export const SET_SELECTED_CATEGORY = 'categories/SET_SELECTED_CATEGORY';
+
+export const SET_CONTENT_VISIBLE = 'categories/SET_CONTENT_VISIBLE';
+
+export const SET_EDIT_MODE = 'categories/SET_EDIT_MODE';
+
+export const SET_HOME_PAGE = 'categories/SET_HOME_PAGE';
+
+export const SET_DELETE_DIALOG_IS_VISIBLE = 'categories/SET_DELETE_DIALOG_IS_VISIBLE';
+
+export const SET_CATEGORY_PREVIEW_CARD = 'categories/SET_CATEGORY_PREVIEW_CARD';
+export const CLEAR_CATEGORY_PREVIEW_CARD = 'categories/CLEAR_CATEGORY_PREVIEW_CARD';
 
 export const CLEAR = 'categories/CLEAR';

@@ -1,2 +1,0 @@
-export const SET_ERROR_MESSAGE = 'app/SET_ERROR_MESSAGE';
-export const CLEAR_ERROR_MESSAGE = 'app/CLEAR_ERROR_MESSAGE';

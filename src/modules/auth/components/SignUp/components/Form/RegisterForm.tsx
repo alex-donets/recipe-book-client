@@ -1,9 +1,10 @@
-import React from 'react';
-import {Button, Checkbox, Form, Segment} from "semantic-ui-react";
+import React, {BaseSyntheticEvent} from 'react';
+import { Button, Checkbox, Form, Segment } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { getLoading } from "../../../../selectors";
+import { RegisterFormTypes } from "../../../../types";
 
-const RegisterForm = (props: any) => {
+const RegisterForm = (props: RegisterFormTypes) => {
     const {
         values: { name, email, password, confirmPassword, agreeTaC },
         errors,
@@ -14,10 +15,10 @@ const RegisterForm = (props: any) => {
 
     const isLoading = useSelector(getLoading);
 
-    const handleOnSubmit = (e: any) => {
+    const handleOnSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
-        handleSubmit();
+        handleSubmit(e);
     };
 
     return (
@@ -88,7 +89,7 @@ const RegisterForm = (props: any) => {
                     }
                 />
                 <Button
-                    className="login-button"
+                    className="primary-button"
                     loading={isLoading}
                     disabled={isLoading}
                     fluid

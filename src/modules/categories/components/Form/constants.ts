@@ -8,7 +8,7 @@ export const formInitialValues = {
     photo: null,
 };
 
-export const formValidationSchema = Yup.object({
+export const addValidationSchema = Yup.object({
     name: Yup.string()
         .trim()
         .required('Please enter a category name'),
@@ -16,4 +16,10 @@ export const formValidationSchema = Yup.object({
         .required('Please add a photo')
         .test('fileSize', "File size is too large", value => value && value.size <= FILE_SIZE)
         .test('fileType', "Unsupported File Format", value => value && SUPPORTED_FORMATS.includes(value.type) )
+});
+
+export const updateValidationSchema = Yup.object({
+    name: Yup.string()
+        .trim()
+        .required('Please enter a category name'),
 });

@@ -1,4 +1,6 @@
-export const formToQueryAdd = ({ name, photo }: any) => {
+import { Category, QueryAddCategory, QueryUpdateCategory } from "./types";
+
+export const formToQueryAdd = ({ name, photo }: QueryAddCategory) => {
     const data = new FormData();
 
     data.append('name', name);
@@ -7,13 +9,16 @@ export const formToQueryAdd = ({ name, photo }: any) => {
     return data;
 };
 
-export const formToQueryUpdate = ({ name, photo }: any) => ({
-    name,
-    photo,
-});
+export const formToQueryUpdate = ({ name, photo }: QueryUpdateCategory) => {
+    const data = new FormData();
 
-export const queryToForm = ({ name, photo, ...restProps }: any) => ({
+    name && data.append('name', name);
+    photo && data.append('file', photo);
+
+    return data;
+};
+
+export const queryToForm = ({ name, ...restProps }: Category) => ({
     name,
-    photo,
     ...restProps
 });

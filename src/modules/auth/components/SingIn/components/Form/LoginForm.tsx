@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {BaseSyntheticEvent} from 'react';
 import { Button, Form, Segment } from "semantic-ui-react";
+import { useSelector } from "react-redux";
+import { getLoading } from "../../../../selectors";
+import { LoginFormTypes } from "../../../../types";
 
-const LoginForm = (props: any) => {
+const LoginForm = (props: LoginFormTypes) => {
     const {
         values: { email, password },
         errors,
@@ -10,11 +13,13 @@ const LoginForm = (props: any) => {
         handleChange,
     } = props;
 
-    const handleOnSubmit = (e: any) => {
+    const handleOnSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
-        handleSubmit();
+        handleSubmit(e);
     };
+
+    const isLoading = useSelector(getLoading);
 
     return (
         <Form size="large" onSubmit={handleOnSubmit}>
@@ -42,7 +47,13 @@ const LoginForm = (props: any) => {
                     onChange={handleChange}
                     error={touched.password && errors.password}
                 />
-                <Button type="submit" className="login-button" fluid size="large">
+                <Button
+                    type="submit"
+                    className="primary-button"
+                    fluid
+                    size="large"
+                    loading={isLoading}
+                >
                     Login
                 </Button>
             </Segment>

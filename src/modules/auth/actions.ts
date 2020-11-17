@@ -11,13 +11,14 @@ import {
     REGISTER_ERROR,
     CLEAR,
 } from "./constants";
+import {HandleLogin, HandleRegister, LoginData} from "./types";
 
-export const login = (data: any) => ({
+export const login = (data: HandleLogin) => ({
     type: LOGIN_PENDING,
     payload: data,
 });
 
-export const loginSuccess = (data: any) => ({
+export const loginSuccess = (data: LoginData) => ({
     type: LOGIN_SUCCESS,
     payload: data,
 });
@@ -27,14 +28,13 @@ export const loginError = (error: any) => ({
     payload: error,
 });
 
-export const register = (data: any) => ({
+export const register = (data: HandleRegister) => ({
     type: REGISTER_PENDING,
     payload: data,
 });
 
-export const registerSuccess = (data: any) => ({
+export const registerSuccess = () => ({
     type: REGISTER_SUCCESS,
-    payload: data,
 });
 
 export const registerError = (error: any) => ({
@@ -55,7 +55,7 @@ export const logoutError = (error: any) => ({
     payload: error,
 });
 
-export const setUserInfo = (data: any) => ({
+export const setUserInfo = (data: string) => ({
     type: SET_USER_INFO,
     payload: data,
 });

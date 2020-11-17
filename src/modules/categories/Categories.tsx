@@ -1,37 +1,39 @@
-import React, { useRef } from 'react';
-import { Card, Container } from "semantic-ui-react";
-import { Formik} from "formik";
+import React, { Suspense, lazy } from 'react';
+import { useSelector } from "react-redux";
+import CategoryHeading from "./components/Heading/CategoryHeading";
+import {
+    getIsContentVisible,
+    getIsDeleteDialogVisible,
+    getListLoading,
+} from "./selectors";
+import CategoryContent from "./components/Content/CategoryContent";
+import CircularProgress from "../../shared/components/CircularProgress/CircularProgress";
 
-import CategoryForm from "./components/Form/CategoryForm";
-import { trimFormValues } from "../../utils/helpers";
-
-import { useDispatch } from "react-redux";
-import { formInitialValues, formValidationSchema } from "./components/Form/constants";
-import { addCategory } from "./actions";
+const ConfirmationModal = lazy(() =>
+    import("../../shared/components/ConfirmationModal/ConfirmationModal")
+);
 
 const Categories = () => {
-    const dispatch = useDispatch();
-
-    const renderForm = (props: any) => <CategoryForm {...props} />;
-
-    const handleOnSubmit = (formData: any) => {
-        const formDataPayload = trimFormValues(formData);
-
-        dispatch(addCategory(formDataPayload));
-    };
+    const isContentVisible = useSelector(getIsContentVisible);
+    const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
+    const isListLoading = useSelector(getListLoading);
 
     return (
-        <Card fluid>
-            <Container className="create-category-container">
-                <Formik
-                    render={renderForm}
-                    initialValues={formInitialValues}
-                    onSubmit={handleOnSubmit}
-                    validationSchema={formValidationSchema}
-                    enableReinitialize
-                />
-            </Container>
-        </Card>
+        <>
+            {!isListLoading && <CategoryHeading />}
+            {isListLoading && <CircularProgress />}
+
+
+            {isContentVisible &&
+                <CategoryContent/>
+            }
+
+            <Suspense fallback={CircularProgress}>
+                {isDeleteDialogVisible && (
+                    <ConfirmationModal />
+                )}
+            </Suspense>
+        </>
     );
 };
 

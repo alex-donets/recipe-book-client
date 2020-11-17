@@ -38,6 +38,7 @@
     "reselect": "^4.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^1.2.1",
+    "ts-debounce": "^2.0.1",
     "use-react-router": "^1.0.7",
     "yup": "^0.27.0"
   },

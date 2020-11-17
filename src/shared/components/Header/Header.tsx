@@ -35,7 +35,7 @@ const Header = () => {
                     <Image
                         size="mini"
                         src={Logo}
-                        style={{ marginRight: '1.5em' }}
+                        className="header-image"
                     />
                     Recipe Book
                 </Menu.Item>
@@ -48,7 +48,7 @@ const Header = () => {
                         <Image
                             size="mini"
                             src={Note}
-                            style={{ marginRight: '1.5em' }}
+                            className="header-image"
                         />
                         Create Recipe
                     </Menu.Item>
@@ -62,7 +62,7 @@ const Header = () => {
                         <Image
                             size="mini"
                             src={Category}
-                            style={{ marginRight: '1.5em' }}
+                            className="header-image"
                         />
                         Create Category
                     </Menu.Item>

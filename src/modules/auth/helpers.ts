@@ -1,9 +1,11 @@
+import { LoginFormValues, QueryRegisterForm } from "./types";
+
 export const registerFormToQuery = ({
     name,
     email,
     password,
     agreeTaC
-}: any) => ({
+}: QueryRegisterForm) => ({
     fullName: name,
     email,
     password,
@@ -13,7 +15,7 @@ export const registerFormToQuery = ({
 export const loginFormToQuery = ({
     email,
     password,
-}: any) => ({
+}: LoginFormValues) => ({
     email,
     password,
 });

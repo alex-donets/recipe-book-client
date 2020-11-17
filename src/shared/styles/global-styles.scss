@@ -1,0 +1,89 @@
+@import "variables";
+
+.wrapper {
+    max-width: $primary-width;
+    margin: 7em auto 4em;
+    position: relative;
+    flex: 1 0 auto;
+}
+
+.custom-header {
+    background-color: $dark-blue;
+}
+
+.custom-footer {
+    bottom: 0;
+    margin: 5em 0 0;
+    padding: 5em 0;
+    background-color: $dark-blue;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: $light-beige;
+}
+
+.primary-button {
+    background-color: $dark-olive;
+    opacity: 0.9;
+    color: $white;
+}
+
+.danger-button {
+    background-color: $error-background;
+    border: 1px solid $error-text;
+    color: $error-text;
+}
+
+.login-text {
+    color: $dark-olive;
+    text-align: center;
+}
+
+.content-holder {
+    max-width: $secondary-width;
+    margin: 50px auto;
+}
+
+.preview-holder {
+    & > div {
+        display: flex;
+        margin: auto;
+    }
+}
+
+.card-holder {
+    width: $square-side;
+    margin: 10px;
+}
+
+.image-holder {
+    display: flex;
+    margin: auto;
+
+    & img {
+        width: $square-side;
+        height: $square-side;
+        object-fit: scale-down;
+    }
+}
+
+.input-holder {
+    & div {
+        margin-top: 12px;
+    }
+}
+
+.form-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header-image {
+    margin-right: 1.5em;
+    object-fit: scale-down;
+}
