@@ -13,6 +13,8 @@ import Home from "../../../modules/home/Home";
 import NotifyError from "../Notifications/NotifyError";
 import NotifySuccess from "../Notifications/NotifySuccess";
 import NotifyInfo from "../Notifications/NotifyInfo";
+import SetPassword from "../../../modules/auth/components/SetPassword/SetPassword";
+import ResetPassword from "../../../modules/auth/components/ResetPassword/ResetPassword";
 
 const Main = () => {
     const errorMessage = useSelector(getErrorMessage);
@@ -24,7 +26,10 @@ const Main = () => {
             <Switch>
                 <Route exact path="/login" component={SignIn} />
                 <Route exact path="/register" component={SignUp} />
-                <Route exact path="/home" component={Home} />
+                <Route path="/forgot-password" component={ResetPassword} />
+                <Route path="/set-password/:token/" component={SetPassword} />
+
+                <Route exact path="/" component={Home} />
                 <Route exact path="/categories" component={Categories} />
 
                 <Route exact path="/terms-and-conditions" component={TermsAndConditions} />

@@ -1,7 +1,10 @@
 .auth-wrapper{
   height: 100%;
+  position: relative;
 }
 
 .auth-holder {
   max-width: 450px;
+  position: relative;
+  top: 100px;
 }

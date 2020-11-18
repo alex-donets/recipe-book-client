@@ -1,5 +1,6 @@
 import React, {BaseSyntheticEvent} from 'react';
-import { Button, Form, Segment } from "semantic-ui-react";
+import '../../styles.scss';
+import {Button, Container, Form, Segment} from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { getLoading } from "../../../../selectors";
 import { LoginFormTypes } from "../../../../types";
@@ -47,6 +48,11 @@ const LoginForm = (props: LoginFormTypes) => {
                     onChange={handleChange}
                     error={touched.password && errors.password}
                 />
+
+                <Container className="forgot-pass-holder">
+                    <a href="/forgot-password">Forgot Password?</a>
+                </Container>
+
                 <Button
                     type="submit"
                     className="primary-button"

@@ -1,4 +1,4 @@
-import { LoginFormValues, QueryRegisterForm } from "./types";
+import { LoginFormValues, QueryRegisterForm, QueryResetPassForm } from "./types";
 
 export const registerFormToQuery = ({
     name,
@@ -18,4 +18,14 @@ export const loginFormToQuery = ({
 }: LoginFormValues) => ({
     email,
     password,
+});
+
+export const setFormToQuery = ({
+    password,
+    key,
+    token,
+}: QueryResetPassForm) => ({
+    password,
+    key,
+    token,
 });

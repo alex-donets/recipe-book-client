@@ -65,3 +65,44 @@ export interface LoginFormTypes extends FormikState<LoginFormValues>{
     handleSubmit: (e: BaseSyntheticEvent) => void,
     handleChange: (e: BaseSyntheticEvent) => void,
 };
+
+export interface SetPassFormValues {
+    password: string,
+    confirmPassword: string,
+};
+
+export interface SetPassFormTypes extends FormikState<SetPassFormValues>{
+    handleSubmit: (e: BaseSyntheticEvent) => void,
+    handleChange: (e: BaseSyntheticEvent) => void,
+};
+
+export interface ResetPassFormValues {
+    email: string,
+};
+
+export interface ResetPassFormTypes extends FormikState<ResetPassFormValues>{
+    handleSubmit: (e: BaseSyntheticEvent) => void,
+    handleChange: (e: BaseSyntheticEvent) => void,
+};
+
+export interface QueryResetPassForm {
+    password: string,
+    key?: string,
+    token?: string,
+};
+
+export interface HandleSetPassword extends Action {
+    payload: SetPassword
+};
+
+export interface SetPassword {
+    password: string,
+    token: string,
+    key?: string,
+};
+
+export interface HandleResetPassword extends Action {
+    payload: {
+        email: string,
+    }
+};

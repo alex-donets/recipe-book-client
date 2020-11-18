@@ -10,8 +10,21 @@ import {
     REGISTER_SUCCESS,
     REGISTER_ERROR,
     CLEAR,
+    RESET_PASSWORD_PENDING,
+    RESET_PASSWORD_SUCCESS,
+    RESET_PASSWORD_ERROR,
+    SET_PASSWORD_PENDING,
+    SET_PASSWORD_SUCCESS,
+    SET_PASSWORD_ERROR,
 } from "./constants";
-import {HandleLogin, HandleRegister, LoginData} from "./types";
+
+import {
+    HandleLogin,
+    HandleRegister,
+    HandleResetPassword,
+    LoginData,
+    SetPassword
+} from "./types";
 
 export const login = (data: HandleLogin) => ({
     type: LOGIN_PENDING,
@@ -62,4 +75,32 @@ export const setUserInfo = (data: string) => ({
 
 export const clear = () => ({
     type: CLEAR,
+});
+
+export const resetPassword = (data: HandleResetPassword) => ({
+    type: RESET_PASSWORD_PENDING,
+    payload: data,
+});
+
+export const resetPasswordSuccess = () => ({
+    type: RESET_PASSWORD_SUCCESS,
+});
+
+export const resetPasswordError = (error: any) => ({
+    type: RESET_PASSWORD_ERROR,
+    payload: error,
+});
+
+export const setPassword = (data: SetPassword) => ({
+    type: SET_PASSWORD_PENDING,
+    payload: data,
+});
+
+export const setPasswordSuccess = () => ({
+    type: SET_PASSWORD_SUCCESS,
+});
+
+export const setPasswordError = (error: any) => ({
+    type: SET_PASSWORD_ERROR,
+    payload: error,
 });

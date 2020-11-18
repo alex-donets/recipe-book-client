@@ -30,7 +30,7 @@ const Header = () => {
                 <Menu.Item
                     header
                     as="a"
-                    href="/home"
+                    href="/"
                 >
                     <Image
                         size="mini"
