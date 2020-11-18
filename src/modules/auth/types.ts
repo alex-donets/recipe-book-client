@@ -9,7 +9,8 @@ export interface AuthState {
     isLoggedIn: boolean,
     email: string,
     fullName: string,
-    role: string
+    role: string | null,
+    googleId: string | null,
 };
 
 export interface HandleLogin extends Action {
@@ -105,4 +106,12 @@ export interface HandleResetPassword extends Action {
     payload: {
         email: string,
     }
+};
+
+export interface UserInfo {
+    fullName: string,
+    email: string,
+    token: string,
+    role?: string,
+    googleId?: string,
 };

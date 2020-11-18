@@ -23,7 +23,8 @@ import {
     HandleRegister,
     HandleResetPassword,
     LoginData,
-    SetPassword
+    SetPassword,
+    UserInfo,
 } from "./types";
 
 export const login = (data: HandleLogin) => ({
@@ -68,7 +69,7 @@ export const logoutError = (error: any) => ({
     payload: error,
 });
 
-export const setUserInfo = (data: string) => ({
+export const setUserInfo = (data: UserInfo) => ({
     type: SET_USER_INFO,
     payload: data,
 });

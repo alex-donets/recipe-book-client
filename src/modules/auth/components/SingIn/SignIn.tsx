@@ -8,6 +8,7 @@ import { Formik } from "formik";
 import LoginForm from "./components/Form/LoginForm";
 import { trimFormValues } from "../../../../utils/helpers";
 import { LoginFormValues } from "../../types";
+import GoogleBtn from "./components/GoogleSignIn/GoogleBtn";
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -44,6 +45,11 @@ const SignIn = () => {
                 <Message>
                     New to us?
                     <a href="/register"> Sign Up</a>
+                </Message>
+                <Message className="sing-in-google">
+                    <div className="text-holder">Sign in with Google:</div>
+
+                    <GoogleBtn />
                 </Message>
             </Grid.Column>
         </Grid>

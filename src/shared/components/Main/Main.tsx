@@ -27,7 +27,7 @@ const Main = () => {
                 <Route exact path="/login" component={SignIn} />
                 <Route exact path="/register" component={SignUp} />
                 <Route path="/forgot-password" component={ResetPassword} />
-                <Route path="/set-password/:token/" component={SetPassword} />
+                <Route path="/set-password/:token" component={SetPassword} />
 
                 <Route exact path="/" component={Home} />
                 <Route exact path="/categories" component={Categories} />

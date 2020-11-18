@@ -24,7 +24,8 @@ export const initialState = {
     isLoggedIn: false,
     email: null,
     fullName: null,
-    role: null
+    role: null,
+    googleId: null,
 };
 
 export default createReducer(initialState, {
@@ -105,8 +106,9 @@ export default createReducer(initialState, {
         isLoggedIn: true,
         email: payload.email,
         fullName: payload.fullName,
-        role: payload.role,
-        token: payload.token
+        role: payload.role || null,
+        token: payload.token,
+        googleId: payload.googleId || null,
     }),
 
     [CLEAR]: () => ({ ...initialState }),
