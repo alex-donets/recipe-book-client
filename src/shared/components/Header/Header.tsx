@@ -64,7 +64,7 @@ const Header = () => {
                             src={Category}
                             className="header-image"
                         />
-                        Create Category
+                        Category
                     </Menu.Item>
                 }
 

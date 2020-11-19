@@ -4,6 +4,7 @@ import GoogleLogin from "react-google-login";
 import {setErrorMessage} from "../../../../../app/actions";
 import {setUserInfo} from "../../../../actions";
 import useReactRouter from "use-react-router";
+import { setAuthToken } from "../../../../../../utils/localStorage";
 
 const GoogleBtn = () => {
     const dispatch = useDispatch();
@@ -20,12 +21,14 @@ const GoogleBtn = () => {
                 fullName: res.profileObj.name,
             };
             dispatch(setUserInfo(user));
+            setAuthToken(user);
+
             history.push('/');
         }
     };
 
     const onFailure = (res: any) => {
-        setErrorMessage(JSON.stringify(res));
+        setErrorMessage(res.toString());
     };
 
     return (

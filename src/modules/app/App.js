@@ -8,6 +8,7 @@ import { runAllInterceptors } from "../../backend/interceptors/interceptors";
 import { useDispatch } from "react-redux";
 import { getAuthToken } from "../../utils/localStorage";
 import { setUserInfo } from "../auth/actions";
+import OfflineMode from "../../shared/components/OfflineMode/OfflineMode";
 
 runAllInterceptors();
 
@@ -24,6 +25,7 @@ function App() {
     return (
         <div className="main-container">
             <Header />
+            <OfflineMode />
             <Main />
             <Footer />
         </div>
