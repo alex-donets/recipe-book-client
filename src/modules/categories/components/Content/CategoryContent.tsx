@@ -1,11 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
+import "../../styles.scss";
 import {Grid, Header, Segment} from "semantic-ui-react";
 import {Formik} from "formik";
 import {addValidationSchema, formInitialValues, updateValidationSchema} from "../Form/constants";
 import CategoryCard from "../../../../shared/components/CategoryCard/CategoryCard";
 import CategoryForm from "../Form/CategoryForm";
 import {trimFormValues} from "../../../../utils/helpers";
-import {addCategory, setHomePage, updateCategory} from "../../actions";
+import {addCategory, updateCategory} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getIsEditMode,
@@ -35,10 +36,6 @@ const CategoryContent = () => {
     const title = selectedCategory ? selectedCategory.name : 'Add New';
 
     useEffect(() => {
-        dispatch(setHomePage(false))
-    }, []);
-
-    useEffect(() => {
         const { current } = formRef;
 
         if (current && !selectedCategoryId) {
@@ -65,8 +62,8 @@ const CategoryContent = () => {
     };
 
     return (
-        <div className="content-holder">
-            <Header as="h2" className="login-text">
+        <div className="category-content">
+            <Header as="h2" className="primary-text">
                 {selectedCategory ? 'Update ': 'Create '} a category
             </Header>
 

@@ -6,7 +6,6 @@ import { setPreviewCard } from "../../actions";
 import {CategoryFormTypes} from "../../types";
 
 const CategoryForm = (props: CategoryFormTypes) => {
-
     const dispatch = useDispatch();
 
     const {

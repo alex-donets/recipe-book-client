@@ -13,7 +13,6 @@ import {
     DELETE_CATEGORY_SUCCESS,
     SET_SELECTED_CATEGORY,
     SET_EDIT_MODE,
-    SET_HOME_PAGE,
     SET_DELETE_DIALOG_IS_VISIBLE,
     SET_CATEGORY_PREVIEW_CARD,
     CLEAR_CATEGORY_PREVIEW_CARD,
@@ -93,11 +92,6 @@ export const setContentVisible = (data: boolean) => ({
 
 export const setEditMode = (data: boolean) => ({
     type: SET_EDIT_MODE,
-    payload: data
-});
-
-export const setHomePage = (data: boolean) => ({
-    type: SET_HOME_PAGE,
     payload: data
 });
 

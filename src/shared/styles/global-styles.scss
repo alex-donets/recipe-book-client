@@ -37,42 +37,25 @@
     color: $error-text;
 }
 
-.login-text {
+.primary-text {
     color: $dark-olive;
     text-align: center;
-}
-
-.content-holder {
-    max-width: $secondary-width;
-    margin: 50px auto;
-}
-
-.preview-holder {
-    & > div {
-        display: flex;
-        margin: auto;
-    }
-}
-
-.card-holder {
-    width: $square-side;
-    margin: 10px;
-}
-
-.image-holder {
-    display: flex;
-    margin: auto;
-
-    & img {
-        width: $square-side;
-        height: $square-side;
-        object-fit: scale-down;
-    }
 }
 
 .input-holder {
     & div {
         margin-top: 12px;
+    }
+}
+
+.select-holder {
+    & > div,i {
+        margin-top: 12px;
+        font-size: .92857143em;
+        padding: .92857143em 1em !important;
+    }
+    & i:before {
+        padding: 1em 0;
     }
 }
 

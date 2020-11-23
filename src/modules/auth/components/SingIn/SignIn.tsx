@@ -30,7 +30,7 @@ const SignIn = () => {
             <Grid.Column
                 className="auth-holder"
             >
-                <Header as="h2" className="login-text">
+                <Header as="h2" className="primary-text">
                     Log-in to your account
                 </Header>
 

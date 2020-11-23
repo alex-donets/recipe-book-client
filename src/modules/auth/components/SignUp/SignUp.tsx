@@ -29,7 +29,7 @@ const SignUp = () => {
             <Grid.Column
                 className="auth-holder"
             >
-                <Header as="h2" className="login-text">
+                <Header as="h2" className="primary-text">
                     Creating a new profile
                 </Header>
 

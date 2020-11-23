@@ -1,30 +1,29 @@
 import {createReducer} from "redux-create-reducer";
 import {
-    FETCH_CATEGORIES_ERROR,
-    FETCH_CATEGORIES_PENDING,
-    FETCH_CATEGORIES_SUCCESS,
-    ADD_CATEGORY_ERROR,
-    ADD_CATEGORY_PENDING,
-    ADD_CATEGORY_SUCCESS,
-    UPDATE_CATEGORY_ERROR,
-    UPDATE_CATEGORY_PENDING,
-    UPDATE_CATEGORY_SUCCESS,
-    DELETE_CATEGORY_ERROR,
-    DELETE_CATEGORY_PENDING,
-    DELETE_CATEGORY_SUCCESS,
+    FETCH_RECIPES_ERROR,
+    FETCH_RECIPES_PENDING,
+    FETCH_RECIPES_SUCCESS,
+    ADD_RECIPE_ERROR,
+    ADD_RECIPE_PENDING,
+    ADD_RECIPE_SUCCESS,
+    UPDATE_RECIPE_ERROR,
+    UPDATE_RECIPE_PENDING,
+    UPDATE_RECIPE_SUCCESS,
+    DELETE_RECIPE_ERROR,
+    DELETE_RECIPE_PENDING,
+    DELETE_RECIPE_SUCCESS,
     CLEAR,
-    SET_SELECTED_CATEGORY,
+    SET_SELECTED_RECIPE,
     SET_CONTENT_VISIBLE,
     SET_EDIT_MODE,
     SET_DELETE_DIALOG_IS_VISIBLE,
-    SET_CATEGORY_PREVIEW_CARD,
-    CLEAR_CATEGORY_PREVIEW_CARD,
+    SET_ACTIVE_PAGE,
 } from "./constants";
-import {Category, CategoryState} from "./types";
+import {Recipe, RecipeState} from "./types";
 
-export const initialState: CategoryState = {
-    categoryList: [],
-    selectedCategory: null,
+export const initialState: RecipeState = {
+    recipeList: [],
+    selectedRecipe: null,
     isEditMode: false,
     isLoading: {
         list: false,
@@ -32,7 +31,6 @@ export const initialState: CategoryState = {
         update: false,
         delete: false,
     },
-    isHomePage: false,
     isContentVisible: false,
     previewCard: {
         photo: null,
@@ -42,10 +40,11 @@ export const initialState: CategoryState = {
     isDeleteDialogVisible: false,
     isSuccessMessageVisible: false,
     errors: null,
+    activePage: 1,
 };
 
 export default createReducer(initialState, {
-    [FETCH_CATEGORIES_PENDING]: (state) => ({
+    [FETCH_RECIPES_PENDING]: (state) => ({
         ...state,
         isLoading: {
             ...state.isLoading,
@@ -54,9 +53,9 @@ export default createReducer(initialState, {
         errors: null,
     }),
 
-    [FETCH_CATEGORIES_SUCCESS]: (state, { payload }) => ({
+    [FETCH_RECIPES_SUCCESS]: (state, { payload }) => ({
         ...state,
-        categoryList: payload,
+        recipeList: payload,
         isLoading: {
             ...state.isLoading,
             list: false
@@ -64,7 +63,7 @@ export default createReducer(initialState, {
         errors: null,
     }),
 
-    [FETCH_CATEGORIES_ERROR]: (state, { payload }) => ({
+    [FETCH_RECIPES_ERROR]: (state, { payload }) => ({
         ...state,
         errors: payload,
         isLoading: {
@@ -73,7 +72,7 @@ export default createReducer(initialState, {
         },
     }),
 
-    [ADD_CATEGORY_PENDING]: (state) => ({
+    [ADD_RECIPE_PENDING]: (state) => ({
         ...state,
         isLoading: {
             ...state.isLoading,
@@ -82,15 +81,15 @@ export default createReducer(initialState, {
         errors: null,
     }),
 
-    [ADD_CATEGORY_SUCCESS]: (state, { payload }) => {
-        const { categoryList } = state;
+    [ADD_RECIPE_SUCCESS]: (state, { payload }) => {
+        const { recipeList } = state;
 
-        const updatedList = [...categoryList];
+        const updatedList = [...recipeList];
         updatedList.push(payload);
 
         return {
             ...state,
-            categoryList: updatedList,
+            recipeList: updatedList,
             isLoading: {
                 ...state.isLoading,
                 add: false,
@@ -99,7 +98,7 @@ export default createReducer(initialState, {
         }
     },
 
-    [ADD_CATEGORY_ERROR]: (state, { payload }) => {
+    [ADD_RECIPE_ERROR]: (state, { payload }) => {
         const { error } = payload;
 
         return {
@@ -112,7 +111,7 @@ export default createReducer(initialState, {
         }
     },
 
-    [DELETE_CATEGORY_PENDING]: (state) => {
+    [DELETE_RECIPE_PENDING]: (state) => {
 
         return {
             ...state,
@@ -124,12 +123,12 @@ export default createReducer(initialState, {
         }
     },
 
-    [DELETE_CATEGORY_SUCCESS]: (state, { payload }) => {
-        const categoryList = state.categoryList.filter((item: Category)  => item._id !== payload);
+    [DELETE_RECIPE_SUCCESS]: (state, { payload }) => {
+        const recipeList = state.recipeList.filter((item: Recipe)  => item._id !== payload);
 
         return {
             ...state,
-            categoryList,
+            recipeList,
             isLoading: {
                 ...state.isLoading,
                 delete: false,
@@ -138,7 +137,7 @@ export default createReducer(initialState, {
         }
     },
 
-    [DELETE_CATEGORY_ERROR]: (state, { payload }) => {
+    [DELETE_RECIPE_ERROR]: (state, { payload }) => {
         const { error } = payload;
 
         return {
@@ -151,7 +150,7 @@ export default createReducer(initialState, {
         }
     },
 
-    [UPDATE_CATEGORY_PENDING]: (state, { payload }) => {
+    [UPDATE_RECIPE_PENDING]: (state, { payload }) => {
         return {
             ...state,
             isLoading: {
@@ -162,18 +161,18 @@ export default createReducer(initialState, {
         }
     },
 
-    [UPDATE_CATEGORY_SUCCESS]: (state, { payload }) => {
-        const { categoryList } = state;
+    [UPDATE_RECIPE_SUCCESS]: (state, { payload }) => {
+        const { recipeList } = state;
         const { _id } = payload;
 
-        const updatedList = categoryList.map((item: Category) => (item._id === _id ? {
+        const updatedList = recipeList.map((item: Recipe) => (item._id === _id ? {
             ...item,
             ...payload
         } : item));
 
         return {
             ...state,
-            categoryList: updatedList,
+            recipeList: updatedList,
             isLoading: {
                 ...state.isLoading,
                 update: false,
@@ -182,7 +181,7 @@ export default createReducer(initialState, {
         }
     },
 
-    [UPDATE_CATEGORY_ERROR]: (state, { payload }) => {
+    [UPDATE_RECIPE_ERROR]: (state, { payload }) => {
         const { error } = payload;
 
         return {
@@ -195,13 +194,13 @@ export default createReducer(initialState, {
         }
     },
 
-    [SET_SELECTED_CATEGORY]: (state, { payload }) => {
-        const { categoryList } = state;
-        const selectedCategory = categoryList.find((item: Category) => item._id === payload);
+    [SET_SELECTED_RECIPE]: (state, { payload }) => {
+        const { recipeList } = state;
+        const selectedRecipe = recipeList.find((item: Recipe) => item._id === payload);
 
         return {
             ...state,
-            selectedCategory: selectedCategory || null,
+            selectedRecipe: selectedRecipe || null,
         }
     },
 
@@ -214,24 +213,19 @@ export default createReducer(initialState, {
         ...state,
         isEditMode: payload,
     }),
-
+    
     [SET_DELETE_DIALOG_IS_VISIBLE]: (state, { payload }) => ({
         ...state,
         isDeleteDialogVisible: payload
     }),
 
-    [SET_CATEGORY_PREVIEW_CARD]: (state, { payload }) => ({
+    [SET_ACTIVE_PAGE]: (state, { payload }) => ({
         ...state,
-        previewCard: { ...state.previewCard, ...payload }
-    }),
-
-    [CLEAR_CATEGORY_PREVIEW_CARD]: (state) => ({
-        ...state,
-        previewCard: initialState.previewCard
+        activePage: payload
     }),
 
     [CLEAR]: (state) => ({
         ...initialState,
-        categoryList: state.categoryList
+        recipeList: state.recipeList
     }),
 });

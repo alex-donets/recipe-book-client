@@ -36,6 +36,7 @@ const Header = () => {
                         size="mini"
                         src={Logo}
                         className="header-image"
+                        alt="logo"
                     />
                     Recipe Book
                 </Menu.Item>
@@ -43,12 +44,13 @@ const Header = () => {
                 {isLoggedIn &&
                     <Menu.Item
                         as="a"
-                        href="/create-recipe"
+                        href="/recipes"
                     >
                         <Image
                             size="mini"
                             src={Note}
                             className="header-image"
+                            alt="note image"
                         />
                         Create Recipe
                     </Menu.Item>
@@ -63,6 +65,7 @@ const Header = () => {
                             size="mini"
                             src={Category}
                             className="header-image"
+                            alt="sticker image"
                         />
                         Category
                     </Menu.Item>

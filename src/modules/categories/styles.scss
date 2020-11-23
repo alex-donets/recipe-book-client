@@ -1,3 +1,17 @@
+@import "../../shared/styles/variables";
+
+.category-content {
+  max-width: $secondary-width;
+  margin: 50px auto;
+}
+
 .create-category-container {
   padding: 2rem;
+}
+
+.preview-holder {
+  & > div {
+    display: flex;
+    margin: auto;
+  }
 }

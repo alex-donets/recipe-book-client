@@ -30,7 +30,7 @@ const ResetPassword = () => {
             <Grid.Column
                 className="auth-holder"
             >
-                <Header as="h2" className="login-text">
+                <Header as="h2" className="primary-text">
                     Type your email address
                 </Header>
 

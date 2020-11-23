@@ -1,0 +1,41 @@
+@import "../../shared/styles/variables";
+
+.recipe-content {
+  max-width: $secondary-width;
+  margin: auto;
+}
+
+.photo-btn {
+  margin: 20px 0;
+}
+
+.add-btn {
+  &.wide.field {
+    margin-top: 12px;
+  }
+
+  & button {
+    margin-top: 12px;
+  }
+}
+
+.measure-select > div {
+  max-width: 20px;
+
+  &.ui.selection.dropdown {
+    min-width: 7em;
+    padding: 1em;
+  }
+}
+
+.directions {
+  margin-top: 4rem;
+}
+
+.error-text {
+  margin-top: .7em;
+  color: $error-text;
+  font-weight: 700;
+  font-size: .85714286rem;
+}
+

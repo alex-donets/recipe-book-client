@@ -33,7 +33,7 @@ const SetPassword = () => {
             <Grid.Column
                 className="auth-holder"
             >
-                <Header as="h2" className="login-text">
+                <Header as="h2" className="primary-text">
                     Set a new password
                 </Header>
 

@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.category-img-holder {
+  display: flex;
+  margin: auto;
+
+  & img {
+    width: $square-side;
+    height: $square-side;
+    object-fit: scale-down;
+  }
+}
+
+.category-card-holder {
+  width: $square-side;
+  margin: 10px;
+}

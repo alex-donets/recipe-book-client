@@ -20,8 +20,6 @@ export const SET_CONTENT_VISIBLE = 'categories/SET_CONTENT_VISIBLE';
 
 export const SET_EDIT_MODE = 'categories/SET_EDIT_MODE';
 
-export const SET_HOME_PAGE = 'categories/SET_HOME_PAGE';
-
 export const SET_DELETE_DIALOG_IS_VISIBLE = 'categories/SET_DELETE_DIALOG_IS_VISIBLE';
 
 export const SET_CATEGORY_PREVIEW_CARD = 'categories/SET_CATEGORY_PREVIEW_CARD';

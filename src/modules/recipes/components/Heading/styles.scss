@@ -1,0 +1,23 @@
+@import "../../../../shared/styles/variables";
+
+.heading {
+  &.ui.header.primary-text {
+    margin: 4rem auto 3rem;
+  }
+}
+
+.pagination-holder {
+  margin-bottom: 3rem;
+}
+
+.recipe-img-holder {
+  //display: flex;
+  //margin: auto;
+  max-width: $recipe-img-side;
+
+  & img {
+    width: $recipe-img-side;
+    height: $recipe-img-side;
+    object-fit: scale-down;
+  }
+}

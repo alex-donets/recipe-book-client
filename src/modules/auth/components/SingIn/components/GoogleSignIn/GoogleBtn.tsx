@@ -15,7 +15,7 @@ const GoogleBtn = () => {
     const onSuccess = (res: any) => {
         if (res) {
             const user = {
-                googleId: res.profileObj.googleId,
+                id: res.profileObj.googleId,
                 token: res.accessToken,
                 email: res.profileObj.email,
                 fullName: res.profileObj.name,

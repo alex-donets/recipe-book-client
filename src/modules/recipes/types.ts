@@ -1,11 +1,11 @@
 import {Action} from "redux";
 import {AxiosError} from "axios";
 import {FormikState} from "formik";
-import {BaseSyntheticEvent, ReactNode} from "react";
+import {BaseSyntheticEvent} from "react";
 
-export interface CategoryState {
-    categoryList: Category[],
-    selectedCategory: Category | null,
+export interface RecipeState {
+    recipeList: Recipe[],
+    selectedRecipe: Recipe | null,
     isLoading: {
         list: boolean,
         add: boolean,
@@ -13,7 +13,6 @@ export interface CategoryState {
         delete: boolean,
     },
     isEditMode: boolean,
-    isHomePage: boolean,
     isContentVisible: boolean,
     previewCard: {
         photo: File | null,
@@ -23,9 +22,10 @@ export interface CategoryState {
     isDeleteDialogVisible: boolean,
     isSuccessMessageVisible: boolean,
     errors: AxiosError | null,
+    activePage: number,
 };
 
-export interface Category {
+export interface Recipe {
     _id: string,
     name: string,
     photo: {
@@ -36,17 +36,25 @@ export interface Category {
         },
         originalName: string,
         size: number,
-    }
+    },
+    directions: string,
+    categoryId: string,
 };
 
-export interface AddCategory extends Action {
-    payload: {
-        name: string,
-        photo: File,
-    }
+export interface RecipeItemTypes {
+    item: Recipe,
+    showDivider: boolean,
 };
 
-export interface UpdateCategory extends Action {
+export interface FetchRecipes extends Action {
+    payload: string
+};
+
+export interface AddRecipe extends Action {
+    payload: QueryAddRecipe
+};
+
+export interface UpdateRecipe extends Action {
     payload: {
         _id: string,
         name?: string,
@@ -54,17 +62,22 @@ export interface UpdateCategory extends Action {
     }
 };
 
-export interface QueryAddCategory {
+export interface QueryAddRecipe {
     name: string,
+    categoryId: string,
     photo: File,
+    directions: string,
 };
 
-export interface QueryUpdateCategory {
+export interface QueryUpdateRecipe {
     name?: string,
+    categoryId?: string,
     photo?: File,
+    userId?: string,
+    directions?: string,
 };
 
-export interface DeleteCategory extends Action {
+export interface DeleteRecipe extends Action {
     payload: string
 };
 
@@ -74,26 +87,23 @@ export interface PreviewCard {
     previewTitle?: string,
 };
 
-export interface CategoryFormValues {
+export interface RecipeFormValues {
     name: string,
+    categoryId: string,
     photo: File | null,
+    directions: string,
 };
 
-export interface CategoryFormTypes extends FormikState<CategoryFormValues>{
+export interface RecipeFormTypes extends FormikState<RecipeFormValues>{
     handleSubmit: (e: BaseSyntheticEvent) => void,
     handleChange: (e: BaseSyntheticEvent) => void,
     isValid?: boolean,
-    setFieldValue: (field: keyof CategoryFormValues & string, value: any, shouldValidate?: boolean) => void;
+    setFieldValue: (field: keyof RecipeFormValues & string, value: any, shouldValidate?: boolean) => void;
 };
 
-export interface CategoryFormProps {
+export interface RecipeFormProps {
     formProps: {
         isValid?: boolean
     },
-};
-
-export interface ImageHolderTypes {
-    children: ReactNode,
-    className: string,
 };
 

@@ -2,9 +2,9 @@ import React, { Suspense, lazy } from 'react';
 import { useSelector } from "react-redux";
 import CategoryHeading from "./components/Heading/CategoryHeading";
 import {
+    getCategoryListLoading,
     getIsContentVisible,
     getIsDeleteDialogVisible,
-    getListLoading,
 } from "./selectors";
 import CategoryContent from "./components/Content/CategoryContent";
 import CircularProgress from "../../shared/components/CircularProgress/CircularProgress";
@@ -16,13 +16,12 @@ const ConfirmationModal = lazy(() =>
 const Categories = () => {
     const isContentVisible = useSelector(getIsContentVisible);
     const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
-    const isListLoading = useSelector(getListLoading);
+    const isListLoading = useSelector(getCategoryListLoading);
 
     return (
         <>
             {!isListLoading && <CategoryHeading />}
             {isListLoading && <CircularProgress />}
-
 
             {isContentVisible &&
                 <CategoryContent/>

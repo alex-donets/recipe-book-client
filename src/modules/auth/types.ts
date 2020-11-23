@@ -112,6 +112,6 @@ export interface UserInfo {
     fullName: string,
     email: string,
     token: string,
+    id: string,
     role?: string,
-    googleId?: string,
 };

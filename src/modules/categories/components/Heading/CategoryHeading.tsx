@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "semantic-ui-react";
+import { useLocation } from 'react-router-dom'
+import {Card, Header} from "semantic-ui-react";
 import { isEmpty } from 'lodash';
 import {clear, fetchCategories, setContentVisible, setEditMode, setSelectedCategory} from "../../actions";
-import {getCategoryList, getIsHomePage, getListLoading, getSelectedCategoryId} from "../../selectors";
+import {getCategoryList, getSelectedCategoryId} from "../../selectors";
 import CategoryCard from "../../../../shared/components/CategoryCard/CategoryCard";
 import DefaultIcon from "../../../../assets/plus.svg";
 import {categoryPhotoUrl} from "../../../../backend/constants";
@@ -12,8 +13,10 @@ import {Category} from "../../types";
 const CategoryHeading = () => {
     const dispatch = useDispatch();
 
+    const location = useLocation();
+    const isHomePage = location && location.pathname === "/";
+
     const categoryList = useSelector(getCategoryList);
-    const isHomePage = useSelector(getIsHomePage);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
 
     useEffect(() => {

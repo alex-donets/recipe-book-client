@@ -15,11 +15,14 @@ import NotifySuccess from "../Notifications/NotifySuccess";
 import NotifyInfo from "../Notifications/NotifyInfo";
 import SetPassword from "../../../modules/auth/components/SetPassword/SetPassword";
 import ResetPassword from "../../../modules/auth/components/ResetPassword/ResetPassword";
+import Recipes from "../../../modules/recipes/Recipes";
+import {getIsAdmin} from "../../../modules/auth/selectors";
 
 const Main = () => {
     const errorMessage = useSelector(getErrorMessage);
     const successMessage = useSelector(getSuccessMessage);
     const infoMessage = useSelector(getInfoMessage);
+    const isAdmin = useSelector(getIsAdmin);
 
     return (
         <Container className="wrapper">
@@ -30,7 +33,11 @@ const Main = () => {
                 <Route path="/set-password/:token" component={SetPassword} />
 
                 <Route exact path="/" component={Home} />
-                <Route exact path="/categories" component={Categories} />
+                <Route exact path="/recipes" component={Recipes} />
+
+                {isAdmin &&
+                    <Route exact path="/categories" component={Categories} />
+                }
 
                 <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
             </Switch>
