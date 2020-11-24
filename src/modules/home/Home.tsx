@@ -20,7 +20,7 @@ const Home = () => {
                 <CategoryHeading/>
             )}
 
-            {selectedCategory && isRecipeListLoading && (
+            {selectedCategory && (
                 <RecipeHeading />
             )}
         </>
