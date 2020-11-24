@@ -11,13 +11,11 @@
 }
 
 .recipe-img-holder {
-  //display: flex;
-  //margin: auto;
-  max-width: $recipe-img-side;
-
   & img {
-    width: $recipe-img-side;
     height: $recipe-img-side;
-    object-fit: scale-down;
+    object-fit: cover;
+  }
+  &.ui.grid>.row>[class*="six wide"].column {
+    width: $recipe-img-side;
   }
 }

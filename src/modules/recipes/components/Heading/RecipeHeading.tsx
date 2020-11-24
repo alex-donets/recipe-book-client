@@ -67,7 +67,7 @@ const RecipeHeading = () => {
                 <div className="category-content">
                     <Segment padded="very">
                         {paginationList.map((item: Recipe, index) => {
-                            const lastIndex = recipeList.length - 1;
+                            const lastIndex = paginationList.length - 1;
                             const showDivider = index !== lastIndex;
 
                             return (
@@ -79,6 +79,19 @@ const RecipeHeading = () => {
                             )})}
                     </Segment>
                 </div>
+            )}
+
+            {canShowPagination && (
+                <Container
+                    className="pagination-holder"
+                    textAlign="center"
+                >
+                    <Pagination
+                        activePage={activePage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                    />
+                </Container>
             )}
         </>
     );

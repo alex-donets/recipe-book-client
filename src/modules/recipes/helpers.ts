@@ -38,6 +38,8 @@ export const listPerPage = (
     activePage: number,
     itemsPerPage: number
 ) => {
-    //TODO: return filtered items per page
-    return list;
+    const startIndex = itemsPerPage * (activePage - 1);
+    const indexes = [...Array(itemsPerPage)].map((item, ind) => ind + startIndex);
+
+    return list.filter((item, ind) => indexes.includes(ind));
 };

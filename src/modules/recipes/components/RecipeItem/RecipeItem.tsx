@@ -15,16 +15,12 @@ const RecipeItem = ({
             </Grid.Row>
 
             <Grid.Row>
-                <Grid.Column width={6} className="recipe-img-holder">
+                <Grid.Column width={5} className="recipe-img-holder">
                     <img src={recipePhotoUrl + item._id} alt={item.name} />
                 </Grid.Column>
-                <Grid.Column width={10} textAlign="left">
+                <Grid.Column width={11} textAlign="left">
                     {item.directions}
                 </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row>
-
             </Grid.Row>
 
             {showDivider && (
