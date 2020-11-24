@@ -7,7 +7,7 @@
   & img {
     width: $square-side;
     height: $square-side;
-    object-fit: scale-down;
+    object-fit: cover;
   }
 }
 
