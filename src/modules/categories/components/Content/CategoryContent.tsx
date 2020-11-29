@@ -19,6 +19,7 @@ import {queryToForm} from "../../helpers";
 import {categoryPhotoUrl} from "../../../../backend/constants";
 import DefaultIcon from "../../../../assets/plus.svg";
 import {CategoryFormValues} from "../../types";
+import {FormikProps} from "formik/dist/types";
 
 const CategoryContent = () => {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const CategoryContent = () => {
         const { current } = formRef;
 
         if (current && !selectedCategoryId) {
+
             // @ts-ignore
             current.resetForm();
         }
@@ -49,7 +51,7 @@ const CategoryContent = () => {
         }
     }, [selectedCategoryId]);
 
-    const renderForm = (props: any) => <CategoryForm {...props} />;
+    const renderForm = (props: FormikProps<CategoryFormValues>) => <CategoryForm {...props} />;
 
     const handleOnSubmit = (formData: CategoryFormValues) => {
         const formDataPayload = trimFormValues(formData);

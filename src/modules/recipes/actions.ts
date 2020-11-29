@@ -19,6 +19,8 @@ import {
 } from "./constants";
 import {AddRecipe, Recipe, PreviewCard, UpdateRecipe} from "./types";
 
+import {AxiosError} from "axios";
+
 export const fetchRecipes = (categoryId: string) => ({
     type: FETCH_RECIPES_PENDING,
     payload: categoryId
@@ -29,7 +31,7 @@ export const fetchRecipesSuccess = (data: Recipe[]) => ({
     payload: data
 });
 
-export const fetchRecipesError = (error: any) => ({
+export const fetchRecipesError = (error: AxiosError) => ({
     type: FETCH_RECIPES_ERROR,
     payload: error
 });
@@ -44,7 +46,7 @@ export const addRecipeSuccess = (data: Recipe) => ({
     payload: data
 });
 
-export const addRecipeError = (error: any) => ({
+export const addRecipeError = (error: AxiosError) => ({
     type: ADD_RECIPE_ERROR,
     payload: error
 });
@@ -59,7 +61,7 @@ export const updateRecipeSuccess = (id: string) => ({
     payload: id
 });
 
-export const updateRecipeError = (error: any) => ({
+export const updateRecipeError = (error: AxiosError) => ({
     type: UPDATE_RECIPE_ERROR,
     payload: error
 });
@@ -74,7 +76,7 @@ export const deleteRecipeSuccess = (id: string) => ({
     payload: id
 });
 
-export const deleteRecipeError = (error: any) => ({
+export const deleteRecipeError = (error: AxiosError) => ({
     type: DELETE_RECIPE_ERROR,
     payload: error
 });

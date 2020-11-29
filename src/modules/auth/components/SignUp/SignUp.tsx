@@ -8,11 +8,12 @@ import { formInitialValues, formValidationSchema } from "./constants";
 import { register } from "../../actions";
 import { trimFormValues } from "../../../../utils/helpers";
 import { RegisterFormValues } from "../../types";
+import { FormikProps } from "formik/dist/types";
 
 const SignUp = () => {
     const dispatch = useDispatch();
 
-    const renderForm = (props: any) => <RegisterForm {...props} />;
+    const renderForm = (props: FormikProps<RegisterFormValues>) => <RegisterForm {...props} />;
 
     const handleOnSubmit = (formData: RegisterFormValues) => {
         const formDataPayload = trimFormValues(formData);

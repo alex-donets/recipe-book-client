@@ -19,7 +19,10 @@ import {
     CLEAR,
     SET_CONTENT_VISIBLE,
 } from "./constants";
+
 import {AddCategory, Category, PreviewCard, UpdateCategory} from "./types";
+
+import {AxiosError} from "axios";
 
 export const fetchCategories = () => ({
     type: FETCH_CATEGORIES_PENDING
@@ -30,7 +33,7 @@ export const fetchCategoriesSuccess = (data: Category[]) => ({
     payload: data
 });
 
-export const fetchCategoriesError = (error: any) => ({
+export const fetchCategoriesError = (error: AxiosError) => ({
     type: FETCH_CATEGORIES_ERROR,
     payload: error
 });
@@ -45,7 +48,7 @@ export const addCategorySuccess = (data: Category) => ({
     payload: data
 });
 
-export const addCategoryError = (error: any) => ({
+export const addCategoryError = (error: AxiosError) => ({
     type: ADD_CATEGORY_ERROR,
     payload: error
 });
@@ -60,7 +63,7 @@ export const updateCategorySuccess = (id: string) => ({
     payload: id
 });
 
-export const updateCategoryError = (error: any) => ({
+export const updateCategoryError = (error: AxiosError) => ({
     type: UPDATE_CATEGORY_ERROR,
     payload: error
 });
@@ -75,7 +78,7 @@ export const deleteCategorySuccess = (id: string) => ({
     payload: id
 });
 
-export const deleteCategoryError = (error: any) => ({
+export const deleteCategoryError = (error: AxiosError) => ({
     type: DELETE_CATEGORY_ERROR,
     payload: error
 });
@@ -103,10 +106,6 @@ export const setDeleteDialogIsVisible = (isVisible: boolean) => ({
 export const setPreviewCard = (data: PreviewCard) => ({
     type: SET_CATEGORY_PREVIEW_CARD,
     payload: data
-});
-
-export const clearPreviewCard = () => ({
-    type: CLEAR_CATEGORY_PREVIEW_CARD,
 });
 
 export const clear = () => ({

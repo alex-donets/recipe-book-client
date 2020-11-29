@@ -1,10 +1,11 @@
-import React, {BaseSyntheticEvent} from 'react';
-import {Button, Checkbox, Form, Segment} from "semantic-ui-react";
+import React from 'react';
+import {Button, Form, Segment} from "semantic-ui-react";
 import {useSelector} from "react-redux";
-import { getLoading} from "../../../../selectors";
-import { SetPassFormTypes} from "../../../../types";
+import {getLoading} from "../../../../selectors";
+import {SetPassFormValues} from "../../../../types";
+import {FormikProps} from "formik/dist/types";
 
-const SetPassForm = (props: SetPassFormTypes) => {
+const SetPassForm = (props: FormikProps<SetPassFormValues>) => {
     const {
         values: { password, confirmPassword },
         errors,
@@ -15,7 +16,7 @@ const SetPassForm = (props: SetPassFormTypes) => {
 
     const isLoading = useSelector(getLoading);
 
-    const handleOnSubmit = (e: BaseSyntheticEvent) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);

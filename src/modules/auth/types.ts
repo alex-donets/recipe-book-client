@@ -3,7 +3,7 @@ import { FormikState } from "formik";
 import { BaseSyntheticEvent } from "react";
 
 export interface AuthState {
-    errors: any | null,
+    errors: string | null,
     token: string,
     isLoading: boolean,
     isLoggedIn: boolean,
@@ -62,28 +62,13 @@ export interface LoginFormValues {
     password: string,
 };
 
-export interface LoginFormTypes extends FormikState<LoginFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
-};
-
 export interface SetPassFormValues {
     password: string,
     confirmPassword: string,
 };
 
-export interface SetPassFormTypes extends FormikState<SetPassFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
-};
-
 export interface ResetPassFormValues {
     email: string,
-};
-
-export interface ResetPassFormTypes extends FormikState<ResetPassFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
 };
 
 export interface QueryResetPassForm {

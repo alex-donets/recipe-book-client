@@ -9,11 +9,12 @@ import {trimFormValues} from "../../../../utils/helpers";
 import {resetPassword} from "../../actions";
 import ResetPassForm from "./components/ResetPassForm/ResetPassForm";
 import {formInitialValues, formValidationSchema} from "./constants";
+import {FormikProps} from "formik/dist/types";
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
 
-    const renderForm = (props: any) => <ResetPassForm {...props} />;
+    const renderForm = (props: FormikProps<ResetPassFormValues>) => <ResetPassForm {...props} />;
 
     const handleOnSubmit = (formData: ResetPassFormValues) => {
         const formDataPayload = trimFormValues(formData);

@@ -6,8 +6,10 @@ import BtnSection from "../BtnSection/BtnSection";
 import {getCategoryList} from "../../../categories/selectors";
 import { isEmpty } from 'lodash';
 import {fetchCategories} from "../../../categories/actions";
+import {FormikProps} from "formik/dist/types";
+import {RecipeFormValues} from "../../types";
 
-const RecipeForm = (props: any) => {
+const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
     const dispatch = useDispatch();
     const categoryList = useSelector(getCategoryList);
 
@@ -61,7 +63,7 @@ const RecipeForm = (props: any) => {
         current && current.click();
     };
 
-    const handleOnSubmit = (e: any) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);
@@ -104,7 +106,7 @@ const RecipeForm = (props: any) => {
                     options={categoryOptions}
                     value={categoryId}
                     onChange={handleSelectChange}
-                    error={touched.category && errors.category}
+                    error={touched.categoryId && errors.categoryId}
                     placeholder='Choose a category'
                 />
             </Form.Group>

@@ -1,10 +1,11 @@
-import React, {BaseSyntheticEvent} from 'react';
+import React from 'react';
 import {Button, Form, Segment} from "semantic-ui-react";
 import {useSelector} from "react-redux";
 import {getLoading} from "../../../../selectors";
-import {ResetPassFormTypes} from "../../../../types";
+import {ResetPassFormValues} from "../../../../types";
+import {FormikProps} from "formik/dist/types";
 
-const ResetPassForm = (props: ResetPassFormTypes) => {
+const ResetPassForm = (props: FormikProps<ResetPassFormValues>) => {
     const {
         values: { email },
         errors,
@@ -15,7 +16,7 @@ const ResetPassForm = (props: ResetPassFormTypes) => {
 
     const isLoading = useSelector(getLoading);
 
-    const handleOnSubmit = (e: BaseSyntheticEvent) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);

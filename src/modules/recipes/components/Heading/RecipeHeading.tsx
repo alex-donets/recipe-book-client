@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {BaseSyntheticEvent, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './styles.scss';
 import { isEmpty } from 'lodash';
@@ -35,7 +35,7 @@ const RecipeHeading = () => {
         //dispatch(setEditMode(true));
     };
 
-    const handlePageChange = (e: any, { activePage }: PaginationProps) => {
+    const handlePageChange = (e: BaseSyntheticEvent, { activePage }: PaginationProps) => {
         dispatch(setActivePage(activePage))
     };
     

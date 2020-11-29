@@ -8,6 +8,7 @@ import {SetPassFormValues} from "../../types";
 import {setPassword} from "../../actions";
 import SetPassForm from "./components/SetPassForm/SetPassForm";
 import {formInitialValues, formValidationSchema} from "./constants";
+import {FormikProps} from "formik/dist/types";
 
 const SetPassword = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const SetPassword = () => {
     // @ts-ignore
     const { token, email } = useParams();
 
-    const renderForm = (props: any) => <SetPassForm {...props} />;
+    const renderForm = (props: FormikProps<SetPassFormValues>) => <SetPassForm {...props} />;
 
     const handleOnSubmit = (formData: SetPassFormValues) => {
         const key = process.env.REACT_APP_API_KEY;

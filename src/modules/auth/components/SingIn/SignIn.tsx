@@ -6,14 +6,15 @@ import { formInitialValues, formValidationSchema } from "./constants";
 import { login } from "../../actions";
 import { Formik } from "formik";
 import LoginForm from "./components/Form/LoginForm";
-import { trimFormValues } from "../../../../utils/helpers";
-import { LoginFormValues } from "../../types";
+import {trimFormValues} from "../../../../utils/helpers";
+import {LoginFormValues} from "../../types";
 import GoogleBtn from "./components/GoogleSignIn/GoogleBtn";
+import {FormikProps} from "formik/dist/types";
 
 const SignIn = () => {
     const dispatch = useDispatch();
 
-    const renderForm = (props: any) => <LoginForm {...props} />;
+    const renderForm = (props: FormikProps<LoginFormValues>) => <LoginForm {...props} />;
 
     const handleOnSubmit = (formData: LoginFormValues) => {
         const formDataPayload = trimFormValues(formData);

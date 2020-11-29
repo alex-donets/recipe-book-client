@@ -27,6 +27,8 @@ import {
     UserInfo,
 } from "./types";
 
+import {AxiosError} from "axios";
+
 export const login = (data: HandleLogin) => ({
     type: LOGIN_PENDING,
     payload: data,
@@ -37,7 +39,7 @@ export const loginSuccess = (data: LoginData) => ({
     payload: data,
 });
 
-export const loginError = (error: any) => ({
+export const loginError = (error: AxiosError) => ({
     type: LOGIN_ERROR,
     payload: error,
 });
@@ -51,7 +53,7 @@ export const registerSuccess = () => ({
     type: REGISTER_SUCCESS,
 });
 
-export const registerError = (error: any) => ({
+export const registerError = (error: AxiosError) => ({
     type: REGISTER_ERROR,
     payload: error,
 });
@@ -64,7 +66,7 @@ export const logoutSuccess = () => ({
     type: LOGOUT_SUCCESS,
 });
 
-export const logoutError = (error: any) => ({
+export const logoutError = (error: AxiosError) => ({
     type: LOGOUT_ERROR,
     payload: error,
 });
@@ -87,7 +89,7 @@ export const resetPasswordSuccess = () => ({
     type: RESET_PASSWORD_SUCCESS,
 });
 
-export const resetPasswordError = (error: any) => ({
+export const resetPasswordError = (error: AxiosError) => ({
     type: RESET_PASSWORD_ERROR,
     payload: error,
 });
@@ -101,7 +103,7 @@ export const setPasswordSuccess = () => ({
     type: SET_PASSWORD_SUCCESS,
 });
 
-export const setPasswordError = (error: any) => ({
+export const setPasswordError = (error: AxiosError) => ({
     type: SET_PASSWORD_ERROR,
     payload: error,
 });

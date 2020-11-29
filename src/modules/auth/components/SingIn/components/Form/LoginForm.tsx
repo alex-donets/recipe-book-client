@@ -1,11 +1,12 @@
-import React, {BaseSyntheticEvent} from 'react';
+import React from 'react';
 import '../../styles.scss';
 import {Button, Container, Form, Segment} from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { getLoading } from "../../../../selectors";
-import { LoginFormTypes } from "../../../../types";
+import { LoginFormValues} from "../../../../types";
+import {FormikProps} from "formik/dist/types";
 
-const LoginForm = (props: LoginFormTypes) => {
+const LoginForm = (props: FormikProps<LoginFormValues>) => {
     const {
         values: { email, password },
         errors,
@@ -14,7 +15,7 @@ const LoginForm = (props: LoginFormTypes) => {
         handleChange,
     } = props;
 
-    const handleOnSubmit = (e: BaseSyntheticEvent) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);

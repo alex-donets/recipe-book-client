@@ -1,10 +1,11 @@
-import React, {BaseSyntheticEvent} from 'react';
+import React from 'react';
 import { Button, Checkbox, Form, Segment } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { getLoading } from "../../../../selectors";
-import { RegisterFormTypes } from "../../../../types";
+import {RegisterFormValues} from "../../../../types";
+import {FormikProps} from "formik/dist/types";
 
-const RegisterForm = (props: RegisterFormTypes) => {
+const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
     const {
         values: { name, email, password, confirmPassword, agreeTaC },
         errors,
@@ -15,7 +16,7 @@ const RegisterForm = (props: RegisterFormTypes) => {
 
     const isLoading = useSelector(getLoading);
 
-    const handleOnSubmit = (e: BaseSyntheticEvent) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);

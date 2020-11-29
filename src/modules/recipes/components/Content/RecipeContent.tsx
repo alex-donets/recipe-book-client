@@ -16,9 +16,8 @@ import {
     getSelectedRecipeId
 } from "../../selectors";
 import {queryToForm} from "../../helpers";
-import {recipePhotoUrl} from "../../../../backend/constants";
-import {RecipeFormTypes, RecipeFormValues} from "../../types";
-
+import {RecipeFormValues} from "../../types";
+import {FormikProps} from "formik/dist/types";
 
 const RecipeContent = () => {
     const dispatch = useDispatch();
@@ -44,7 +43,7 @@ const RecipeContent = () => {
         }
     }, [selectedRecipeId]);
 
-    const renderForm = (props: any) => <RecipeForm {...props} />;
+    const renderForm = (props: FormikProps<RecipeFormValues>) => <RecipeForm {...props} />;
 
     const handleOnSubmit = (formData: RecipeFormValues) => {
         const formDataPayload = trimFormValues(formData);

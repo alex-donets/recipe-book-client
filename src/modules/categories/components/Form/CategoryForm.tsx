@@ -3,9 +3,10 @@ import { Button, Form, Message } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
 import BtnSection from "../BtnSection/BtnSection";
 import { setPreviewCard } from "../../actions";
-import {CategoryFormTypes} from "../../types";
+import {CategoryFormValues} from "../../types";
+import {FormikProps} from "formik/dist/types";
 
-const CategoryForm = (props: CategoryFormTypes) => {
+const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
     const dispatch = useDispatch();
 
     const {
@@ -44,7 +45,7 @@ const CategoryForm = (props: CategoryFormTypes) => {
         current && current.click();
     };
 
-    const handleOnSubmit = (e: BaseSyntheticEvent) => {
+    const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);
