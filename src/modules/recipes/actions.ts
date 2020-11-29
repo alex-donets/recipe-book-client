@@ -15,9 +15,11 @@ import {
     SET_EDIT_MODE,
     SET_DELETE_DIALOG_IS_VISIBLE,
     CLEAR,
-    SET_CONTENT_VISIBLE, SET_ACTIVE_PAGE,
+    SET_CONTENT_VISIBLE,
+    SET_ACTIVE_PAGE,
 } from "./constants";
-import {AddRecipe, Recipe, PreviewCard, UpdateRecipe} from "./types";
+
+import {AddRecipe, Recipe, UpdateRecipe} from "./types";
 
 import {AxiosError} from "axios";
 

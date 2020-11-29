@@ -1,15 +1,27 @@
-import React, {BaseSyntheticEvent, useEffect} from 'react';
+import React, {BaseSyntheticEvent, lazy, Suspense, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './styles.scss';
 import { isEmpty } from 'lodash';
 
 import {Container, Header, Pagination, PaginationProps, Segment} from "semantic-ui-react";
-import {getActivePage, getRecipeList} from "../../../recipes/selectors";
+import {getActivePage, getIsDeleteDialogVisible, getRecipeList, getSelectedRecipeId} from "../../../recipes/selectors";
 import {Recipe} from "../../../recipes/types";
 import {getSelectedCategoryId} from "../../../categories/selectors";
-import {clear, fetchRecipes, setActivePage, setSelectedRecipe} from "../../../recipes/actions";
+import {
+    clear,
+    deleteRecipe,
+    fetchRecipes,
+    setActivePage,
+    setDeleteDialogIsVisible,
+    setSelectedRecipe
+} from "../../../recipes/actions";
 import RecipeItem from "../RecipeItem/RecipeItem";
 import {listPerPage} from "../../helpers";
+import CircularProgress from "../../../../shared/components/CircularProgress/CircularProgress";
+
+const ConfirmationModal = lazy(() =>
+    import("../../../../shared/components/ConfirmationModal/ConfirmationModal")
+);
 
 const RecipeHeading = () => {
     const dispatch = useDispatch();
@@ -17,6 +29,8 @@ const RecipeHeading = () => {
     const recipeList = useSelector(getRecipeList);
     const activePage = useSelector(getActivePage);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
+    const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
+    const selectedRecipeId = useSelector(getSelectedRecipeId);
 
     const totalPages = Math.ceil(recipeList.length / 5);
     const canShowPagination = totalPages > 1;
@@ -28,15 +42,17 @@ const RecipeHeading = () => {
         }
     }, [selectedCategoryId]);
 
-    const handleSelect = (id: string) => {
-        dispatch(clear());
-        //dispatch(setContentVisible(true));
-        dispatch(setSelectedRecipe(id));
-        //dispatch(setEditMode(true));
-    };
-
     const handlePageChange = (e: BaseSyntheticEvent, { activePage }: PaginationProps) => {
         dispatch(setActivePage(activePage))
+    };
+
+    const onConfirm = () => {
+        dispatch(deleteRecipe(selectedRecipeId));
+        dispatch(setDeleteDialogIsVisible(false));
+    };
+
+    const onDiscard = () => {
+        dispatch(setDeleteDialogIsVisible(false));
     };
     
     return (
@@ -93,6 +109,17 @@ const RecipeHeading = () => {
                     />
                 </Container>
             )}
+
+            <Suspense fallback={CircularProgress}>
+                {isDeleteDialogVisible && (
+                    <ConfirmationModal
+                        title="Deleting a recipe"
+                        content="Please confirm deleting this recipe"
+                        onConfirm={onConfirm}
+                        onDiscard={onDiscard}
+                    />
+                )}
+            </Suspense>
         </>
     );
 };

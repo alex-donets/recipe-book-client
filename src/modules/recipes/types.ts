@@ -1,7 +1,5 @@
 import {Action} from "redux";
 import {AxiosError} from "axios";
-import {FormikState} from "formik";
-import {BaseSyntheticEvent} from "react";
 
 export interface RecipeState {
     recipeList: Recipe[],
@@ -39,6 +37,7 @@ export interface Recipe {
     },
     directions: string,
     categoryId: string,
+    userId: string,
 };
 
 export interface RecipeItemTypes {
@@ -59,6 +58,9 @@ export interface UpdateRecipe extends Action {
         _id: string,
         name?: string,
         photo?: File,
+        directions?: string,
+        categoryId?: string,
+        userId?: string,
     }
 };
 
@@ -81,24 +83,11 @@ export interface DeleteRecipe extends Action {
     payload: string
 };
 
-export interface PreviewCard {
-    photo?: string,
-    previewUrl?: string | ArrayBuffer | null,
-    previewTitle?: string,
-};
-
 export interface RecipeFormValues {
     name: string,
     categoryId: string,
     photo: File | null,
     directions: string,
-};
-
-export interface RecipeFormTypes extends FormikState<RecipeFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
-    isValid?: boolean,
-    setFieldValue: (field: keyof RecipeFormValues & string, value: any, shouldValidate?: boolean) => void;
 };
 
 export interface RecipeFormProps {

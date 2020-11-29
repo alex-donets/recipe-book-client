@@ -1,31 +1,17 @@
 import React from 'react';
-import {Button, Modal} from "semantic-ui-react";
-import {useDispatch, useSelector} from "react-redux";
-import {deleteCategory, setDeleteDialogIsVisible} from "../../../modules/categories/actions";
-import { getSelectedCategoryId } from "../../../modules/categories/selectors";
+import { Button, Modal } from "semantic-ui-react";
+import { ConfirmationTypes } from "./types";
 
-const ConfirmationModal = () => {
-    const dispatch = useDispatch();
-    const selectedCategoryId = useSelector(getSelectedCategoryId);
-
-    const onConfirm = () => {
-        dispatch(deleteCategory(selectedCategoryId))
-        dispatch(setDeleteDialogIsVisible(false));
-    };
-
-    const onDiscard = () => {
-        dispatch(setDeleteDialogIsVisible(false));
-    };
-
+const ConfirmationModal = ({ title, content, onConfirm, onDiscard }: ConfirmationTypes) => {
     return (
         <Modal
             open
             size="tiny"
         >
-            <Modal.Header>Deleting a category</Modal.Header>
+            <Modal.Header>{title}</Modal.Header>
             <Modal.Content>
                 <p>
-                    Please confirm deleting this category
+                    {content}
                 </p>
             </Modal.Content>
             <Modal.Actions>

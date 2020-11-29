@@ -19,6 +19,7 @@ import {
 
 export const initialState = {
     errors: null,
+    userId: null,
     token: null,
     isLoading: false,
     isLoggedIn: false,
@@ -42,6 +43,7 @@ export default createReducer(initialState, {
         email: payload.email,
         fullName: payload.fullName,
         role: payload.role,
+        userId: payload.id,
         errors: null
     }),
 
@@ -108,7 +110,7 @@ export default createReducer(initialState, {
         fullName: payload.fullName,
         role: payload.role || null,
         token: payload.token,
-        googleId: payload.googleId || null,
+        userId: payload.id,
     }),
 
     [CLEAR]: () => ({ ...initialState }),

@@ -1,4 +1,4 @@
-import { Recipe, QueryAddRecipe, QueryUpdateRecipe } from "./types";
+import {Recipe, QueryAddRecipe, QueryUpdateRecipe, UpdateRecipe} from "./types";
 import {getAuthToken} from "../../utils/localStorage";
 
 export const formToQueryAdd = ({
@@ -19,11 +19,24 @@ export const formToQueryAdd = ({
     return data;
 };
 
-export const formToQueryUpdate = ({ name, photo }: QueryUpdateRecipe) => {
+export const formToQueryUpdate = ({
+    name,
+    photo,
+    categoryId,
+    directions
+}: QueryUpdateRecipe) => {
     const data = new FormData();
+    const userInfo = getAuthToken();
 
-    name && data.append('name', name);
-    photo && data.append('file', photo);
+    // @ts-ignore
+    data.append('name', name);
+    // @ts-ignore
+    data.append('categoryId', categoryId);
+    // @ts-ignore
+    data.append('file', photo);
+    data.append('userId', userInfo.id);
+    // @ts-ignore
+    data.append('directions', directions);
 
     return data;
 };

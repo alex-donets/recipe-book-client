@@ -1,10 +1,9 @@
 import { Action } from "redux";
-import { FormikState } from "formik";
-import { BaseSyntheticEvent } from "react";
 
 export interface AuthState {
     errors: string | null,
-    token: string,
+    userId: string | null,
+    token: string | null,
     isLoading: boolean,
     isLoggedIn: boolean,
     email: string,
@@ -50,11 +49,6 @@ export interface QueryRegisterForm {
     email: string,
     password: string,
     agreeTaC: boolean,
-};
-
-export interface RegisterFormTypes extends FormikState<RegisterFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
 };
 
 export interface LoginFormValues {

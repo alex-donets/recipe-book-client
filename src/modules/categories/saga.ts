@@ -37,8 +37,6 @@ function* handleAddCategory({ payload }: AddCategory) {
     try {
         const { data } = yield apiClient.post(`/categories/add`, body);
 
-        console.log('data', data)
-
         yield put(addCategorySuccess(data));
         yield put(clear());
     } catch (error) {

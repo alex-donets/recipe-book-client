@@ -1,7 +1,6 @@
 import {Action} from "redux";
 import {AxiosError} from "axios";
-import {FormikState} from "formik";
-import {BaseSyntheticEvent, ReactNode} from "react";
+import {ReactNode} from "react";
 
 export interface CategoryState {
     categoryList: Category[],
@@ -77,13 +76,6 @@ export interface PreviewCard {
 export interface CategoryFormValues {
     name: string,
     photo: File | null,
-};
-
-export interface CategoryFormTypes extends FormikState<CategoryFormValues>{
-    handleSubmit: (e: BaseSyntheticEvent) => void,
-    handleChange: (e: BaseSyntheticEvent) => void,
-    isValid?: boolean,
-    setFieldValue: (field: keyof CategoryFormValues & string, value: any, shouldValidate?: boolean) => void;
 };
 
 export interface CategoryFormProps {

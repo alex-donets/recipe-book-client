@@ -12,7 +12,7 @@ export const getToken = createSelector([getState], ({ token }) => token);
 
 export const getIsLoggedIn = createSelector([getState], ({ isLoggedIn }) => isLoggedIn);
 
-export const getUserRole = createSelector([getState], ({ role }) => role);
+export const getUserId = createSelector([getState], ({ userId }) => userId);
 
 export const getIsAdmin = createSelector([getState], ({ role }) => role === USER_ROLES.ADMIN);
 

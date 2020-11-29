@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getErrorMessage, getInfoMessage, getSuccessMessage } from "../../../modules/app/selectors";
 import { Container } from "semantic-ui-react";
+import { getIsAdmin } from "../../../modules/auth/selectors";
 
 import TermsAndConditions from "../../../modules/terms-of-use/TermsAndConditions";
 import SignIn from "../../../modules/auth/components/SingIn/SignIn";
@@ -16,7 +17,7 @@ import NotifyInfo from "../Notifications/NotifyInfo";
 import SetPassword from "../../../modules/auth/components/SetPassword/SetPassword";
 import ResetPassword from "../../../modules/auth/components/ResetPassword/ResetPassword";
 import Recipes from "../../../modules/recipes/Recipes";
-import {getIsAdmin} from "../../../modules/auth/selectors";
+import Recipe from "../../../modules/recipes/components/Recipe/Recipe";
 
 const Main = () => {
     const errorMessage = useSelector(getErrorMessage);
@@ -34,6 +35,7 @@ const Main = () => {
 
                 <Route exact path="/" component={Home} />
                 <Route exact path="/recipes" component={Recipes} />
+                <Route exact path="/recipes/:categoryId/:recipeId" component={Recipe} />
 
                 {isAdmin &&
                     <Route exact path="/categories" component={Categories} />

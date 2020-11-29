@@ -39,3 +39,49 @@
   font-size: .85714286rem;
 }
 
+.header-holder {
+  width: 100%;
+}
+
+.directions-content {
+  overflow: hidden;
+  position: relative;
+
+  max-height: $recipe-img-side;
+}
+
+.directions-more {
+  position: absolute;
+  padding: 14px 14px 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+  height: 8rem;
+  background: linear-gradient(0, rgba(255,255,255,1) 40%, rgba(0,0,0,0) 100%);
+}
+
+
+.directions-holder {
+  height: calc(#{$recipe-img-side} + 14px * 2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.row {
+    padding: 0;
+  }
+}
+
+.directions-btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 14px;
+  z-index: 3;
+}
+
+

@@ -23,6 +23,7 @@ import {
 
 import { formToQueryAdd, formToQueryUpdate } from "./helpers";
 import {AddRecipe, DeleteRecipe, FetchRecipes, UpdateRecipe} from "./types";
+import {push} from "connected-react-router";
 
 function* handleFetchRecipes({ payload }: FetchRecipes) {
     try {
@@ -55,6 +56,7 @@ function* handleUpdateRecipe({ payload }: UpdateRecipe) {
 
         yield put(updateRecipeSuccess(data));
         yield put(clear());
+        yield put(push('/'));
     } catch (error) {
         yield put(updateRecipeError(error));
     }
