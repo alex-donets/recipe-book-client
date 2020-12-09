@@ -15,6 +15,12 @@ import {
     REGISTER_SUCCESS,
     REGISTER_ERROR,
     CLEAR,
+    RESET_PASSWORD_PENDING,
+    RESET_PASSWORD_SUCCESS,
+    RESET_PASSWORD_ERROR,
+    SET_PASSWORD_PENDING,
+    SET_PASSWORD_SUCCESS,
+    SET_PASSWORD_ERROR,
 } from "./constants";
 
 export const initialState = {
@@ -26,7 +32,6 @@ export const initialState = {
     email: null,
     fullName: null,
     role: null,
-    googleId: null,
 };
 
 export default createReducer(initialState, {
@@ -112,6 +117,40 @@ export default createReducer(initialState, {
         token: payload.token,
         userId: payload.id,
     }),
+
+    [RESET_PASSWORD_PENDING]: (state) => ({
+        ...state,
+        isLoading: true,
+    }),
+
+    [RESET_PASSWORD_SUCCESS]: (state) => ({
+        ...state,
+        isLoading: false,
+    }),
+
+    [RESET_PASSWORD_ERROR]: (state, { payload }) => ({
+        ...state,
+        errors: payload,
+        isLoading: false,
+    }),
+
+
+    [SET_PASSWORD_PENDING]: (state) => ({
+        ...state,
+        isLoading: true,
+    }),
+
+    [SET_PASSWORD_SUCCESS]: (state) => ({
+        ...state,
+        isLoading: false,
+    }),
+
+    [SET_PASSWORD_ERROR]: (state, { payload }) => ({
+        ...state,
+        errors: payload,
+        isLoading: false,
+    }),
+
 
     [CLEAR]: () => ({ ...initialState }),
 });

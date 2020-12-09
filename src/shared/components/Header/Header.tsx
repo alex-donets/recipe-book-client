@@ -73,14 +73,16 @@ const Header = () => {
 
                 {isLoggedIn &&
                     <Menu.Menu
+                        data-cy="user-info-dropdown"
                         position='right'
                     >
                         <Dropdown
                             item
-                            text={userName}
+                            text={userName || 'Guest'}
                         >
                             <Dropdown.Menu>
                                 <Dropdown.Item
+                                    data-cy="logout-btn"
                                     text='Log Out'
                                     onClick={onLogout}
                                 />

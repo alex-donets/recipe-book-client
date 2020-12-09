@@ -28,6 +28,7 @@ const LoginForm = (props: FormikProps<LoginFormValues>) => {
             <Segment stacked>
                 <Form.Input
                     id="login-email-input"
+                    data-cy="login-email-input"
                     name="email"
                     fluid
                     icon="user"
@@ -39,6 +40,7 @@ const LoginForm = (props: FormikProps<LoginFormValues>) => {
                 />
                 <Form.Input
                     id="login-password-input"
+                    data-cy="login-password-input"
                     fluid
                     type="password"
                     name="password"
@@ -55,6 +57,7 @@ const LoginForm = (props: FormikProps<LoginFormValues>) => {
                 </Container>
 
                 <Button
+                    data-cy="login-btn"
                     type="submit"
                     className="primary-button"
                     fluid

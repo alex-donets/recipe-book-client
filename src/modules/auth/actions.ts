@@ -19,22 +19,22 @@ import {
 } from "./constants";
 
 import {
-    HandleLogin,
-    HandleRegister,
     HandleResetPassword,
     LoginData,
+    RegisterData, ResetPassword,
     SetPassword,
+    UserData,
     UserInfo,
 } from "./types";
 
 import {AxiosError} from "axios";
 
-export const login = (data: HandleLogin) => ({
+export const login = (data: LoginData) => ({
     type: LOGIN_PENDING,
     payload: data,
 });
 
-export const loginSuccess = (data: LoginData) => ({
+export const loginSuccess = (data: UserData) => ({
     type: LOGIN_SUCCESS,
     payload: data,
 });
@@ -44,7 +44,7 @@ export const loginError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const register = (data: HandleRegister) => ({
+export const register = (data: RegisterData) => ({
     type: REGISTER_PENDING,
     payload: data,
 });
@@ -80,7 +80,7 @@ export const clear = () => ({
     type: CLEAR,
 });
 
-export const resetPassword = (data: HandleResetPassword) => ({
+export const resetPassword = (data: ResetPassword) => ({
     type: RESET_PASSWORD_PENDING,
     payload: data,
 });

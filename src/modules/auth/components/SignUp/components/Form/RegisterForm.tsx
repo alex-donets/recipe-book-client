@@ -27,6 +27,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
             <Segment stacked>
                 <Form.Input
                     id="register-name-input"
+                    data-cy="register-name-input"
                     name="name"
                     fluid
                     icon="user"
@@ -39,6 +40,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
 
                 <Form.Input
                     id="register-email-input"
+                    data-cy="register-email-input"
                     fluid
                     icon="mail"
                     iconPosition="left"
@@ -50,6 +52,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                 />
                 <Form.Input
                     id="register-password-input"
+                    data-cy="register-password-input"
                     fluid
                     icon="lock"
                     iconPosition="left"
@@ -62,6 +65,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                 />
                 <Form.Input
                     id="register-confirmPassword-input"
+                    data-cy="register-confirmPassword-input"
                     fluid
                     icon="lock"
                     iconPosition="left"
@@ -74,6 +78,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                 />
                 <Form.Field
                     id="register-agreeTaC-input"
+                    data-cy="register-agreeTaC-input"
                     control={Checkbox}
                     required
                     name="agreeTaC"
@@ -90,6 +95,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     }
                 />
                 <Button
+                    data-cy="register-btn"
                     className="primary-button"
                     loading={isLoading}
                     disabled={isLoading}

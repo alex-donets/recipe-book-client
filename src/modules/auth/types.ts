@@ -6,33 +6,39 @@ export interface AuthState {
     token: string | null,
     isLoading: boolean,
     isLoggedIn: boolean,
-    email: string,
-    fullName: string,
+    email: string | null,
+    fullName: string | null,
     role: string | null,
     googleId: string | null,
 };
 
 export interface HandleLogin extends Action {
-    payload: {
-        email: string,
-        password: string,
-    }
+    payload: LoginData
 };
 
 export interface LoginData {
+    email: string,
+    password: string,
+};
+
+export interface UserData {
+    id?: string,
     email: string,
     fullName: string,
     role: string
     token: string,
 };
 
+export interface RegisterData {
+    email: string,
+    password: string,
+    agreeTaC: boolean,
+    fullName: string
+};
+
+
 export interface HandleRegister extends Action {
-    payload: {
-        email: string,
-        password: string,
-        agreeTaC: boolean,
-        fullName: string
-    }
+    payload: RegisterData,
 };
 
 export interface RegisterFormValues {
@@ -82,10 +88,13 @@ export interface SetPassword {
 };
 
 export interface HandleResetPassword extends Action {
-    payload: {
-        email: string,
-    }
+    payload: ResetPassword
 };
+
+export interface ResetPassword {
+    email: string,
+};
+
 
 export interface UserInfo {
     fullName: string,
@@ -93,4 +102,8 @@ export interface UserInfo {
     token: string,
     id: string,
     role?: string,
+};
+
+export interface SetUserInfo extends Action {
+    payload: UserInfo,
 };
