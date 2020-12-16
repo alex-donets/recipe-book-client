@@ -3,7 +3,7 @@ import {AxiosError} from "axios";
 import {ReactNode} from "react";
 
 export interface CategoryState {
-    categoryList: Category[],
+    categoryList: Category[] | null,
     selectedCategory: Category | null,
     isLoading: {
         list: boolean,

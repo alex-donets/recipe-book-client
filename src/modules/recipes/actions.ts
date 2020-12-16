@@ -15,7 +15,6 @@ import {
     SET_EDIT_MODE,
     SET_DELETE_DIALOG_IS_VISIBLE,
     CLEAR,
-    SET_CONTENT_VISIBLE,
     SET_ACTIVE_PAGE,
 } from "./constants";
 
@@ -86,11 +85,6 @@ export const deleteRecipeError = (error: AxiosError) => ({
 export const setSelectedRecipe = (id: string) => ({
     type: SET_SELECTED_RECIPE,
     payload: id
-});
-
-export const setContentVisible = (data: boolean) => ({
-    type: SET_CONTENT_VISIBLE,
-    payload: data
 });
 
 export const setEditMode = (data: boolean) => ({

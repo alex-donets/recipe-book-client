@@ -6,19 +6,25 @@ import BtnSection from "../BtnSection/BtnSection";
 import {getCategoryList} from "../../../categories/selectors";
 import { isEmpty } from 'lodash';
 import {fetchCategories} from "../../../categories/actions";
-import {FormikProps} from "formik/dist/types";
-import {RecipeFormValues} from "../../types";
+import IngredientForm from "../../../ingredients/components/Form/IngredientForm";
+import IngredientHeading from "../../../ingredients/components/Heading/IngredientHeading";
+import {reset} from 'redux-form';
 
-const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
+const RecipeForm = (props: any) => {
     const dispatch = useDispatch();
     const categoryList = useSelector(getCategoryList);
 
-    const categoryOptions = categoryList.map(item => ({
+    const categoryOptions = categoryList && !isEmpty(categoryList) ? categoryList.map(item => ({
         id: item._id,
         key: item._id,
         text: item.name,
         value: item._id
-    }));
+    })) : ([{
+        id: 0,
+        key: 0,
+        text: 'Add a category before creating a recipe',
+        value: ''
+    }]);
 
     const {
         values: { name, categoryId, photo, directions },
@@ -27,24 +33,11 @@ const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
         handleSubmit,
         handleChange,
         setFieldValue,
+        submitIngredients
     } = props;
 
-    // useEffect(() => {
-    //     const { current } = formRef;
-    //
-    //     if (current && !selectedRecipeId) {
-    //         // @ts-ignore
-    //         current.resetForm();
-    //     }
-    //
-    //     if (current && isEditMode && selectedRecipe) {
-    //         // @ts-ignore
-    //         current.setValues({ ...queryToForm(selectedRecipe) });
-    //     }
-    // }, [selectedRecipeId]);
-
     useEffect(() => {
-        if(isEmpty(categoryList)) {
+        if(!categoryList) {
             dispatch(fetchCategories());
         }
     }, []);
@@ -112,7 +105,7 @@ const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
             </Form.Group>
 
             <div className="photo-btn">
-                <Form.Field >
+                <Form.Field>
                     <Button
                         id="recipe-photo-btn"
                         content="Choose Photo"
@@ -129,6 +122,13 @@ const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
                         hidden
                         onChange={fileChange}
                     />
+
+                    {photo && photo.name &&
+                        <div className="label-text">
+                            {photo.name}
+                        </div>
+                    }
+
                     {touched.photo && errors.photo &&
                         <div className="error-text">
                             {errors.photo}
@@ -136,6 +136,10 @@ const RecipeForm = (props: FormikProps<RecipeFormValues>) => {
                     }
                 </Form.Field>
             </div>
+
+            <IngredientHeading />
+
+            <IngredientForm onSubmit={submitIngredients} />
 
             <Header
                 as='h3'

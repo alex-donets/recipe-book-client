@@ -10,7 +10,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
     const dispatch = useDispatch();
 
     const {
-        values: { name },
+        values: { name, photo },
         errors,
         touched,
         handleSubmit,
@@ -86,6 +86,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
                     type="button"
                     onClick={handleClick}
                 />
+
                 <input
                     id="category-photo-input"
                     ref={fileInputRef}
@@ -94,6 +95,13 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
                     hidden
                     onChange={fileChange}
                 />
+
+                {photo && photo.name &&
+                    <div className="label-text">
+                        {photo.name}
+                    </div>
+                }
+
                 {touched.photo && errors.photo &&
                     <Message
                         negative

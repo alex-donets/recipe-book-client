@@ -3,11 +3,13 @@ import { apiClient } from "../../backend/services";
 
 import {
     addCategoryError,
-    addCategorySuccess, clear,
+    addCategorySuccess,
+    clear,
     deleteCategoryError,
     deleteCategorySuccess,
     fetchCategoriesError,
-    fetchCategoriesSuccess, setDeleteDialogIsVisible,
+    fetchCategoriesSuccess,
+    setDeleteDialogIsVisible,
     updateCategoryError,
     updateCategorySuccess
 } from "./actions";

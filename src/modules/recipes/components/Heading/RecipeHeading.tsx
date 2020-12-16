@@ -3,8 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import './styles.scss';
 import { isEmpty } from 'lodash';
 
-import {Container, Header, Pagination, PaginationProps, Segment} from "semantic-ui-react";
-import {getActivePage, getIsDeleteDialogVisible, getRecipeList, getSelectedRecipeId} from "../../../recipes/selectors";
+import {Container, Header, Loader, Pagination, PaginationProps, Segment} from "semantic-ui-react";
+import {
+    getActivePage,
+    getIsDeleteDialogVisible,
+    getRecipeList,
+    getRecipeListLoading,
+    getSelectedRecipeId
+} from "../../../recipes/selectors";
 import {Recipe} from "../../../recipes/types";
 import {getSelectedCategoryId} from "../../../categories/selectors";
 import {
@@ -32,14 +38,14 @@ const RecipeHeading = () => {
     const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
     const selectedRecipeId = useSelector(getSelectedRecipeId);
 
-    const totalPages = Math.ceil(recipeList.length / 5);
+    const isRecipeListLoading = useSelector(getRecipeListLoading);
+
+    const totalPages = recipeList ? Math.ceil(recipeList.length / 5) : 0;
     const canShowPagination = totalPages > 1;
     const paginationList = listPerPage(recipeList, activePage, 5);
 
     useEffect(() => {
-        if(selectedCategoryId) {
-            dispatch(fetchRecipes(selectedCategoryId));
-        }
+        dispatch(fetchRecipes(selectedCategoryId));
     }, [selectedCategoryId]);
 
     const handlePageChange = (e: BaseSyntheticEvent, { activePage }: PaginationProps) => {
@@ -57,7 +63,17 @@ const RecipeHeading = () => {
     
     return (
         <>
-            {!isEmpty(recipeList) && (
+            {isRecipeListLoading && (
+                <Loader size='large'>Loading</Loader>
+            )}
+
+            {!isRecipeListLoading && isEmpty(recipeList) && (
+                <div className="empty-holder">
+                    No recipes added in this category
+                </div>
+            )}
+
+            {!isRecipeListLoading && !isEmpty(recipeList) && (
                 <Header
                     as='h2'
                     className="primary-text heading"
@@ -79,7 +95,7 @@ const RecipeHeading = () => {
                 </Container>
             )}
 
-            {!isEmpty(paginationList) && (
+            {!isRecipeListLoading && !isEmpty(paginationList) && (
                 <div className="category-content">
                     <Segment padded="very">
                         {paginationList.map((item: Recipe, index) => {

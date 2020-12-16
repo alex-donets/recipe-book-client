@@ -15,6 +15,7 @@ runAllInterceptors();
 function App() {
     const dispatch = useDispatch();
     const authToken = getAuthToken();
+    const isOffline = !navigator.onLine;
 
     useEffect(() => {
         if (authToken) {
@@ -25,7 +26,11 @@ function App() {
     return (
         <div className="main-container">
             <Header />
-            <OfflineMode />
+
+            {isOffline && (
+                <OfflineMode />
+            )}
+
             <Main />
             <Footer />
         </div>

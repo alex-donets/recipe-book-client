@@ -25,36 +25,3 @@ export const SET_ACTIVE_PAGE = 'recipes/SET_ACTIVE_PAGE';
 export const SET_DELETE_DIALOG_IS_VISIBLE = 'recipes/SET_DELETE_DIALOG_IS_VISIBLE';
 
 export const CLEAR = 'recipes/CLEAR';
-
-export const MEASURES = [
-    {
-        id: 1,
-        key: 1,
-        text: 'kg',
-        value: 'kg'
-    },
-    {
-        id: 2,
-        key: 2,
-        text: 'g',
-        value: 'g'
-    },
-    {
-        id: 3,
-        key: 3,
-        text: 'l',
-        value: 'l'
-    },
-    {
-        id: 4,
-        key: 4,
-        text: 'ml',
-        value: 'ml'
-    },
-    {
-        id: 5,
-        key: 5,
-        text: 'pcs',
-        value: 'pcs'
-    },
-]

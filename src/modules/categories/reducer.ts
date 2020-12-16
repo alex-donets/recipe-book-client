@@ -23,7 +23,7 @@ import {
 import {Category, CategoryState} from "./types";
 
 export const initialState: CategoryState = {
-    categoryList: [],
+    categoryList: null,
     selectedCategory: null,
     isEditMode: false,
     isLoading: {
@@ -85,8 +85,8 @@ export default createReducer(initialState, {
     [ADD_CATEGORY_SUCCESS]: (state, { payload }) => {
         const { categoryList } = state;
 
-        const updatedList = [...categoryList];
-        updatedList.push(payload);
+        const updatedList = categoryList ? [...categoryList] : null;
+        updatedList && updatedList.push(payload);
 
         return {
             ...state,
@@ -125,7 +125,7 @@ export default createReducer(initialState, {
     },
 
     [DELETE_CATEGORY_SUCCESS]: (state, { payload }) => {
-        const categoryList = state.categoryList.filter((item: Category)  => item._id !== payload);
+        const categoryList = state.categoryList && state.categoryList.filter((item: Category)  => item._id !== payload);
 
         return {
             ...state,
@@ -166,7 +166,7 @@ export default createReducer(initialState, {
         const { categoryList } = state;
         const { _id } = payload;
 
-        const updatedList = categoryList.map((item: Category) => (item._id === _id ? {
+        const updatedList = categoryList && categoryList.map((item: Category) => (item._id === _id ? {
             ...item,
             ...payload
         } : item));
@@ -197,7 +197,7 @@ export default createReducer(initialState, {
 
     [SET_SELECTED_CATEGORY]: (state, { payload }) => {
         const { categoryList } = state;
-        const selectedCategory = categoryList.find((item: Category) => item._id === payload);
+        const selectedCategory = categoryList && categoryList.find((item: Category) => item._id === payload);
 
         return {
             ...state,

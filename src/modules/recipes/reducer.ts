@@ -22,7 +22,7 @@ import {
 import {Recipe, RecipeState} from "./types";
 
 export const initialState: RecipeState = {
-    recipeList: [],
+    recipeList: null,
     selectedRecipe: null,
     isEditMode: false,
     isLoading: {
@@ -84,8 +84,15 @@ export default createReducer(initialState, {
     [ADD_RECIPE_SUCCESS]: (state, { payload }) => {
         const { recipeList } = state;
 
-        const updatedList = [...recipeList];
-        updatedList.push(payload);
+        console.log('recipeList', recipeList)
+
+        const updatedList = recipeList ? [...recipeList] : null;
+
+        console.log('updatedList', updatedList)
+
+        updatedList && updatedList.push(payload);
+
+        console.log('updatedList mutate', updatedList)
 
         return {
             ...state,
@@ -124,11 +131,11 @@ export default createReducer(initialState, {
     },
 
     [DELETE_RECIPE_SUCCESS]: (state, { payload }) => {
-        const recipeList = state.recipeList.filter((item: Recipe)  => item._id !== payload);
+        const recipeList = state.recipeList && state.recipeList.filter((item: Recipe)  => item._id !== payload);
 
         return {
             ...state,
-            recipeList,
+            recipeList: recipeList || null,
             isLoading: {
                 ...state.isLoading,
                 delete: false,
@@ -165,14 +172,14 @@ export default createReducer(initialState, {
         const { recipeList } = state;
         const { _id } = payload;
 
-        const updatedList = recipeList.map((item: Recipe) => (item._id === _id ? {
+        const updatedList = recipeList && recipeList.map((item: Recipe) => (item._id === _id ? {
             ...item,
             ...payload
         } : item));
 
         return {
             ...state,
-            recipeList: updatedList,
+            recipeList: updatedList || null,
             isLoading: {
                 ...state.isLoading,
                 update: false,
@@ -196,7 +203,7 @@ export default createReducer(initialState, {
 
     [SET_SELECTED_RECIPE]: (state, { payload }) => {
         const { recipeList } = state;
-        const selectedRecipe = recipeList.find((item: Recipe) => item._id === payload);
+        const selectedRecipe = recipeList && recipeList.find((item: Recipe) => item._id === payload);
 
         return {
             ...state,

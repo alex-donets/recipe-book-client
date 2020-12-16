@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Grid, Header, Segment } from "semantic-ui-react";
+import {Button, Grid, Header, Icon, Segment, Table} from "semantic-ui-react";
 import { useParams } from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getRecipeList, getSelectedRecipe} from "../../selectors";
@@ -14,7 +14,7 @@ const Recipe = () => {
     const { categoryId, recipeId } = useParams();
 
     const recipeList = useSelector(getRecipeList);
-    const recipe = recipeList.find(item => item._id === recipeId);
+    const recipe = recipeList ? recipeList.find(item => item._id === recipeId) : null;
 
     useEffect(() => {
         if (isEmpty(recipeList)) {
@@ -35,10 +35,29 @@ const Recipe = () => {
                             <Grid.Column width={8}>
                                 <img src={recipePhotoUrl + recipe._id} alt={recipe.name} />
                             </Grid.Column>
-                            <Grid.Column width={8}>
 
+                            <Grid.Column width={8}>
+                                <Header
+                                    as='h3'
+                                    className="primary-text"
+                                >
+                                    Ingredients
+                                </Header>
+
+                                <Table className="ui very basic table ingredient">
+                                    <Table.Body>
+                                        {recipe.ingredients.map(({ id, name, quantity, measure }) => (
+                                            <Table.Row key={id}>
+                                                <Table.Cell>{name}</Table.Cell>
+                                                <Table.Cell className="right aligned collapsing">{quantity}</Table.Cell>
+                                                <Table.Cell className="collapsing">{measure}</Table.Cell>
+                                            </Table.Row>
+                                        ))}
+                                    </Table.Body>
+                                </Table>
                             </Grid.Column>
                         </Grid.Row>
+
                         <Grid.Row>
                             <Grid.Column textAlign='justified'>
                                 {recipe.directions}

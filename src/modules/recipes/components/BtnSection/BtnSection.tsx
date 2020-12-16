@@ -4,6 +4,8 @@ import { useDispatch, useSelector} from "react-redux";
 import { getAddLoading, getDeleteLoading, getIsEditMode, getUpdateLoading } from "../../selectors";
 import { setDeleteDialogIsVisible } from "../../actions";
 import { RecipeFormProps } from "../../types";
+import { getIngredientList } from "../../../ingredients/selectors";
+import { isEmpty } from 'lodash';
 
 const BtnSection = ({ formProps: { isValid } }: RecipeFormProps) => {
     const dispatch = useDispatch();
@@ -11,6 +13,8 @@ const BtnSection = ({ formProps: { isValid } }: RecipeFormProps) => {
     const addLoading = useSelector(getAddLoading);
     const updateLoading = useSelector(getUpdateLoading);
     const deleteLoading = useSelector(getDeleteLoading);
+    const ingredientList = useSelector(getIngredientList);
+    const isDisabled = !isValid || isEmpty(ingredientList);
 
     const handleOnPopupDelete = () => {
         dispatch(setDeleteDialogIsVisible(true));
@@ -22,7 +26,7 @@ const BtnSection = ({ formProps: { isValid } }: RecipeFormProps) => {
                 type="submit"
                 className="primary-button"
                 size="large"
-                disabled={!isValid}
+                disabled={isDisabled}
                 loading={isEditMode ? updateLoading : addLoading}
             >
                 {isEditMode ? 'Update' : 'Add'}

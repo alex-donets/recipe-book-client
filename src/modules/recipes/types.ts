@@ -1,8 +1,9 @@
 import {Action} from "redux";
 import {AxiosError} from "axios";
+import {IngredientFormValues} from "../ingredients/types";
 
 export interface RecipeState {
-    recipeList: Recipe[],
+    recipeList: Recipe[] | null,
     selectedRecipe: Recipe | null,
     isLoading: {
         list: boolean,
@@ -38,6 +39,7 @@ export interface Recipe {
     directions: string,
     categoryId: string,
     userId: string,
+    ingredients: IngredientFormValues[],
 };
 
 export interface RecipeItemTypes {
@@ -54,29 +56,24 @@ export interface AddRecipe extends Action {
 };
 
 export interface UpdateRecipe extends Action {
-    payload: {
-        _id: string,
-        name?: string,
-        photo?: File,
-        directions?: string,
-        categoryId?: string,
-        userId?: string,
-    }
+    payload: QueryUpdateRecipe
 };
 
 export interface QueryAddRecipe {
     name: string,
     categoryId: string,
     photo: File,
+    userId: string,
     directions: string,
 };
 
 export interface QueryUpdateRecipe {
-    name?: string,
-    categoryId?: string,
+    _id: string,
+    name: string,
+    categoryId: string,
     photo?: File,
-    userId?: string,
-    directions?: string,
+    userId: string,
+    directions: string,
 };
 
 export interface DeleteRecipe extends Action {

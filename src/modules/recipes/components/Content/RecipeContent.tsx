@@ -10,14 +10,15 @@ import {addRecipe, updateRecipe} from "../../actions";
 import {useDispatch, useSelector} from "react-redux";
 import {
     getIsEditMode,
-    getPreviewTitle,
-    getPreviewUrl,
     getSelectedRecipe,
     getSelectedRecipeId
 } from "../../selectors";
 import {queryToForm} from "../../helpers";
 import {RecipeFormValues} from "../../types";
 import {FormikProps} from "formik/dist/types";
+import {IngredientFormValues} from "../../../ingredients/types";
+import {addIngredient} from "../../../ingredients/actions";
+import {reset} from "redux-form";
 
 const RecipeContent = () => {
     const dispatch = useDispatch();
@@ -43,9 +44,9 @@ const RecipeContent = () => {
         }
     }, [selectedRecipeId]);
 
-    const renderForm = (props: FormikProps<RecipeFormValues>) => <RecipeForm {...props} />;
+    const renderForm = (props: FormikProps<RecipeFormValues>) => <RecipeForm {...props} submitIngredients={submitIngredients} />;
 
-    const handleOnSubmit = (formData: RecipeFormValues) => {
+    const submitRecipe = (formData: RecipeFormValues) => {
         const formDataPayload = trimFormValues(formData);
 
         const resultAction = selectedRecipe
@@ -53,6 +54,11 @@ const RecipeContent = () => {
             : addRecipe;
 
         dispatch(resultAction(formDataPayload));
+    };
+
+    const submitIngredients = (formData: IngredientFormValues) => {
+        dispatch(addIngredient(formData));
+        dispatch(reset('IngredientsForm'));
     };
 
     return (
@@ -65,11 +71,15 @@ const RecipeContent = () => {
                 <Grid stackable padded>
                     <Grid.Row>
                         <Grid.Column padded>
+                            <Header as='h3' className="primary-text">
+                                Recipe
+                            </Header>
+
                             <Formik
                                 ref={formRef}
                                 render={renderForm}
                                 initialValues={formInitialValues}
-                                onSubmit={handleOnSubmit}
+                                onSubmit={submitRecipe}
                                 validationSchema={isEditMode ? updateValidationSchema : addValidationSchema}
                                 enableReinitialize
                             />

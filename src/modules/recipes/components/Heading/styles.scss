@@ -13,6 +13,7 @@
 .recipe-img-holder {
   & img {
     height: $recipe-img-side;
+    width: $recipe-img-side;
     object-fit: cover;
   }
   &.ui.grid>.row>[class*="six wide"].column {

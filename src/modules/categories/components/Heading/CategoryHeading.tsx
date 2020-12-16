@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
+import '../../styles.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom'
-import {Card, Header} from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import { isEmpty } from 'lodash';
 import {clear, fetchCategories, setContentVisible, setEditMode, setSelectedCategory} from "../../actions";
 import {getCategoryList, getSelectedCategoryId} from "../../selectors";
@@ -20,10 +21,10 @@ const CategoryHeading = () => {
     const selectedCategoryId = useSelector(getSelectedCategoryId);
 
     useEffect(() => {
-        if(isEmpty(categoryList)) {
+        if(!categoryList) {
             dispatch(fetchCategories());
         }
-    }, [categoryList]);
+    }, []);
 
     const handleSelect = (id: string) => {
         dispatch(clear());
@@ -41,7 +42,7 @@ const CategoryHeading = () => {
 
     return (
         <Card.Group centered>
-            {categoryList.map((item: Category) => (
+            {categoryList && categoryList.map((item: Category) => (
                 <CategoryCard
                     key={item._id}
                     id={item._id}
@@ -51,6 +52,12 @@ const CategoryHeading = () => {
                     isSelected={item._id === selectedCategoryId}
                 />
             ))}
+
+            {isEmpty(categoryList) && isHomePage && (
+                <div className="empty-holder">
+                    No categories added yet
+                </div>
+            )}
 
             {!isHomePage &&
                 <CategoryCard

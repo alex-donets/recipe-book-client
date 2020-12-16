@@ -3,11 +3,12 @@ import '../../styles.scss'
 
 import {Button, Divider, Grid, Header, List} from "semantic-ui-react";
 import {recipePhotoUrl} from "../../../../backend/constants";
-import {RecipeItemTypes} from "../../types";
+import {Recipe, RecipeItemTypes} from "../../types";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserId} from "../../../auth/selectors";
 import {setDeleteDialogIsVisible, setEditMode, setSelectedRecipe} from "../../actions";
 import useReactRouter from "use-react-router";
+import {fillIngredientsList} from "../../../ingredients/actions";
 
 const RecipeItem = ({
     item,
@@ -20,9 +21,10 @@ const RecipeItem = ({
     const userId = useSelector(getUserId);
     const showMore = item.directions.length > 635;
 
-    const handleOnUpdate = (id: string) => {
-        dispatch(setSelectedRecipe(id));
+    const handleOnUpdate = (item: Recipe) => {
+        dispatch(setSelectedRecipe(item._id));
         dispatch(setEditMode(true));
+        dispatch(fillIngredientsList(item.ingredients));
         history.push('/recipes');
     };
 
@@ -55,7 +57,7 @@ const RecipeItem = ({
 
                     {item.userId === userId && (
                         <Grid.Row className="directions-btns">
-                            <Button icon='pencil' onClick={() => handleOnUpdate(item._id)}/>
+                            <Button icon='pencil' onClick={() => handleOnUpdate(item)}/>
                             <Button icon='trash alternate' onClick={() => handleOnDelete(item._id)} />
                         </Grid.Row>
                     )}

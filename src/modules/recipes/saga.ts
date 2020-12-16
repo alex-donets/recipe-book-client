@@ -1,5 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { apiClient } from "../../backend/services";
+import { select } from 'redux-saga/effects';
 
 import {
     addRecipeError,
@@ -24,6 +25,7 @@ import {
 import { formToQueryAdd, formToQueryUpdate } from "./helpers";
 import {AddRecipe, DeleteRecipe, FetchRecipes, UpdateRecipe} from "./types";
 import {push} from "connected-react-router";
+import {getIngredientList} from "../ingredients/selectors";
 
 function* handleFetchRecipes({ payload }: FetchRecipes) {
     try {
@@ -35,20 +37,22 @@ function* handleFetchRecipes({ payload }: FetchRecipes) {
 }
 
 function* handleAddRecipe({ payload }: AddRecipe) {
-    const body = formToQueryAdd(payload);
+    const ingredients = yield select(getIngredientList);
+    const body = formToQueryAdd(payload, ingredients);
 
     try {
         const { data } = yield apiClient.post(`/recipes/add`, body);
 
         yield put(addRecipeSuccess(data));
-        yield put(clear());
+        yield put(push(`/recipes/${ data.categoryId }/${ data._id }`));
     } catch (error) {
         yield put(addRecipeError(error));
     }
 }
 
 function* handleUpdateRecipe({ payload }: UpdateRecipe) {
-    const body = formToQueryUpdate(payload);
+    const ingredients = yield select(getIngredientList);
+    const body = formToQueryUpdate(payload, ingredients);
     const { _id } = payload;
 
     try {
@@ -56,7 +60,7 @@ function* handleUpdateRecipe({ payload }: UpdateRecipe) {
 
         yield put(updateRecipeSuccess(data));
         yield put(clear());
-        yield put(push('/'));
+        yield put(push(`/recipes/${ data.categoryId }/${ data._id }`));
     } catch (error) {
         yield put(updateRecipeError(error));
     }
