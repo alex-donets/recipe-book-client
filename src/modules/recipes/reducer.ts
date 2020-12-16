@@ -83,16 +83,9 @@ export default createReducer(initialState, {
 
     [ADD_RECIPE_SUCCESS]: (state, { payload }) => {
         const { recipeList } = state;
-
-        console.log('recipeList', recipeList)
-
         const updatedList = recipeList ? [...recipeList] : null;
 
-        console.log('updatedList', updatedList)
-
         updatedList && updatedList.push(payload);
-
-        console.log('updatedList mutate', updatedList)
 
         return {
             ...state,
