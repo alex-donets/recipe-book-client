@@ -1,0 +1,25 @@
+# CONFIG
+
+language: node_js
+node_js: 12.14.1
+cache: npm
+
+# installation
+
+install:
+  - npm i
+
+# run jobs with stages
+jobs:
+  include:
+    - stage: install
+      script: yarn install
+
+    - stage: lint
+      script: npm run lint
+
+    - stage: tests
+        script: npm run test
+
+
+
