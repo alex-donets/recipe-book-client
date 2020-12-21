@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 
-import { Grid, Message, Transition } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
-import { getInfoMessage } from "../../../modules/app/selectors";
-import { clearInfoMessage } from "../../../modules/app/actions";
+import { Grid, Message, Transition } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInfoMessage } from '../../../modules/app/selectors';
+import { clearInfoMessage } from '../../../modules/app/actions';
 
 const NotifyInfo = () => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const NotifyInfo = () => {
         if (infoMessage) {
             setTimeout(() => {
                 dispatch(clearInfoMessage());
-            }, 5000)
+            }, 5000);
         }
     }, [infoMessage]);
 
@@ -26,16 +26,11 @@ const NotifyInfo = () => {
                 <Transition
                     visible={Boolean(infoMessage)}
                     transitionOnMount
-                    animation='fade up'
+                    animation="fade up"
                     duration={400}
                     unmountOnHide
                 >
-                    <Message
-                        onDismiss={onClose}
-                        negative
-                        header='Info'
-                        content={infoMessage}
-                    />
+                    <Message onDismiss={onClose} negative header="Info" content={infoMessage} />
                 </Transition>
             </Grid.Column>
         </Grid>

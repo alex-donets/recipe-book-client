@@ -1,37 +1,28 @@
-import React, {BaseSyntheticEvent, lazy, Suspense, useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { BaseSyntheticEvent, lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { isEmpty } from 'lodash';
 
-import {Container, Header, Loader, Pagination, PaginationProps, Segment} from "semantic-ui-react";
+import { Container, Header, Loader, Pagination, PaginationProps, Segment } from 'semantic-ui-react';
 import {
     getActivePage,
     getIsDeleteDialogVisible,
     getRecipeList,
     getRecipeListLoading,
-    getSelectedRecipeId
-} from "../../../recipes/selectors";
-import {Recipe} from "../../../recipes/types";
-import {getSelectedCategoryId} from "../../../categories/selectors";
-import {
-    clear,
-    deleteRecipe,
-    fetchRecipes,
-    setActivePage,
-    setDeleteDialogIsVisible,
-    setSelectedRecipe
-} from "../../../recipes/actions";
-import RecipeItem from "../RecipeItem/RecipeItem";
-import {listPerPage} from "../../helpers";
-import CircularProgress from "../../../../shared/components/CircularProgress/CircularProgress";
+    getSelectedRecipeId,
+} from '../../../recipes/selectors';
+import { Recipe } from '../../../recipes/types';
+import { getSelectedCategoryId } from '../../../categories/selectors';
+import { deleteRecipe, fetchRecipes, setActivePage, setDeleteDialogIsVisible } from '../../../recipes/actions';
+import RecipeItem from '../RecipeItem/RecipeItem';
+import { listPerPage } from '../../helpers';
+import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
 
-const ConfirmationModal = lazy(() =>
-    import("../../../../shared/components/ConfirmationModal/ConfirmationModal")
-);
+const ConfirmationModal = lazy(() => import('../../../../shared/components/ConfirmationModal/ConfirmationModal'));
 
 const RecipeHeading = () => {
     const dispatch = useDispatch();
-    
+
     const recipeList = useSelector(getRecipeList);
     const activePage = useSelector(getActivePage);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
@@ -49,7 +40,7 @@ const RecipeHeading = () => {
     }, [selectedCategoryId]);
 
     const handlePageChange = (e: BaseSyntheticEvent, { activePage }: PaginationProps) => {
-        dispatch(setActivePage(activePage))
+        dispatch(setActivePage(activePage));
     };
 
     const onConfirm = () => {
@@ -60,38 +51,24 @@ const RecipeHeading = () => {
     const onDiscard = () => {
         dispatch(setDeleteDialogIsVisible(false));
     };
-    
+
     return (
         <>
-            {isRecipeListLoading && (
-                <Loader size='large'>Loading</Loader>
-            )}
+            {isRecipeListLoading && <Loader size="large">Loading</Loader>}
 
             {!isRecipeListLoading && isEmpty(recipeList) && (
-                <div className="empty-holder">
-                    No recipes added in this category
-                </div>
+                <div className="empty-holder">No recipes added in this category</div>
             )}
 
             {!isRecipeListLoading && !isEmpty(recipeList) && (
-                <Header
-                    as='h2'
-                    className="primary-text heading"
-                >
+                <Header as="h2" className="primary-text heading">
                     Collection
                 </Header>
             )}
 
             {canShowPagination && (
-                <Container
-                    className="pagination-holder"
-                    textAlign="center"
-                >
-                    <Pagination
-                        activePage={activePage}
-                        totalPages={totalPages}
-                        onPageChange={handlePageChange}
-                    />
+                <Container className="pagination-holder" textAlign="center">
+                    <Pagination activePage={activePage} totalPages={totalPages} onPageChange={handlePageChange} />
                 </Container>
             )}
 
@@ -102,27 +79,15 @@ const RecipeHeading = () => {
                             const lastIndex = paginationList.length - 1;
                             const showDivider = index !== lastIndex;
 
-                            return (
-                                <RecipeItem
-                                    key={item._id}
-                                    item={item}
-                                    showDivider={showDivider}
-                                />
-                            )})}
+                            return <RecipeItem key={item._id} item={item} showDivider={showDivider} />;
+                        })}
                     </Segment>
                 </div>
             )}
 
             {canShowPagination && (
-                <Container
-                    className="pagination-holder"
-                    textAlign="center"
-                >
-                    <Pagination
-                        activePage={activePage}
-                        totalPages={totalPages}
-                        onPageChange={handlePageChange}
-                    />
+                <Container className="pagination-holder" textAlign="center">
+                    <Pagination activePage={activePage} totalPages={totalPages} onPageChange={handlePageChange} />
                 </Container>
             )}
 

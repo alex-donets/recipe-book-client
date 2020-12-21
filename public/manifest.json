@@ -8,6 +8,20 @@
   "dir": "ltr",
   "display": "standalone",
   "orientation": "any",
+  "shortcuts": [
+    {
+      "name": "Recipe Book",
+      "short_name": "Recipe",
+      "url": "/recipes?source=pwa",
+      "icons": [{ "src": "icons/msteams/msteams-192-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Recipe Book",
+      "short_name": "Recipe",
+      "url": "/categories?source=pwa",
+      "icons": [{ "src": "icons/msteams/msteams-192-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "icons/windows10/Square71x71Logo.scale-400.png",

@@ -16,18 +16,11 @@ import {
     SET_PASSWORD_PENDING,
     SET_PASSWORD_SUCCESS,
     SET_PASSWORD_ERROR,
-} from "./constants";
+} from './constants';
 
-import {
-    HandleResetPassword,
-    LoginData,
-    RegisterData, ResetPassword,
-    SetPassword,
-    UserData,
-    UserInfo,
-} from "./types";
+import { LoginData, RegisterData, ResetPassword, SetPassword, UserData, UserInfo } from './types';
 
-import {AxiosError} from "axios";
+import { AxiosError } from 'axios';
 
 export const login = (data: LoginData) => ({
     type: LOGIN_PENDING,

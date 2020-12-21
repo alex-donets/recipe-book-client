@@ -1,20 +1,18 @@
 import React, { Suspense, lazy } from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import CategoryHeading from "./components/Heading/CategoryHeading";
+import { useDispatch, useSelector } from 'react-redux';
+import CategoryHeading from './components/Heading/CategoryHeading';
 import {
     getCategoryListLoading,
     getIsContentVisible,
     getIsDeleteDialogVisible,
     getSelectedCategoryId,
-} from "./selectors";
+} from './selectors';
 
-import CategoryContent from "./components/Content/CategoryContent";
-import CircularProgress from "../../shared/components/CircularProgress/CircularProgress";
-import {deleteCategory, setDeleteDialogIsVisible} from "./actions";
+import CategoryContent from './components/Content/CategoryContent';
+import CircularProgress from '../../shared/components/CircularProgress/CircularProgress';
+import { deleteCategory, setDeleteDialogIsVisible } from './actions';
 
-const ConfirmationModal = lazy(() =>
-    import("../../shared/components/ConfirmationModal/ConfirmationModal")
-);
+const ConfirmationModal = lazy(() => import('../../shared/components/ConfirmationModal/ConfirmationModal'));
 
 const Categories = () => {
     const dispatch = useDispatch();
@@ -38,7 +36,7 @@ const Categories = () => {
             {!isListLoading && <CategoryHeading />}
             {isListLoading && <CircularProgress />}
 
-            {isContentVisible && <CategoryContent/>}
+            {isContentVisible && <CategoryContent />}
 
             <Suspense fallback={CircularProgress}>
                 {isDeleteDialogVisible && (

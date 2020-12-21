@@ -8,10 +8,22 @@
     width: $square-side;
     height: $square-side;
     object-fit: cover;
+    border-radius: .28571429rem;
   }
 }
 
 .category-card-holder {
+  position: relative;
   width: $square-side;
   margin: 10px;
+}
+
+.placeholder-category {
+  &.ui.placeholder {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
 }

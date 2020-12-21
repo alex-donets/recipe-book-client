@@ -1,5 +1,5 @@
-import { put, call, takeEvery } from "redux-saga/effects";
-import { push } from "connected-react-router";
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import {
     loginSuccess,
@@ -12,26 +12,28 @@ import {
     setPasswordError,
     resetPasswordSuccess,
     resetPasswordError,
-} from "./actions";
+} from './actions';
 
 import {
     LOGIN_PENDING,
     LOGOUT_PENDING,
     REGISTER_PENDING,
     RESET_PASSWORD_PENDING,
-    SET_PASSWORD_PENDING
-} from "./constants";
+    SET_PASSWORD_PENDING,
+} from './constants';
 
-import { apiClient } from "../../backend/services";
-import { removeAuthToken, setAuthToken } from "../../utils/localStorage";
-import {loginFormToQuery, registerFormToQuery, setFormToQuery} from "./helpers";
-import {HandleLogin, HandleRegister, HandleResetPassword, HandleSetPassword} from "./types";
-import {setSuccessMessage} from "../app/actions";
+import { apiClient } from '../../backend/services';
+import { removeAuthToken, setAuthToken } from '../../utils/localStorage';
+import { loginFormToQuery, registerFormToQuery, setFormToQuery } from './helpers';
+import { HandleLogin, HandleRegister, HandleResetPassword, HandleSetPassword } from './types';
+import { setSuccessMessage } from '../app/actions';
 
-function* handleLogin ({ payload }: HandleLogin) {
+function* handleLogin({ payload }: HandleLogin) {
     try {
         const body = loginFormToQuery(payload);
         const { data } = yield apiClient.post('/users/login', body);
+
+        console.log('data', data)
 
         yield call(setAuthToken, data);
         yield put(loginSuccess(data));
@@ -41,7 +43,7 @@ function* handleLogin ({ payload }: HandleLogin) {
     }
 }
 
-function* handleRegister ({ payload }: HandleRegister) {
+function* handleRegister({ payload }: HandleRegister) {
     try {
         const body = registerFormToQuery(payload);
 

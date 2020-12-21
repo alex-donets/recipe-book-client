@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button, Form, Segment} from "semantic-ui-react";
-import {useSelector} from "react-redux";
-import {getLoading} from "../../../../selectors";
-import {SetPassFormValues} from "../../../../types";
-import {FormikProps} from "formik/dist/types";
+import { Button, Form, Segment } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+import { getLoading } from '../../../../selectors';
+import { SetPassFormValues } from '../../../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const SetPassForm = (props: FormikProps<SetPassFormValues>) => {
     const {
@@ -11,7 +11,7 @@ const SetPassForm = (props: FormikProps<SetPassFormValues>) => {
         errors,
         touched,
         handleSubmit,
-        handleChange
+        handleChange,
     } = props;
 
     const isLoading = useSelector(getLoading);
@@ -30,7 +30,7 @@ const SetPassForm = (props: FormikProps<SetPassFormValues>) => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    placeholder='Password'
+                    placeholder="Password"
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -42,7 +42,7 @@ const SetPassForm = (props: FormikProps<SetPassFormValues>) => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    placeholder='Confirm password'
+                    placeholder="Confirm password"
                     type="password"
                     name="confirmPassword"
                     onChange={handleChange}

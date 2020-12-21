@@ -1,4 +1,4 @@
-import {createReducer} from "redux-create-reducer";
+import { createReducer } from 'redux-create-reducer';
 import {
     FETCH_CATEGORIES_ERROR,
     FETCH_CATEGORIES_PENDING,
@@ -19,8 +19,8 @@ import {
     SET_DELETE_DIALOG_IS_VISIBLE,
     SET_CATEGORY_PREVIEW_CARD,
     CLEAR_CATEGORY_PREVIEW_CARD,
-} from "./constants";
-import {Category, CategoryState} from "./types";
+} from './constants';
+import { Category, CategoryState } from './types';
 
 export const initialState: CategoryState = {
     categoryList: null,
@@ -37,7 +37,7 @@ export const initialState: CategoryState = {
     previewCard: {
         photo: null,
         previewUrl: null,
-        previewTitle: ''
+        previewTitle: '',
     },
     isDeleteDialogVisible: false,
     isSuccessMessageVisible: false,
@@ -49,7 +49,7 @@ export default createReducer(initialState, {
         ...state,
         isLoading: {
             ...state.isLoading,
-            list: true
+            list: true,
         },
         errors: null,
     }),
@@ -59,7 +59,7 @@ export default createReducer(initialState, {
         categoryList: payload,
         isLoading: {
             ...state.isLoading,
-            list: false
+            list: false,
         },
         errors: null,
     }),
@@ -69,7 +69,7 @@ export default createReducer(initialState, {
         errors: payload,
         isLoading: {
             ...state.isLoading,
-            list: false
+            list: false,
         },
     }),
 
@@ -77,7 +77,7 @@ export default createReducer(initialState, {
         ...state,
         isLoading: {
             ...state.isLoading,
-            add: true
+            add: true,
         },
         errors: null,
     }),
@@ -96,7 +96,7 @@ export default createReducer(initialState, {
                 add: false,
             },
             errors: null,
-        }
+        };
     },
 
     [ADD_CATEGORY_ERROR]: (state, { payload }) => {
@@ -109,11 +109,10 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 add: false,
             },
-        }
+        };
     },
 
     [DELETE_CATEGORY_PENDING]: (state) => {
-
         return {
             ...state,
             isLoading: {
@@ -121,11 +120,11 @@ export default createReducer(initialState, {
                 delete: true,
             },
             errors: null,
-        }
+        };
     },
 
     [DELETE_CATEGORY_SUCCESS]: (state, { payload }) => {
-        const categoryList = state.categoryList && state.categoryList.filter((item: Category)  => item._id !== payload);
+        const categoryList = state.categoryList && state.categoryList.filter((item: Category) => item._id !== payload);
 
         return {
             ...state,
@@ -135,7 +134,7 @@ export default createReducer(initialState, {
                 delete: false,
             },
             errors: null,
-        }
+        };
     },
 
     [DELETE_CATEGORY_ERROR]: (state, { payload }) => {
@@ -148,7 +147,7 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 delete: false,
             },
-        }
+        };
     },
 
     [UPDATE_CATEGORY_PENDING]: (state, { payload }) => {
@@ -159,17 +158,23 @@ export default createReducer(initialState, {
                 update: true,
             },
             errors: null,
-        }
+        };
     },
 
     [UPDATE_CATEGORY_SUCCESS]: (state, { payload }) => {
         const { categoryList } = state;
         const { _id } = payload;
 
-        const updatedList = categoryList && categoryList.map((item: Category) => (item._id === _id ? {
-            ...item,
-            ...payload
-        } : item));
+        const updatedList =
+            categoryList &&
+            categoryList.map((item: Category) =>
+                item._id === _id
+                    ? {
+                          ...item,
+                          ...payload,
+                      }
+                    : item,
+            );
 
         return {
             ...state,
@@ -179,7 +184,7 @@ export default createReducer(initialState, {
                 update: false,
             },
             errors: null,
-        }
+        };
     },
 
     [UPDATE_CATEGORY_ERROR]: (state, { payload }) => {
@@ -192,7 +197,7 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 update: false,
             },
-        }
+        };
     },
 
     [SET_SELECTED_CATEGORY]: (state, { payload }) => {
@@ -202,7 +207,7 @@ export default createReducer(initialState, {
         return {
             ...state,
             selectedCategory: selectedCategory || null,
-        }
+        };
     },
 
     [SET_CONTENT_VISIBLE]: (state, { payload }) => ({
@@ -217,21 +222,21 @@ export default createReducer(initialState, {
 
     [SET_DELETE_DIALOG_IS_VISIBLE]: (state, { payload }) => ({
         ...state,
-        isDeleteDialogVisible: payload
+        isDeleteDialogVisible: payload,
     }),
 
     [SET_CATEGORY_PREVIEW_CARD]: (state, { payload }) => ({
         ...state,
-        previewCard: { ...state.previewCard, ...payload }
+        previewCard: { ...state.previewCard, ...payload },
     }),
 
     [CLEAR_CATEGORY_PREVIEW_CARD]: (state) => ({
         ...state,
-        previewCard: initialState.previewCard
+        previewCard: initialState.previewCard,
     }),
 
     [CLEAR]: (state) => ({
         ...initialState,
-        categoryList: state.categoryList
+        categoryList: state.categoryList,
     }),
 });

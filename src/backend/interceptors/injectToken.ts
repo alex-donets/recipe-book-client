@@ -1,16 +1,16 @@
-import set from "lodash/set";
+import set from 'lodash/set';
 
-import { getAuthToken } from "../../utils/localStorage";
-import { AxiosError, AxiosRequestConfig } from "axios";
+import { getAuthToken } from '../../utils/localStorage';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 
 const successHandler = (config: AxiosRequestConfig) => {
-  const authToken = getAuthToken();
+    const authToken = getAuthToken();
 
-  if (authToken) {
-    set(config, 'headers.X-Token', authToken.token);
-  }
+    if (authToken) {
+        set(config, 'headers.X-Token', authToken.token);
+    }
 
-  return config;
+    return config;
 };
 
 const errorHandler = (error: AxiosError) => Promise.reject(error);

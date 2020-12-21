@@ -1,10 +1,10 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
-import GoogleLogin from "react-google-login";
-import {setErrorMessage} from "../../../../../app/actions";
-import {setUserInfo} from "../../../../actions";
-import useReactRouter from "use-react-router";
-import { setAuthToken } from "../../../../../../utils/localStorage";
+import { useDispatch } from 'react-redux';
+import GoogleLogin from 'react-google-login';
+import { setErrorMessage } from '../../../../../app/actions';
+import { setUserInfo } from '../../../../actions';
+import useReactRouter from 'use-react-router';
+import { setAuthToken } from '../../../../../../utils/localStorage';
 
 const GoogleBtn = () => {
     const dispatch = useDispatch();
@@ -35,11 +35,11 @@ const GoogleBtn = () => {
         <div>
             <GoogleLogin
                 clientId={clientId}
-                buttonText='Login'
+                buttonText="Login"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
-                cookiePolicy={ 'single_host_origin' }
-                responseType='code,token'
+                cookiePolicy={'single_host_origin'}
+                responseType="code,token"
             />
         </div>
     );

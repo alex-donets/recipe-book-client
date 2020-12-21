@@ -1,5 +1,5 @@
-import * as Yup from "yup";
-import { passwordRegExp } from "../../../../utils/validations";
+import * as Yup from 'yup';
+import { passwordRegExp } from '../../../../utils/validations';
 
 export const formInitialValues = {
     password: '',
@@ -13,6 +13,6 @@ export const formValidationSchema = Yup.object({
         .required('Password is required'),
     confirmPassword: Yup.string()
         .trim()
-        .oneOf([Yup.ref('password'),], 'Passwords must match')
+        .oneOf([Yup.ref('password')], 'Passwords must match')
         .required('Please confirm password'),
 });

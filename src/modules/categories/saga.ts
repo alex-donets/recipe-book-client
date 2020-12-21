@@ -1,5 +1,5 @@
-import { put, takeEvery } from "redux-saga/effects";
-import { apiClient } from "../../backend/services";
+import { put, takeEvery } from 'redux-saga/effects';
+import { apiClient } from '../../backend/services';
 
 import {
     addCategoryError,
@@ -11,18 +11,18 @@ import {
     fetchCategoriesSuccess,
     setDeleteDialogIsVisible,
     updateCategoryError,
-    updateCategorySuccess
-} from "./actions";
+    updateCategorySuccess,
+} from './actions';
 
 import {
     ADD_CATEGORY_PENDING,
     DELETE_CATEGORY_PENDING,
     FETCH_CATEGORIES_PENDING,
-    UPDATE_CATEGORY_PENDING
-} from "./constants";
+    UPDATE_CATEGORY_PENDING,
+} from './constants';
 
-import { formToQueryAdd, formToQueryUpdate } from "./helpers";
-import { AddCategory, DeleteCategory, UpdateCategory } from "./types";
+import { formToQueryAdd, formToQueryUpdate } from './helpers';
+import { AddCategory, DeleteCategory, UpdateCategory } from './types';
 
 function* handleFetchCategories() {
     try {

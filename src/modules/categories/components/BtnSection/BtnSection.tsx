@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from "semantic-ui-react";
-import { useDispatch, useSelector} from "react-redux";
-import { getAddLoading, getDeleteLoading, getIsEditMode, getUpdateLoading } from "../../selectors";
-import { setDeleteDialogIsVisible } from "../../actions";
-import { CategoryFormProps } from "../../types";
+import { Button } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAddLoading, getDeleteLoading, getIsEditMode, getUpdateLoading } from '../../selectors';
+import { setDeleteDialogIsVisible } from '../../actions';
+import { CategoryFormProps } from '../../types';
 
 const BtnSection = ({ formProps: { isValid } }: CategoryFormProps) => {
     const dispatch = useDispatch();
@@ -28,17 +28,17 @@ const BtnSection = ({ formProps: { isValid } }: CategoryFormProps) => {
                 {isEditMode ? 'Update' : 'Add'}
             </Button>
 
-            {isEditMode &&
+            {isEditMode && (
                 <Button
                     type="button"
                     size="large"
-                    floated='right'
+                    floated="right"
                     onClick={handleOnPopupDelete}
                     loading={deleteLoading}
                 >
                     Delete
                 </Button>
-            }
+            )}
         </div>
     );
 };

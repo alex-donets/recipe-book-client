@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Checkbox, Form, Segment } from "semantic-ui-react";
-import { useSelector } from "react-redux";
-import { getLoading } from "../../../../selectors";
-import {RegisterFormValues} from "../../../../types";
-import {FormikProps} from "formik/dist/types";
+import { Button, Checkbox, Form, Segment } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+import { getLoading } from '../../../../selectors';
+import { RegisterFormValues } from '../../../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
     const {
@@ -11,7 +11,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
         errors,
         touched,
         handleSubmit,
-        handleChange
+        handleChange,
     } = props;
 
     const isLoading = useSelector(getLoading);
@@ -32,7 +32,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     fluid
                     icon="user"
                     iconPosition="left"
-                    placeholder='Name'
+                    placeholder="Name"
                     onChange={handleChange}
                     value={name}
                     error={touched.name && errors.name}
@@ -44,7 +44,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     fluid
                     icon="mail"
                     iconPosition="left"
-                    placeholder='Email address'
+                    placeholder="Email address"
                     name="email"
                     onChange={handleChange}
                     value={email}
@@ -56,7 +56,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    placeholder='Password'
+                    placeholder="Password"
                     type="password"
                     name="password"
                     onChange={handleChange}
@@ -69,7 +69,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    placeholder='Confirm password'
+                    placeholder="Confirm password"
                     type="password"
                     name="confirmPassword"
                     onChange={handleChange}
@@ -87,10 +87,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     error={touched.agreeTaC && errors.agreeTaC}
                     label={
                         <label>
-                            I agree to the{' '}
-                            <a href="/terms-and-conditions">
-                                Terms and Conditions
-                            </a>
+                            I agree to the <a href="/terms-and-conditions">Terms and Conditions</a>
                         </label>
                     }
                 />

@@ -1,4 +1,4 @@
-import {createReducer} from "redux-create-reducer";
+import { createReducer } from 'redux-create-reducer';
 import {
     FETCH_RECIPES_ERROR,
     FETCH_RECIPES_PENDING,
@@ -18,8 +18,8 @@ import {
     SET_EDIT_MODE,
     SET_DELETE_DIALOG_IS_VISIBLE,
     SET_ACTIVE_PAGE,
-} from "./constants";
-import {Recipe, RecipeState} from "./types";
+} from './constants';
+import { Recipe, RecipeState } from './types';
 
 export const initialState: RecipeState = {
     recipeList: null,
@@ -35,7 +35,7 @@ export const initialState: RecipeState = {
     previewCard: {
         photo: null,
         previewUrl: null,
-        previewTitle: ''
+        previewTitle: '',
     },
     isDeleteDialogVisible: false,
     isSuccessMessageVisible: false,
@@ -48,7 +48,7 @@ export default createReducer(initialState, {
         ...state,
         isLoading: {
             ...state.isLoading,
-            list: true
+            list: true,
         },
         errors: null,
     }),
@@ -58,7 +58,7 @@ export default createReducer(initialState, {
         recipeList: payload,
         isLoading: {
             ...state.isLoading,
-            list: false
+            list: false,
         },
         errors: null,
     }),
@@ -68,7 +68,7 @@ export default createReducer(initialState, {
         errors: payload,
         isLoading: {
             ...state.isLoading,
-            list: false
+            list: false,
         },
     }),
 
@@ -76,7 +76,7 @@ export default createReducer(initialState, {
         ...state,
         isLoading: {
             ...state.isLoading,
-            add: true
+            add: true,
         },
         errors: null,
     }),
@@ -95,7 +95,7 @@ export default createReducer(initialState, {
                 add: false,
             },
             errors: null,
-        }
+        };
     },
 
     [ADD_RECIPE_ERROR]: (state, { payload }) => {
@@ -108,11 +108,10 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 add: false,
             },
-        }
+        };
     },
 
     [DELETE_RECIPE_PENDING]: (state) => {
-
         return {
             ...state,
             isLoading: {
@@ -120,11 +119,11 @@ export default createReducer(initialState, {
                 delete: true,
             },
             errors: null,
-        }
+        };
     },
 
     [DELETE_RECIPE_SUCCESS]: (state, { payload }) => {
-        const recipeList = state.recipeList && state.recipeList.filter((item: Recipe)  => item._id !== payload);
+        const recipeList = state.recipeList && state.recipeList.filter((item: Recipe) => item._id !== payload);
 
         return {
             ...state,
@@ -134,7 +133,7 @@ export default createReducer(initialState, {
                 delete: false,
             },
             errors: null,
-        }
+        };
     },
 
     [DELETE_RECIPE_ERROR]: (state, { payload }) => {
@@ -147,7 +146,7 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 delete: false,
             },
-        }
+        };
     },
 
     [UPDATE_RECIPE_PENDING]: (state, { payload }) => {
@@ -158,17 +157,23 @@ export default createReducer(initialState, {
                 update: true,
             },
             errors: null,
-        }
+        };
     },
 
     [UPDATE_RECIPE_SUCCESS]: (state, { payload }) => {
         const { recipeList } = state;
         const { _id } = payload;
 
-        const updatedList = recipeList && recipeList.map((item: Recipe) => (item._id === _id ? {
-            ...item,
-            ...payload
-        } : item));
+        const updatedList =
+            recipeList &&
+            recipeList.map((item: Recipe) =>
+                item._id === _id
+                    ? {
+                          ...item,
+                          ...payload,
+                      }
+                    : item,
+            );
 
         return {
             ...state,
@@ -178,7 +183,7 @@ export default createReducer(initialState, {
                 update: false,
             },
             errors: null,
-        }
+        };
     },
 
     [UPDATE_RECIPE_ERROR]: (state, { payload }) => {
@@ -191,7 +196,7 @@ export default createReducer(initialState, {
                 ...state.isLoading,
                 update: false,
             },
-        }
+        };
     },
 
     [SET_SELECTED_RECIPE]: (state, { payload }) => {
@@ -201,7 +206,7 @@ export default createReducer(initialState, {
         return {
             ...state,
             selectedRecipe: selectedRecipe || null,
-        }
+        };
     },
 
     [SET_CONTENT_VISIBLE]: (state, { payload }) => ({
@@ -213,19 +218,19 @@ export default createReducer(initialState, {
         ...state,
         isEditMode: payload,
     }),
-    
+
     [SET_DELETE_DIALOG_IS_VISIBLE]: (state, { payload }) => ({
         ...state,
-        isDeleteDialogVisible: payload
+        isDeleteDialogVisible: payload,
     }),
 
     [SET_ACTIVE_PAGE]: (state, { payload }) => ({
         ...state,
-        activePage: payload
+        activePage: payload,
     }),
 
     [CLEAR]: (state) => ({
         ...initialState,
-        recipeList: state.recipeList
+        recipeList: state.recipeList,
     }),
 });

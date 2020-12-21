@@ -1,5 +1,5 @@
-import { createSelector } from "reselect";
-import { RootReducerTypes } from "../../core/redux/types";
+import { createSelector } from 'reselect';
+import { RootReducerTypes } from '../../core/redux/types';
 
 export const getState = ({ categories }: RootReducerTypes) => categories;
 
@@ -16,7 +16,7 @@ export const getDeleteLoading = createSelector([getState], ({ isLoading }) => is
 export const getSelectedCategory = createSelector([getState], ({ selectedCategory }) => selectedCategory);
 
 export const getSelectedCategoryId = createSelector([getState], ({ selectedCategory }) =>
-    selectedCategory ? selectedCategory._id : ''
+    selectedCategory ? selectedCategory._id : '',
 );
 
 export const getIsEditMode = createSelector([getState], ({ isEditMode }) => isEditMode);
@@ -25,9 +25,8 @@ export const getIsContentVisible = createSelector([getState], ({ isContentVisibl
 
 export const getIsDeleteDialogVisible = createSelector(
     [getState],
-    ({ isDeleteDialogVisible }) => isDeleteDialogVisible
+    ({ isDeleteDialogVisible }) => isDeleteDialogVisible,
 );
-
 
 export const getPreviewUrl = createSelector([getState], ({ previewCard }) => previewCard.previewUrl);
 

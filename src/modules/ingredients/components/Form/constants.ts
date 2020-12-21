@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 export const formInitialValues = {
     name: '',
@@ -15,6 +15,5 @@ export const formValidationSchema = Yup.object().shape({
         .required('Please enter directions')
         .max(999, 'Quantity should be no more than 999 pcs')
         .min(1, 'Quantity should not be no less than 1 pcs'),
-    measure: Yup.string()
-        .required('Please select a category'),
+    measure: Yup.string().required('Please select a category'),
 });

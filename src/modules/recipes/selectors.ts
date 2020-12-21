@@ -1,5 +1,5 @@
-import { createSelector } from "reselect";
-import { RootReducerTypes } from "../../core/redux/types";
+import { createSelector } from 'reselect';
+import { RootReducerTypes } from '../../core/redux/types';
 
 export const getState = ({ recipes }: RootReducerTypes) => recipes;
 
@@ -16,7 +16,7 @@ export const getDeleteLoading = createSelector([getState], ({ isLoading }) => is
 export const getSelectedRecipe = createSelector([getState], ({ selectedRecipe }) => selectedRecipe);
 
 export const getSelectedRecipeId = createSelector([getState], ({ selectedRecipe }) =>
-    selectedRecipe ? selectedRecipe._id : ''
+    selectedRecipe ? selectedRecipe._id : '',
 );
 
 export const getIsEditMode = createSelector([getState], ({ isEditMode }) => isEditMode);
@@ -25,7 +25,7 @@ export const getActivePage = createSelector([getState], ({ activePage }) => acti
 
 export const getIsDeleteDialogVisible = createSelector(
     [getState],
-    ({ isDeleteDialogVisible }) => isDeleteDialogVisible
+    ({ isDeleteDialogVisible }) => isDeleteDialogVisible,
 );
 
 export const getPreviewUrl = createSelector([getState], ({ previewCard }) => previewCard.previewUrl);

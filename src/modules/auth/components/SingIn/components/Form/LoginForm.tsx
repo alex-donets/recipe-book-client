@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../styles.scss';
-import {Button, Container, Form, Segment} from "semantic-ui-react";
-import { useSelector } from "react-redux";
-import { getLoading } from "../../../../selectors";
-import { LoginFormValues} from "../../../../types";
-import {FormikProps} from "formik/dist/types";
+import { Button, Container, Form, Segment } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+import { getLoading } from '../../../../selectors';
+import { LoginFormValues } from '../../../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const LoginForm = (props: FormikProps<LoginFormValues>) => {
     const {

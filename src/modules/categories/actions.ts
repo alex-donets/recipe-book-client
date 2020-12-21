@@ -15,97 +15,96 @@ import {
     SET_EDIT_MODE,
     SET_DELETE_DIALOG_IS_VISIBLE,
     SET_CATEGORY_PREVIEW_CARD,
-    CLEAR_CATEGORY_PREVIEW_CARD,
     CLEAR,
     SET_CONTENT_VISIBLE,
-} from "./constants";
+} from './constants';
 
-import {AddCategory, Category, PreviewCard, UpdateCategory} from "./types";
+import { AddCategory, Category, PreviewCard, UpdateCategory } from './types';
 
-import {AxiosError} from "axios";
+import { AxiosError } from 'axios';
 
 export const fetchCategories = () => ({
-    type: FETCH_CATEGORIES_PENDING
+    type: FETCH_CATEGORIES_PENDING,
 });
 
 export const fetchCategoriesSuccess = (data: Category[]) => ({
     type: FETCH_CATEGORIES_SUCCESS,
-    payload: data
+    payload: data,
 });
 
 export const fetchCategoriesError = (error: AxiosError) => ({
     type: FETCH_CATEGORIES_ERROR,
-    payload: error
+    payload: error,
 });
 
 export const addCategory = (data: AddCategory) => ({
     type: ADD_CATEGORY_PENDING,
-    payload: data
+    payload: data,
 });
 
 export const addCategorySuccess = (data: Category) => ({
     type: ADD_CATEGORY_SUCCESS,
-    payload: data
+    payload: data,
 });
 
 export const addCategoryError = (error: AxiosError) => ({
     type: ADD_CATEGORY_ERROR,
-    payload: error
+    payload: error,
 });
 
 export const updateCategory = (data: UpdateCategory) => ({
     type: UPDATE_CATEGORY_PENDING,
-    payload: data
+    payload: data,
 });
 
 export const updateCategorySuccess = (id: string) => ({
     type: UPDATE_CATEGORY_SUCCESS,
-    payload: id
+    payload: id,
 });
 
 export const updateCategoryError = (error: AxiosError) => ({
     type: UPDATE_CATEGORY_ERROR,
-    payload: error
+    payload: error,
 });
 
 export const deleteCategory = (id: string | null) => ({
     type: DELETE_CATEGORY_PENDING,
-    payload: id
+    payload: id,
 });
 
 export const deleteCategorySuccess = (id: string) => ({
     type: DELETE_CATEGORY_SUCCESS,
-    payload: id
+    payload: id,
 });
 
 export const deleteCategoryError = (error: AxiosError) => ({
     type: DELETE_CATEGORY_ERROR,
-    payload: error
+    payload: error,
 });
 
 export const setSelectedCategory = (id: string) => ({
     type: SET_SELECTED_CATEGORY,
-    payload: id
+    payload: id,
 });
 
 export const setContentVisible = (data: boolean) => ({
     type: SET_CONTENT_VISIBLE,
-    payload: data
+    payload: data,
 });
 
 export const setEditMode = (data: boolean) => ({
     type: SET_EDIT_MODE,
-    payload: data
+    payload: data,
 });
 
 export const setDeleteDialogIsVisible = (isVisible: boolean) => ({
     type: SET_DELETE_DIALOG_IS_VISIBLE,
-    payload: isVisible
+    payload: isVisible,
 });
 
 export const setPreviewCard = (data: PreviewCard) => ({
     type: SET_CATEGORY_PREVIEW_CARD,
-    payload: data
+    payload: data,
 });
 
 export const clear = () => ({

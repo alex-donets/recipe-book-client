@@ -1,4 +1,4 @@
-import { Category, QueryAddCategory, QueryUpdateCategory } from "./types";
+import { Category, QueryAddCategory, QueryUpdateCategory } from './types';
 
 export const formToQueryAdd = ({ name, photo }: QueryAddCategory) => {
     const data = new FormData();
@@ -20,5 +20,5 @@ export const formToQueryUpdate = ({ name, photo }: QueryUpdateCategory) => {
 
 export const queryToForm = ({ name, ...restProps }: Category) => ({
     name,
-    ...restProps
+    ...restProps,
 });

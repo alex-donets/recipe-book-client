@@ -1,5 +1,5 @@
-import * as Yup from "yup";
-import { emailRegExp } from "../../../../utils/validations";
+import * as Yup from 'yup';
+import { emailRegExp } from '../../../../utils/validations';
 
 export const formInitialValues = {
     email: '',

@@ -1,20 +1,19 @@
 import React from 'react';
-import {Grid, Header, Message} from "semantic-ui-react";
-import {Formik} from "formik";
-import { useParams } from "react-router";
+import { Grid, Header, Message } from 'semantic-ui-react';
+import { Formik } from 'formik';
+import { useParams } from 'react-router';
 
-import {useDispatch} from "react-redux";
-import {SetPassFormValues} from "../../types";
-import {setPassword} from "../../actions";
-import SetPassForm from "./components/SetPassForm/SetPassForm";
-import {formInitialValues, formValidationSchema} from "./constants";
-import {FormikProps} from "formik/dist/types";
+import { useDispatch } from 'react-redux';
+import { ParamTypes, SetPassFormValues } from '../../types';
+import { setPassword } from '../../actions';
+import SetPassForm from './components/SetPassForm/SetPassForm';
+import { formInitialValues, formValidationSchema } from './constants';
+import { FormikProps } from 'formik/dist/types';
 
 const SetPassword = () => {
     const dispatch = useDispatch();
 
-    // @ts-ignore
-    const { token, email } = useParams();
+    const { token, email } = useParams<ParamTypes>();
 
     const renderForm = (props: FormikProps<SetPassFormValues>) => <SetPassForm {...props} />;
 
@@ -26,14 +25,8 @@ const SetPassword = () => {
     };
 
     return (
-        <Grid
-            textAlign="center"
-            className="auth-wrapper"
-            verticalAlign="middle"
-        >
-            <Grid.Column
-                className="auth-holder"
-            >
+        <Grid textAlign="center" className="auth-wrapper" verticalAlign="middle">
+            <Grid.Column className="auth-holder">
                 <Header as="h2" className="primary-text">
                     Set a new password
                 </Header>

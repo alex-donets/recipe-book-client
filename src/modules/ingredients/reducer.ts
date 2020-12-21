@@ -1,14 +1,10 @@
-import { createReducer } from "redux-create-reducer";
+import { createReducer } from 'redux-create-reducer';
 import { reducer as reduxFormReducer } from 'redux-form';
 
-import {
-    ADD_INGREDIENT,
-    DELETE_INGREDIENT,
-    FILL_INGREDIENTS_LIST
-} from "./constants";
+import { ADD_INGREDIENT, DELETE_INGREDIENT, FILL_INGREDIENTS_LIST } from './constants';
 
-import { IngredientState } from "./types";
-import { v4 as uuidv4 } from "uuid";
+import { IngredientState } from './types';
+import { v4 as uuidv4 } from 'uuid';
 
 export const initialState: IngredientState = {
     ingredientList: [],
@@ -26,24 +22,24 @@ export default createReducer(initialState, {
         return {
             ...state,
             ingredientList: updatedList,
-        }
+        };
     },
 
     [FILL_INGREDIENTS_LIST]: (state, { payload }) => {
         return {
             ...state,
             ingredientList: payload,
-        }
+        };
     },
 
     [DELETE_INGREDIENT]: (state, { payload }) => {
         const { ingredientList } = state;
 
-        const updatedList = ingredientList.filter(item => item.id !== payload);
+        const updatedList = ingredientList.filter((item) => item.id !== payload);
 
         return {
             ...state,
             ingredientList: updatedList,
-        }
+        };
     },
 });

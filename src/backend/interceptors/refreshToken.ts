@@ -1,8 +1,8 @@
-import { logout } from "../../modules/auth/actions";
+import { logout } from '../../modules/auth/actions';
 
-import { store } from "../../core/redux/store";
-import { setErrorMessage } from "../../modules/app/actions";
-import {AxiosError, AxiosResponse} from "axios";
+import { store } from '../../core/redux/store';
+import { setErrorMessage } from '../../modules/app/actions';
+import { AxiosError, AxiosResponse } from 'axios';
 
 const successHandler = (response: AxiosResponse) => response;
 
@@ -13,14 +13,18 @@ const errorHandler = (error: AxiosError) => {
         dispatch(logout());
     }
 
-    if (error.response && error.response.status.toString().startsWith('4')) {
+    if (
+        error.response &&
+        error.response.status.toString().startsWith('4') &&
+        error.response.status.toString().startsWith('5')
+    ) {
         const { data } = error.response;
         if (data.msg) {
-          dispatch(setErrorMessage(data.msg));
+            dispatch(setErrorMessage(data.msg));
         }
     }
 
-    return Promise.reject(error)
+    return Promise.reject(error);
 };
 
 export default { successHandler, errorHandler };

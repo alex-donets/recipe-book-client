@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button, Form, Segment} from "semantic-ui-react";
-import {useSelector} from "react-redux";
-import {getLoading} from "../../../../selectors";
-import {ResetPassFormValues} from "../../../../types";
-import {FormikProps} from "formik/dist/types";
+import { Button, Form, Segment } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+import { getLoading } from '../../../../selectors';
+import { ResetPassFormValues } from '../../../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const ResetPassForm = (props: FormikProps<ResetPassFormValues>) => {
     const {
@@ -11,7 +11,7 @@ const ResetPassForm = (props: FormikProps<ResetPassFormValues>) => {
         errors,
         touched,
         handleSubmit,
-        handleChange
+        handleChange,
     } = props;
 
     const isLoading = useSelector(getLoading);
@@ -30,7 +30,7 @@ const ResetPassForm = (props: FormikProps<ResetPassFormValues>) => {
                     fluid
                     icon="mail"
                     iconPosition="left"
-                    placeholder='Email address'
+                    placeholder="Email address"
                     name="email"
                     onChange={handleChange}
                     value={email}

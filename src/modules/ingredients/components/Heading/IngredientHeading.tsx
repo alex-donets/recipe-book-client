@@ -1,10 +1,10 @@
-import React, {BaseSyntheticEvent} from 'react';
-import {Button, Header, Icon, Table} from "semantic-ui-react";
-import {useDispatch, useSelector} from "react-redux";
-import {getIngredientList} from "../../selectors";
+import React, { BaseSyntheticEvent } from 'react';
+import { Button, Header, Icon, Table } from 'semantic-ui-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIngredientList } from '../../selectors';
 import { isEmpty } from 'lodash';
 import './styles.scss';
-import {deleteIngredient} from "../../actions";
+import { deleteIngredient } from '../../actions';
 
 const IngredientHeading = () => {
     const dispatch = useDispatch();
@@ -16,10 +16,7 @@ const IngredientHeading = () => {
 
     return (
         <div>
-            <Header
-                as='h3'
-                className="primary-text"
-            >
+            <Header as="h3" className="primary-text">
                 Ingredients
             </Header>
 
@@ -31,7 +28,7 @@ const IngredientHeading = () => {
                                 <Table.Cell>{name}</Table.Cell>
                                 <Table.Cell textAlign="right">{quantity}</Table.Cell>
                                 <Table.Cell>{measure}</Table.Cell>
-                                <Table.Cell >
+                                <Table.Cell>
                                     <Button
                                         id={id}
                                         icon
@@ -41,7 +38,7 @@ const IngredientHeading = () => {
                                         compact
                                         onClick={(e) => handleClick(e)}
                                     >
-                                        <Icon id={id} name='trash alternate outline' />
+                                        <Icon id={id} name="trash alternate outline" />
                                     </Button>
                                 </Table.Cell>
                             </Table.Row>

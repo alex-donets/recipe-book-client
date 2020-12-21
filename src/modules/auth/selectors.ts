@@ -1,6 +1,6 @@
-import { createSelector } from "reselect";
-import { USER_ROLES } from "./constants";
-import { RootReducerTypes } from "../../core/redux/types";
+import { createSelector } from 'reselect';
+import { USER_ROLES } from './constants';
+import { RootReducerTypes } from '../../core/redux/types';
 
 export const getState = ({ auth }: RootReducerTypes) => auth;
 

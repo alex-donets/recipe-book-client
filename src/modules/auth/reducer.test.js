@@ -1,4 +1,4 @@
-import authReducer, {initialState} from "./reducer";
+import authReducer, { initialState } from './reducer';
 import {
     clear,
     login,
@@ -12,8 +12,8 @@ import {
     resetPasswordSuccess,
     setPassword,
     setPasswordSuccess,
-    setUserInfo
-} from "./actions";
+    setUserInfo,
+} from './actions';
 
 describe('Testing auth reducer', () => {
     it('if register pending, isLoading should be truthy', () => {
@@ -64,8 +64,8 @@ describe('Testing auth reducer', () => {
         const error = {
             response: {
                 data: {
-                    msg: errorMessage
-                }
+                    msg: errorMessage,
+                },
             },
         };
 
@@ -101,7 +101,7 @@ describe('Testing auth reducer', () => {
             isLoggedIn: true,
             email: userData.email,
             fullName: userData.fullName,
-            role: userData.role
+            role: userData.role,
         };
 
         expect(newState).toStrictEqual(expectState);
@@ -118,7 +118,7 @@ describe('Testing auth reducer', () => {
             isLoggedIn: true,
             email: 'test@test.com',
             fullName: 'John Doe',
-            role: 'user'
+            role: 'user',
         };
 
         const newState = authReducer(state, action);
@@ -137,7 +137,7 @@ describe('Testing auth reducer', () => {
             isLoggedIn: true,
             email: 'test@test.com',
             fullName: 'John Doe',
-            role: 'user'
+            role: 'user',
         };
 
         const newState = authReducer(state, action);
@@ -151,7 +151,7 @@ describe('Testing auth reducer', () => {
             email: 'test@test.com',
             token: 'abcde123456789',
             id: '123456789',
-            role: 'user'
+            role: 'user',
         };
 
         const action = setUserInfo(userData);
@@ -171,7 +171,7 @@ describe('Testing auth reducer', () => {
             role: userData.role,
         };
 
-        expect(newState).toStrictEqual(expectState)
+        expect(newState).toStrictEqual(expectState);
     });
 
     it('if reset password is pending, isLoading should be truthy', () => {
@@ -247,7 +247,7 @@ describe('Testing auth reducer', () => {
                 response: {
                     data: {
                         msg: 'Error message',
-                    }
+                    },
                 },
             },
         };
@@ -256,4 +256,4 @@ describe('Testing auth reducer', () => {
 
         expect(newState).toStrictEqual(initialState);
     });
-})
+});

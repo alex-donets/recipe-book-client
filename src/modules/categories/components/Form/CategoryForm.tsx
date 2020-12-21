@@ -1,10 +1,10 @@
-import React, {BaseSyntheticEvent, useRef} from 'react';
-import { Button, Form, Message } from "semantic-ui-react";
-import { useDispatch } from "react-redux";
-import BtnSection from "../BtnSection/BtnSection";
-import { setPreviewCard } from "../../actions";
-import {CategoryFormValues} from "../../types";
-import {FormikProps} from "formik/dist/types";
+import React, { BaseSyntheticEvent, useRef } from 'react';
+import { Button, Form, Message } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import BtnSection from '../BtnSection/BtnSection';
+import { setPreviewCard } from '../../actions';
+import { CategoryFormValues } from '../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
     const dispatch = useDispatch();
@@ -22,8 +22,8 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
 
     const fileChange = (e: BaseSyntheticEvent) => {
         e.preventDefault();
-        let reader = new FileReader();
-        let file = e.target.files[0];
+        const reader = new FileReader();
+        const file = e.target.files[0];
 
         if (file) {
             reader.onloadend = () => {
@@ -36,7 +36,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
             reader.readAsDataURL(file);
         }
 
-        setFieldValue("photo", e.currentTarget.files[0]);
+        setFieldValue('photo', e.currentTarget.files[0]);
     };
 
     const handleClick = () => {
@@ -59,12 +59,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
     };
 
     return (
-        <Form
-            size="large"
-            className="form-holder"
-            onSubmit={handleOnSubmit}
-            fluid
-        >
+        <Form size="large" className="form-holder" onSubmit={handleOnSubmit} fluid>
             <Form.Input
                 id="category-name-input"
                 name="name"
@@ -96,20 +91,13 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
                     onChange={fileChange}
                 />
 
-                {photo && photo.name &&
-                    <div className="label-text">
-                        {photo.name}
-                    </div>
-                }
+                {photo && photo.name && <div className="label-text">{photo.name}</div>}
 
-                {touched.photo && errors.photo &&
-                    <Message
-                        negative
-                        size='mini'
-                    >
+                {touched.photo && errors.photo && (
+                    <Message negative size="mini">
                         {errors.photo}
                     </Message>
-                }
+                )}
             </Form.Field>
 
             <BtnSection formProps={props} />

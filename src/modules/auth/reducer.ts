@@ -1,4 +1,4 @@
-import { createReducer } from "redux-create-reducer";
+import { createReducer } from 'redux-create-reducer';
 
 import {
     LOGIN_PENDING,
@@ -21,7 +21,7 @@ import {
     SET_PASSWORD_PENDING,
     SET_PASSWORD_SUCCESS,
     SET_PASSWORD_ERROR,
-} from "./constants";
+} from './constants';
 
 export const initialState = {
     errors: null,
@@ -49,7 +49,7 @@ export default createReducer(initialState, {
         fullName: payload.fullName,
         role: payload.role,
         userId: payload.id,
-        errors: null
+        errors: null,
     }),
 
     [LOGIN_ERROR]: (state, { payload }) => ({
@@ -66,7 +66,7 @@ export default createReducer(initialState, {
     [REGISTER_SUCCESS]: (state) => ({
         ...state,
         isLoading: false,
-        errors: null
+        errors: null,
     }),
 
     [REGISTER_ERROR]: (state, { payload }) => ({
@@ -81,7 +81,7 @@ export default createReducer(initialState, {
     }),
 
     [LOGOUT_SUCCESS]: () => ({
-        ...initialState
+        ...initialState,
     }),
 
     [LOGOUT_ERROR]: (state, { payload }) => ({
@@ -134,7 +134,6 @@ export default createReducer(initialState, {
         isLoading: false,
     }),
 
-
     [SET_PASSWORD_PENDING]: (state) => ({
         ...state,
         isLoading: true,
@@ -150,7 +149,6 @@ export default createReducer(initialState, {
         errors: payload,
         isLoading: false,
     }),
-
 
     [CLEAR]: () => ({ ...initialState }),
 });

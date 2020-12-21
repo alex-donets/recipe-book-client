@@ -1,24 +1,20 @@
-import React, {useEffect, useRef} from 'react';
-import "../../styles.scss";
-import {Grid, Header, Segment} from "semantic-ui-react";
-import {Formik} from "formik";
-import {addValidationSchema, formInitialValues, updateValidationSchema} from "../Form/constants";
+import React, { useEffect, useRef } from 'react';
+import '../../styles.scss';
+import { Grid, Header, Segment } from 'semantic-ui-react';
+import { Formik } from 'formik';
+import { addValidationSchema, formInitialValues, updateValidationSchema } from '../Form/constants';
 
-import RecipeForm from "../Form/RecipeForm";
-import {trimFormValues} from "../../../../utils/helpers";
-import {addRecipe, updateRecipe} from "../../actions";
-import {useDispatch, useSelector} from "react-redux";
-import {
-    getIsEditMode,
-    getSelectedRecipe,
-    getSelectedRecipeId
-} from "../../selectors";
-import {queryToForm} from "../../helpers";
-import {RecipeFormValues} from "../../types";
-import {FormikProps} from "formik/dist/types";
-import {IngredientFormValues} from "../../../ingredients/types";
-import {addIngredient} from "../../../ingredients/actions";
-import {reset} from "redux-form";
+import RecipeForm from '../Form/RecipeForm';
+import { trimFormValues } from '../../../../utils/helpers';
+import { addRecipe, updateRecipe } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsEditMode, getSelectedRecipe, getSelectedRecipeId } from '../../selectors';
+import { queryToForm } from '../../helpers';
+import { RecipeFormValues } from '../../types';
+import { FormikProps } from 'formik/dist/types';
+import { IngredientFormValues } from '../../../ingredients/types';
+import {addIngredient, clear} from '../../../ingredients/actions';
+import { reset } from 'redux-form';
 
 const RecipeContent = () => {
     const dispatch = useDispatch();
@@ -34,24 +30,22 @@ const RecipeContent = () => {
         const { current } = formRef;
 
         if (current && !selectedRecipeId) {
-            // @ts-ignore
             current.resetForm();
         }
 
         if (current && isEditMode && selectedRecipe) {
-            // @ts-ignore
             current.setValues({ ...queryToForm(selectedRecipe) });
         }
     }, [selectedRecipeId]);
 
-    const renderForm = (props: FormikProps<RecipeFormValues>) => <RecipeForm {...props} submitIngredients={submitIngredients} />;
+    const renderForm = (props: FormikProps<RecipeFormValues>) => (
+        <RecipeForm {...props} submitIngredients={submitIngredients} />
+    );
 
     const submitRecipe = (formData: RecipeFormValues) => {
         const formDataPayload = trimFormValues(formData);
 
-        const resultAction = selectedRecipe
-            ? updateRecipe
-            : addRecipe;
+        const resultAction = selectedRecipe ? updateRecipe : addRecipe;
 
         dispatch(resultAction(formDataPayload));
     };
@@ -59,19 +53,20 @@ const RecipeContent = () => {
     const submitIngredients = (formData: IngredientFormValues) => {
         dispatch(addIngredient(formData));
         dispatch(reset('IngredientsForm'));
+        dispatch(clear());
     };
 
     return (
         <div className="recipe-content">
             <Header as="h2" className="primary-text">
-                {selectedRecipe ? 'Update ': 'Create '} a recipe
+                {selectedRecipe ? 'Update ' : 'Create '} a recipe
             </Header>
 
             <Segment padded>
                 <Grid stackable padded>
                     <Grid.Row>
                         <Grid.Column padded>
-                            <Header as='h3' className="primary-text">
+                            <Header as="h3" className="primary-text">
                                 Recipe
                             </Header>
 

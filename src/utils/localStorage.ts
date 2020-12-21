@@ -1,4 +1,4 @@
-import {UserInfo} from "../modules/auth/types";
+import { UserInfo } from '../modules/auth/types';
 
 export const LOCAL_STORAGE_AUTH_TOKEN_KEY = 'recipe-book:user-auth-token';
 
@@ -11,8 +11,7 @@ const getAuthToken = () => {
         }
 
         return null;
-    }
-    catch (e) {
+    } catch (e) {
         return null;
     }
 };

@@ -1,25 +1,25 @@
-import React, {useEffect, useRef} from 'react';
-import "../../styles.scss";
-import {Grid, Header, Segment} from "semantic-ui-react";
-import {Formik} from "formik";
-import {addValidationSchema, formInitialValues, updateValidationSchema} from "../Form/constants";
-import CategoryCard from "../../../../shared/components/CategoryCard/CategoryCard";
-import CategoryForm from "../Form/CategoryForm";
-import {trimFormValues} from "../../../../utils/helpers";
-import {addCategory, updateCategory} from "../../actions";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useRef } from 'react';
+import '../../styles.scss';
+import { Grid, Header, Segment } from 'semantic-ui-react';
+import { Formik } from 'formik';
+import { addValidationSchema, formInitialValues, updateValidationSchema } from '../Form/constants';
+import CategoryCard from '../../../../shared/components/CategoryCard/CategoryCard';
+import CategoryForm from '../Form/CategoryForm';
+import { trimFormValues } from '../../../../utils/helpers';
+import { addCategory, updateCategory } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     getIsEditMode,
     getPreviewTitle,
     getPreviewUrl,
     getSelectedCategory,
-    getSelectedCategoryId
-} from "../../selectors";
-import {queryToForm} from "../../helpers";
-import {categoryPhotoUrl} from "../../../../backend/constants";
-import DefaultIcon from "../../../../assets/plus.svg";
-import {CategoryFormValues} from "../../types";
-import {FormikProps} from "formik/dist/types";
+    getSelectedCategoryId,
+} from '../../selectors';
+import { queryToForm } from '../../helpers';
+import { categoryPhotoUrl } from '../../../../backend/constants';
+import DefaultIcon from '../../../../assets/plus.svg';
+import { CategoryFormValues } from '../../types';
+import { FormikProps } from 'formik/dist/types';
 
 const CategoryContent = () => {
     const dispatch = useDispatch();
@@ -40,13 +40,10 @@ const CategoryContent = () => {
         const { current } = formRef;
 
         if (current && !selectedCategoryId) {
-
-            // @ts-ignore
             current.resetForm();
         }
 
         if (current && isEditMode && selectedCategory) {
-            // @ts-ignore
             current.setValues({ ...queryToForm(selectedCategory) });
         }
     }, [selectedCategoryId]);
@@ -56,9 +53,7 @@ const CategoryContent = () => {
     const handleOnSubmit = (formData: CategoryFormValues) => {
         const formDataPayload = trimFormValues(formData);
 
-        const resultAction = selectedCategory
-            ? updateCategory
-            : addCategory;
+        const resultAction = selectedCategory ? updateCategory : addCategory;
 
         dispatch(resultAction(formDataPayload));
     };
@@ -66,7 +61,7 @@ const CategoryContent = () => {
     return (
         <div className="category-content">
             <Header as="h2" className="primary-text">
-                {selectedCategory ? 'Update ': 'Create '} a category
+                {selectedCategory ? 'Update ' : 'Create '} a category
             </Header>
 
             <Segment padded>
@@ -84,7 +79,7 @@ const CategoryContent = () => {
                         </Grid.Column>
 
                         <Grid.Column width={5} className="preview-holder">
-                            <Header as='h3' textAlign="center">
+                            <Header as="h3" textAlign="center">
                                 Preview
                             </Header>
 

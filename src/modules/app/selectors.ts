@@ -1,5 +1,5 @@
-import { createSelector } from "reselect";
-import { RootReducerTypes } from "../../core/redux/types";
+import { createSelector } from 'reselect';
+import { RootReducerTypes } from '../../core/redux/types';
 
 export const getState = ({ app }: RootReducerTypes) => app;
 

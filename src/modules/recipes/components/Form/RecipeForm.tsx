@@ -1,30 +1,34 @@
-import React, {BaseSyntheticEvent, SyntheticEvent, useEffect, useRef} from 'react';
-import "../../styles.scss";
-import {useDispatch, useSelector} from "react-redux";
-import {Button, DropdownProps, Form, Header, TextArea} from "semantic-ui-react";
-import BtnSection from "../BtnSection/BtnSection";
-import {getCategoryList} from "../../../categories/selectors";
+import React, { BaseSyntheticEvent, SyntheticEvent, useEffect, useRef } from 'react';
+import '../../styles.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, DropdownProps, Form, Header, TextArea } from 'semantic-ui-react';
+import BtnSection from '../BtnSection/BtnSection';
+import { getCategoryList } from '../../../categories/selectors';
 import { isEmpty } from 'lodash';
-import {fetchCategories} from "../../../categories/actions";
-import IngredientForm from "../../../ingredients/components/Form/IngredientForm";
-import IngredientHeading from "../../../ingredients/components/Heading/IngredientHeading";
-import {reset} from 'redux-form';
+import { fetchCategories } from '../../../categories/actions';
+import IngredientForm from '../../../ingredients/components/Form/IngredientForm';
+import IngredientHeading from '../../../ingredients/components/Heading/IngredientHeading';
 
 const RecipeForm = (props: any) => {
     const dispatch = useDispatch();
     const categoryList = useSelector(getCategoryList);
 
-    const categoryOptions = categoryList && !isEmpty(categoryList) ? categoryList.map(item => ({
-        id: item._id,
-        key: item._id,
-        text: item.name,
-        value: item._id
-    })) : ([{
-        id: 0,
-        key: 0,
-        text: 'Add a category before creating a recipe',
-        value: ''
-    }]);
+    const categoryOptions =
+        categoryList && !isEmpty(categoryList)
+            ? categoryList.map((item) => ({
+                  id: item._id,
+                  key: item._id,
+                  text: item.name,
+                  value: item._id,
+              }))
+            : [
+                  {
+                      id: 0,
+                      key: 0,
+                      text: 'Add a category before creating a recipe',
+                      value: '',
+                  },
+              ];
 
     const {
         values: { name, categoryId, photo, directions },
@@ -33,11 +37,11 @@ const RecipeForm = (props: any) => {
         handleSubmit,
         handleChange,
         setFieldValue,
-        submitIngredients
+        submitIngredients,
     } = props;
 
     useEffect(() => {
-        if(!categoryList) {
+        if (!categoryList) {
             dispatch(fetchCategories());
         }
     }, []);
@@ -47,7 +51,7 @@ const RecipeForm = (props: any) => {
     const fileChange = (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
-        setFieldValue("photo", e.currentTarget.files[0]);
+        setFieldValue('photo', e.currentTarget.files[0]);
     };
 
     const handleClick = () => {
@@ -73,13 +77,8 @@ const RecipeForm = (props: any) => {
     };
 
     return (
-        <Form
-            size="large"
-            className="form-holder"
-            onSubmit={handleOnSubmit}
-            fluid
-        >
-            <Form.Group widths='equal'>
+        <Form size="large" className="form-holder" onSubmit={handleOnSubmit} fluid>
+            <Form.Group widths="equal">
                 <Form.Input
                     id="recipe-name-input"
                     name="name"
@@ -95,12 +94,12 @@ const RecipeForm = (props: any) => {
                     fluid
                     id="recipe-select-category"
                     name="categoryId"
-                    label='Category'
+                    label="Category"
                     options={categoryOptions}
                     value={categoryId}
                     onChange={handleSelectChange}
                     error={touched.categoryId && errors.categoryId}
-                    placeholder='Choose a category'
+                    placeholder="Choose a category"
                 />
             </Form.Group>
 
@@ -123,17 +122,9 @@ const RecipeForm = (props: any) => {
                         onChange={fileChange}
                     />
 
-                    {photo && photo.name &&
-                        <div className="label-text">
-                            {photo.name}
-                        </div>
-                    }
+                    {photo && photo.name && <div className="label-text">{photo.name}</div>}
 
-                    {touched.photo && errors.photo &&
-                        <div className="error-text">
-                            {errors.photo}
-                        </div>
-                    }
+                    {touched.photo && errors.photo && <div className="error-text">{errors.photo}</div>}
                 </Form.Field>
             </div>
 
@@ -141,10 +132,7 @@ const RecipeForm = (props: any) => {
 
             <IngredientForm onSubmit={submitIngredients} />
 
-            <Header
-                as='h3'
-                className="primary-text"
-            >
+            <Header as="h3" className="primary-text">
                 Directions
             </Header>
 
@@ -156,7 +144,7 @@ const RecipeForm = (props: any) => {
                 error={touched.directions && errors.directions}
                 fluid
                 rows={8}
-                placeholder='Write your recipe here...'
+                placeholder="Write your recipe here..."
             />
 
             <BtnSection formProps={props} />

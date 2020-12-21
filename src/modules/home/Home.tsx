@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector} from "react-redux";
-import CategoryHeading from "../categories/components/Heading/CategoryHeading";
-import RecipeHeading from "../recipes/components/Heading/RecipeHeading";
-import {getCategoryListLoading, getSelectedCategoryId} from "../categories/selectors";
-import CircularProgress from "../../shared/components/CircularProgress/CircularProgress";
+import { useSelector } from 'react-redux';
+import CategoryHeading from '../categories/components/Heading/CategoryHeading';
+import RecipeHeading from '../recipes/components/Heading/RecipeHeading';
+import { getCategoryListLoading, getSelectedCategoryId } from '../categories/selectors';
+import CircularProgress from '../../shared/components/CircularProgress/CircularProgress';
 
 const Home = () => {
     const selectedCategoryId = useSelector(getSelectedCategoryId);
@@ -11,17 +11,11 @@ const Home = () => {
 
     return (
         <>
-            {isCategoryListLoading && (
-                <CircularProgress />
-            )}
+            {isCategoryListLoading && <CircularProgress />}
 
-            {!isCategoryListLoading && (
-                <CategoryHeading/>
-            )}
+            {!isCategoryListLoading && <CategoryHeading />}
 
-            {selectedCategoryId && (
-                <RecipeHeading />
-            )}
+            {selectedCategoryId && <RecipeHeading />}
         </>
     );
 };

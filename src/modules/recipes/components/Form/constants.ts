@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 const FILE_SIZE = 5000000; // 5 Mb
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
@@ -17,10 +17,9 @@ export const addValidationSchema = Yup.object({
         .max(50, 'Name should be no more than 50 characters'),
     photo: Yup.mixed()
         .required('Please add a photo')
-        .test('fileSize', "File size is too large", value => value && value.size <= FILE_SIZE)
-        .test('fileType', "Unsupported File Format", value => value && SUPPORTED_FORMATS.includes(value.type) ),
-    categoryId: Yup.string()
-        .required('Please select a category'),
+        .test('fileSize', 'File size is too large', (value) => value && value.size <= FILE_SIZE)
+        .test('fileType', 'Unsupported File Format', (value) => value && SUPPORTED_FORMATS.includes(value.type)),
+    categoryId: Yup.string().required('Please select a category'),
     directions: Yup.string()
         .trim()
         .required('Please enter directions')
@@ -32,8 +31,7 @@ export const updateValidationSchema = Yup.object({
         .trim()
         .required('Please enter a category name')
         .max(50, 'Name should be no more than 50 characters'),
-    categoryId: Yup.string()
-        .required('Please select a category'),
+    categoryId: Yup.string().required('Please select a category'),
     directions: Yup.string()
         .trim()
         .required('Please enter directions')

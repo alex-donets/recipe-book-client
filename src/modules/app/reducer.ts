@@ -1,4 +1,4 @@
-import { createReducer } from "redux-create-reducer";
+import { createReducer } from 'redux-create-reducer';
 
 import {
     SET_ERROR_MESSAGE,
@@ -6,9 +6,9 @@ import {
     SET_INFO_MESSAGE,
     CLEAR_INFO_MESSAGE,
     SET_SUCCESS_MESSAGE,
-    CLEAR_SUCCESS_MESSAGE
-} from "./constants";
-import { AppState } from "./types";
+    CLEAR_SUCCESS_MESSAGE,
+} from './constants';
+import { AppState } from './types';
 
 export const initialState: AppState = {
     errorMessage: '',
@@ -17,34 +17,33 @@ export const initialState: AppState = {
 };
 
 export default createReducer(initialState, {
-
     [SET_ERROR_MESSAGE]: (state, { payload }) => ({
         ...state,
-        errorMessage: payload
+        errorMessage: payload,
     }),
 
     [CLEAR_ERROR_MESSAGE]: (state) => ({
         ...state,
-        errorMessage: ''
+        errorMessage: '',
     }),
 
     [SET_INFO_MESSAGE]: (state, { payload }) => ({
         ...state,
-        infoMessage: payload
+        infoMessage: payload,
     }),
 
     [CLEAR_INFO_MESSAGE]: (state) => ({
         ...state,
-        infoMessage: ''
+        infoMessage: '',
     }),
 
     [SET_SUCCESS_MESSAGE]: (state, { payload }) => ({
         ...state,
-        successMessage: payload
+        successMessage: payload,
     }),
 
     [CLEAR_SUCCESS_MESSAGE]: (state) => ({
         ...state,
-        successMessage: ''
+        successMessage: '',
     }),
 });

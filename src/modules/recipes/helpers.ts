@@ -1,14 +1,10 @@
-import {Recipe, QueryAddRecipe, QueryUpdateRecipe, UpdateRecipe} from "./types";
-import {getAuthToken} from "../../utils/localStorage";
-import { IngredientFormValues } from "../ingredients/types";
+import { Recipe, QueryAddRecipe, QueryUpdateRecipe } from './types';
+import { getAuthToken } from '../../utils/localStorage';
+import { IngredientFormValues } from '../ingredients/types';
 
-export const formToQueryAdd = ({
-    name,
-    photo,
-    categoryId,
-    directions,
-}: QueryAddRecipe,
-    ingredientList: IngredientFormValues[]
+export const formToQueryAdd = (
+    { name, photo, categoryId, directions }: QueryAddRecipe,
+    ingredientList: IngredientFormValues[],
 ) => {
     const data = new FormData();
     const userInfo = getAuthToken();
@@ -24,13 +20,9 @@ export const formToQueryAdd = ({
     return data;
 };
 
-export const formToQueryUpdate = ({
-    name,
-    photo,
-    categoryId,
-    directions
-}: QueryUpdateRecipe,
-    ingredientList: IngredientFormValues[]
+export const formToQueryUpdate = (
+    { name, photo, categoryId, directions }: QueryUpdateRecipe,
+    ingredientList: IngredientFormValues[],
 ) => {
     const data = new FormData();
     const userInfo = getAuthToken();
@@ -48,14 +40,10 @@ export const formToQueryUpdate = ({
 
 export const queryToForm = ({ name, ...restProps }: Recipe) => ({
     name,
-    ...restProps
+    ...restProps,
 });
 
-export const listPerPage = (
-    list: Recipe[] | null,
-    activePage: number,
-    itemsPerPage: number
-) => {
+export const listPerPage = (list: Recipe[] | null, activePage: number, itemsPerPage: number) => {
     if (list) {
         const startIndex = itemsPerPage * (activePage - 1);
         const indexes = [...Array(itemsPerPage)].map((item, ind) => ind + startIndex);

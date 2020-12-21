@@ -91,4 +91,14 @@
   z-index: 3;
 }
 
+.placeholder-recipe {
+  &.ui.placeholder {
+    position: absolute;
+    margin: 0 1rem 2rem;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+}
 

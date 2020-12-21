@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.scss'
-import {Message} from "semantic-ui-react";
+import './styles.scss';
+import { Message } from 'semantic-ui-react';
 
 const OfflineMode = () => {
     return (

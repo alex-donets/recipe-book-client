@@ -1,15 +1,15 @@
 import React from 'react';
 import '../../styles.scss';
-import {Grid, Header, Message} from "semantic-ui-react";
-import {Formik} from "formik";
+import { Grid, Header, Message } from 'semantic-ui-react';
+import { Formik } from 'formik';
 
-import {useDispatch} from "react-redux";
-import {ResetPassFormValues} from "../../types";
-import {trimFormValues} from "../../../../utils/helpers";
-import {resetPassword} from "../../actions";
-import ResetPassForm from "./components/ResetPassForm/ResetPassForm";
-import {formInitialValues, formValidationSchema} from "./constants";
-import {FormikProps} from "formik/dist/types";
+import { useDispatch } from 'react-redux';
+import { ResetPassFormValues } from '../../types';
+import { trimFormValues } from '../../../../utils/helpers';
+import { resetPassword } from '../../actions';
+import ResetPassForm from './components/ResetPassForm/ResetPassForm';
+import { formInitialValues, formValidationSchema } from './constants';
+import { FormikProps } from 'formik/dist/types';
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
@@ -23,14 +23,8 @@ const ResetPassword = () => {
     };
 
     return (
-        <Grid
-            textAlign="center"
-            className="auth-wrapper"
-            verticalAlign="middle"
-        >
-            <Grid.Column
-                className="auth-holder"
-            >
+        <Grid textAlign="center" className="auth-wrapper" verticalAlign="middle">
+            <Grid.Column className="auth-holder">
                 <Header as="h2" className="primary-text">
                     Type your email address
                 </Header>

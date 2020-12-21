@@ -1,6 +1,6 @@
 export interface ConfirmationTypes {
-    title: string,
-    content: string,
-    onConfirm: () => void,
-    onDiscard: () => void,
+    title: string;
+    content: string;
+    onConfirm: () => void;
+    onDiscard: () => void;
 }

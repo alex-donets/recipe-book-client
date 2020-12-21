@@ -28,5 +28,5 @@ export const CLEAR = 'auth/CLEAR';
 
 export const USER_ROLES = {
     ADMIN: 'admin',
-    USER: 'user'
+    USER: 'user',
 };
