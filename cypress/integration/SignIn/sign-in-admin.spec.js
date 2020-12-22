@@ -26,6 +26,6 @@ describe('Login page', () => {
     });
 
     it('Categories route should be displayed for admin', () => {
-        cy.get('.custom-header').find('[href="/categories"]');
+        cy.get('.custom-header').contains('Category');
     })
 });

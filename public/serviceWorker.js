@@ -27,7 +27,9 @@ self.addEventListener('activate', async (event) => {
 });
 
 self.addEventListener('fetch', async (event) => {
-    event.respondWith(checkCache(event.request));
+    if(!navigator.onLine) {
+        event.respondWith(checkCache(event.request));
+    }
 });
 
 const checkCache = async(req) => {
