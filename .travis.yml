@@ -4,6 +4,9 @@ cache: yarn
 
 jobs:
   include:
+    - stage: install
+      script: yarn install
+
     - stage: lint
       script: yarn run lint
 
@@ -15,3 +18,6 @@ jobs:
 
     - stage: build
       script: yarn run build
+
+    - stage: deploy
+        script: yarn run deploy
