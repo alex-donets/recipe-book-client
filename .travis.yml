@@ -20,10 +20,11 @@ jobs:
       script: yarn run build
 
     - stage: deploy
-      script: yarn run deploy
+      if: (type = push AND branch = master)
       github_token: $GITHUB_TOKEN
       username: $USER_NAME
       password: $PASS
+      script: yarn run deploy
 #    if: (type = push AND branch = master)
 #    provider: pages
 #      skip_cleanup: true
