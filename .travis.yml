@@ -2,6 +2,9 @@ language: node_js
 node_js: 12.14.1
 cache: yarn
 
+env:
+  - CI=false
+
 jobs:
   include:
     - stage: install
