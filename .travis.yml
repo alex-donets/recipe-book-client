@@ -12,3 +12,6 @@ jobs:
 
     - stage: e2e
       script: yarn run e2e
+
+    - stage: build
+      script: yarn run build
