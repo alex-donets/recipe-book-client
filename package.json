@@ -2,6 +2,7 @@
   "name": "recipe-book",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://veronika-donets/recipe-book-client",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -60,6 +61,7 @@
     "e2e": "cypress run",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
