@@ -13,11 +13,8 @@ jobs:
     - stage: tests
       script: yarn run test
 
-    - stage: e2e
-      script: yarn run e2e
-
     - stage: build
       script: yarn run build
 
     - stage: deploy
-        script: yarn run deploy
+      script: yarn run deploy
