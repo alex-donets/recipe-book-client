@@ -33,8 +33,6 @@ function* handleLogin({ payload }: HandleLogin) {
         const body = loginFormToQuery(payload);
         const { data } = yield apiClient.post('/users/login', body);
 
-        console.log('data', data)
-
         yield call(setAuthToken, data);
         yield put(loginSuccess(data));
         yield put(push('/'));

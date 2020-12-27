@@ -27,7 +27,3 @@ export const getIsDeleteDialogVisible = createSelector(
     [getState],
     ({ isDeleteDialogVisible }) => isDeleteDialogVisible,
 );
-
-export const getPreviewUrl = createSelector([getState], ({ previewCard }) => previewCard.previewUrl);
-
-export const getPreviewTitle = createSelector([getState], ({ previewCard }) => previewCard.previewTitle);

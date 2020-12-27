@@ -13,7 +13,7 @@ import { queryToForm } from '../../helpers';
 import { RecipeFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
 import { IngredientFormValues } from '../../../ingredients/types';
-import {addIngredient, clear} from '../../../ingredients/actions';
+import { addIngredient, clear } from '../../../ingredients/actions';
 import { reset } from 'redux-form';
 
 const RecipeContent = () => {
@@ -65,7 +65,7 @@ const RecipeContent = () => {
             <Segment padded>
                 <Grid stackable padded>
                     <Grid.Row>
-                        <Grid.Column padded>
+                        <Grid.Column>
                             <Header as="h3" className="primary-text">
                                 Recipe
                             </Header>

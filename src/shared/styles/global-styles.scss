@@ -7,10 +7,6 @@
     flex: 1 0 auto;
 }
 
-.custom-header {
-    background-color: $dark-blue;
-}
-
 .custom-footer {
     bottom: 0;
     margin: 5em 0 0;
@@ -66,7 +62,14 @@
     height: 100%;
 }
 
-.header-image {
-    margin-right: 1.5em;
-    object-fit: scale-down;
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    .ui.container {
+        width: 992px;
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .ui.container {
+        width: 768px;
+    }
 }

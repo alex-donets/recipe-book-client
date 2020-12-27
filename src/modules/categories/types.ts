@@ -39,10 +39,7 @@ export interface Category {
 }
 
 export interface AddCategory extends Action {
-    payload: {
-        name: string;
-        photo: File;
-    };
+    payload: CategoryFormValues;
 }
 
 export interface UpdateCategory extends Action {

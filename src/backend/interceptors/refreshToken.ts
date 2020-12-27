@@ -14,9 +14,8 @@ const errorHandler = (error: AxiosError) => {
     }
 
     if (
-        error.response &&
-        error.response.status.toString().startsWith('4') &&
-        error.response.status.toString().startsWith('5')
+        (error.response && error.response.status.toString().startsWith('4')) ||
+        (error.response && error.response.status.toString().startsWith('5'))
     ) {
         const { data } = error.response;
         if (data.msg) {

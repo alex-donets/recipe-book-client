@@ -67,7 +67,7 @@ const CategoryContent = () => {
             <Segment padded>
                 <Grid columns={2} stackable padded>
                     <Grid.Row>
-                        <Grid.Column width={11} padded>
+                        <Grid.Column width={11}>
                             <Formik
                                 ref={formRef}
                                 render={renderForm}

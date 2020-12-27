@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { BaseSyntheticEvent, SyntheticEvent, useState } from 'react';
 import './styles.scss';
 import { Card, Placeholder } from 'semantic-ui-react';
 import ImageHolder from '../ImageHolder/ImageHolder';
@@ -8,12 +8,12 @@ import DefaultImage from '../../../assets/default-image.png';
 const CategoryCard = ({ id, title, photoUrl, isSelected, onSelect }: CategoryCardTypes) => {
     const [isShowLoadImg, setIsShowLoadImg] = useState(true);
 
-    const handleOnError = (e: any) => {
+    const handleOnError = (e: BaseSyntheticEvent) => {
         e.target.src = DefaultImage;
         e.target.error = null;
     };
 
-    const handleOnLoad = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+    const handleOnLoad = (e: SyntheticEvent) => {
         setIsShowLoadImg(false);
     };
 

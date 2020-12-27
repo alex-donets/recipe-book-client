@@ -32,7 +32,7 @@ const RecipeHeading = () => {
     const isRecipeListLoading = useSelector(getRecipeListLoading);
 
     const totalPages = recipeList ? Math.ceil(recipeList.length / 5) : 0;
-    const canShowPagination = totalPages > 1;
+    const canShowPagination = totalPages > 1 && !isRecipeListLoading;
     const paginationList = listPerPage(recipeList, activePage, 5);
 
     useEffect(() => {

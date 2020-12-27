@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { Grid, Header, Segment, Table } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeList } from '../../selectors';
+import { getRecipeList, getRecipeListLoading } from '../../selectors';
 import { isEmpty } from 'lodash';
 import { fetchRecipes } from '../../actions';
 import { recipePhotoUrl } from '../../../../backend/constants';
 import { ParamTypes } from '../../types';
+import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
 
 const Recipe = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Recipe = () => {
     const { categoryId, recipeId } = useParams<ParamTypes>();
 
     const recipeList = useSelector(getRecipeList);
+    const isListLoading = useSelector(getRecipeListLoading);
     const recipe = recipeList ? recipeList.find((item) => item._id === recipeId) : null;
 
     useEffect(() => {
@@ -62,9 +64,13 @@ const Recipe = () => {
         </div>
     ) : (
         <div className="recipe-content">
-            <Header as="h2" className="primary-text">
-                Recipe not found
-            </Header>
+            {!isListLoading && (
+                <Header as="h2" className="primary-text">
+                    Recipe not found
+                </Header>
+            )}
+
+            {isListLoading && <CircularProgress />}
         </div>
     );
 };

@@ -22,8 +22,9 @@ import {
     SET_PASSWORD_SUCCESS,
     SET_PASSWORD_ERROR,
 } from './constants';
+import { AuthState } from './types';
 
-export const initialState = {
+export const initialState: AuthState = {
     errors: null,
     userId: null,
     token: null,

@@ -1,9 +1,10 @@
 import * as Yup from 'yup';
+import { RecipeFormValues } from '../../types';
 
 const FILE_SIZE = 5000000; // 5 Mb
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
-export const formInitialValues = {
+export const formInitialValues: RecipeFormValues = {
     name: '',
     photo: null,
     categoryId: '',

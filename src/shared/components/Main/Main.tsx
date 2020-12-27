@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getErrorMessage, getInfoMessage, getSuccessMessage } from '../../../modules/app/selectors';
 import { Container } from 'semantic-ui-react';
-import { getIsAdmin } from '../../../modules/auth/selectors';
+import { getIsAdmin, getIsLoggedIn } from '../../../modules/auth/selectors';
 
 import TermsAndConditions from '../../../modules/terms-of-use/TermsAndConditions';
 import SignIn from '../../../modules/auth/components/SingIn/SignIn';
@@ -18,12 +18,14 @@ import SetPassword from '../../../modules/auth/components/SetPassword/SetPasswor
 import ResetPassword from '../../../modules/auth/components/ResetPassword/ResetPassword';
 import Recipes from '../../../modules/recipes/Recipes';
 import Recipe from '../../../modules/recipes/components/Recipe/Recipe';
+import ChatRoom from '../../../modules/chat/ChatRoom';
 
 const Main = () => {
     const errorMessage = useSelector(getErrorMessage);
     const successMessage = useSelector(getSuccessMessage);
     const infoMessage = useSelector(getInfoMessage);
     const isAdmin = useSelector(getIsAdmin);
+    const isLoggedIn = useSelector(getIsLoggedIn);
 
     return (
         <Container className="wrapper">
@@ -34,10 +36,12 @@ const Main = () => {
                 <Route path="/set-password/:token" component={SetPassword} />
 
                 <Route exact path="/" component={Home} />
-                <Route exact path="/recipes" component={Recipes} />
                 <Route exact path="/recipes/:categoryId/:recipeId" component={Recipe} />
 
-                {isAdmin && <Route exact path="/categories" component={Categories} />}
+                {isLoggedIn && <Route exact path="/recipes" component={Recipes} />}
+                {isLoggedIn && <Route exact path="/chat-room" component={ChatRoom} />}
+
+                {isLoggedIn && isAdmin && <Route exact path="/categories" component={Categories} />}
 
                 <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
             </Switch>

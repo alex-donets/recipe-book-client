@@ -27,7 +27,7 @@ class IngredientForm extends Component<
                         label="Ingredient name"
                         placeholder="Ingredient name"
                         type="text"
-                        width={10}
+                        width={9}
                     />
 
                     <Field
@@ -49,7 +49,7 @@ class IngredientForm extends Component<
                         placeholder="e.g. kg"
                         type="text"
                         options={MEASURES}
-                        width={3}
+                        width={4}
                     />
 
                     <Form.Field className="add-btn">
@@ -62,6 +62,7 @@ class IngredientForm extends Component<
                             type="submit"
                             onClick={handleSubmit}
                             disabled={!valid && submitting}
+                            className="add-btn"
                         >
                             <Icon name="plus" />
                             Add

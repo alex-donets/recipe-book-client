@@ -17,10 +17,13 @@
   & button {
     margin-top: 12px;
   }
+
+  &.ui.large.icon.right.labeled.button {
+    border: 1px solid rgba(0,0,0,.05);
+  }
 }
 
 .measure-select > div {
-  max-width: 20px;
 
   &.ui.selection.dropdown {
     min-width: 7em;
@@ -69,7 +72,6 @@
   height: 8rem;
   background: linear-gradient(0, rgba(255,255,255,1) 40%, rgba(0,0,0,0) 100%);
 }
-
 
 .directions-holder {
   height: calc(#{$recipe-img-side} + 14px * 2);

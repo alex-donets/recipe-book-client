@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import GoogleLogin from 'react-google-login';
+import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { setErrorMessage } from '../../../../../app/actions';
 import { setUserInfo } from '../../../../actions';
 import useReactRouter from 'use-react-router';
@@ -10,10 +10,10 @@ const GoogleBtn = () => {
     const dispatch = useDispatch();
     const { history } = useReactRouter();
 
-    const clientId = '153508824111-n502ithsnqp721j2g52jvt6uo5k4gk5a.apps.googleusercontent.com';
+    const clientId = process.env.REACT_APP_GOOGLE_SINGIN_CLIENT_ID;
 
-    const onSuccess = (res: any) => {
-        if (res) {
+    const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+        if ('profileObj' in res) {
             const user = {
                 id: res.profileObj.googleId,
                 token: res.accessToken,
@@ -22,9 +22,9 @@ const GoogleBtn = () => {
             };
             dispatch(setUserInfo(user));
             setAuthToken(user);
-
-            history.push('/');
         }
+
+        history.push('/');
     };
 
     const onFailure = (res: any) => {

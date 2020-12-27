@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Dropdown, Image, Menu } from 'semantic-ui-react';
+import './styles.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsAdmin, getIsLoggedIn, getUserFullName } from '../../../modules/auth/selectors';
@@ -8,6 +9,7 @@ import { logout } from '../../../modules/auth/actions';
 import Logo from '../../../assets/recipe-book.svg';
 import Note from '../../../assets/note.svg';
 import Category from '../../../assets/stickers.svg';
+import Chat from '../../../assets/chat.svg';
 import useReactRouter from 'use-react-router';
 
 const Header = () => {
@@ -22,48 +24,65 @@ const Header = () => {
         dispatch(logout());
     };
 
+    const isTextVisible = window.screen.width > 750;
+
     return (
         <Menu fixed="top" inverted className="custom-header">
-            <Container>
-                <Menu.Item header onClick={() => history.push('/')}>
-                    <Image size="mini" src={Logo} className="header-image" alt="logo" />
-                    Recipe Book
-                </Menu.Item>
-
-                {isLoggedIn && (
-                    <Menu.Item onClick={() => history.push('/recipes')}>
-                        <Image size="mini" src={Note} className="header-image" alt="note image" />
-                        Create Recipe
+            <Container className="header-container">
+                <div className="header-left">
+                    <Menu.Item header onClick={() => history.push('/')}>
+                        <Image size="mini" src={Logo} className="header-image" alt="logo" />
+                        {isTextVisible ? 'Recipe Book' : ''}
                     </Menu.Item>
-                )}
 
-                {isLoggedIn && isAdmin && (
-                    <Menu.Item onClick={() => history.push('/categories')}>
-                        <Image size="mini" src={Category} className="header-image" alt="sticker image" />
-                        Category
-                    </Menu.Item>
-                )}
-
-                {isLoggedIn && (
-                    <Menu.Menu data-cy="user-info-dropdown" position="right">
-                        <Dropdown item text={userName || 'Guest'}>
-                            <Dropdown.Menu>
-                                <Dropdown.Item data-cy="logout-btn" text="Log Out" onClick={onLogout} />
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Menu.Menu>
-                )}
-
-                {!isLoggedIn && (
-                    <Menu.Menu position="right">
-                        <Menu.Item as="a" href="/login">
-                            Login
+                    {isLoggedIn && (
+                        <Menu.Item onClick={() => history.push('/recipes')}>
+                            <Image size="mini" src={Note} className="header-image" alt="note image" />
+                            {isTextVisible && 'Create Recipe'}
                         </Menu.Item>
-                        <Menu.Item as="a" href="/register">
-                            Register
+                    )}
+
+                    {isLoggedIn && isAdmin && (
+                        <Menu.Item onClick={() => history.push('/categories')}>
+                            <Image size="mini" src={Category} className="header-image" alt="sticker image" />
+                            {isTextVisible ? 'Category' : ''}
                         </Menu.Item>
-                    </Menu.Menu>
-                )}
+                    )}
+
+                    {isLoggedIn && (
+                        <Menu.Item onClick={() => history.push('/chat-room')}>
+                            <Image size="mini" src={Chat} className="header-image" alt="note image" />
+                            {isTextVisible ? 'Chat room' : ''}
+                        </Menu.Item>
+                    )}
+                </div>
+
+                <div className="header-right">
+                    {isLoggedIn && (
+                        <Menu.Menu data-cy="user-info-dropdown">
+                            <Dropdown
+                                item
+                                text={isTextVisible ? userName || 'Guest' : ''}
+                                icon={!isTextVisible ? 'user' : undefined}
+                            >
+                                <Dropdown.Menu>
+                                    <Dropdown.Item data-cy="logout-btn" text="Log Out" onClick={onLogout} />
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Menu.Menu>
+                    )}
+
+                    {!isLoggedIn && (
+                        <>
+                            <Menu.Menu>
+                                <Menu.Item onClick={() => history.push('/login')}>Login</Menu.Item>
+                            </Menu.Menu>
+                            <Menu.Menu>
+                                <Menu.Item onClick={() => history.push('/register')}>Register</Menu.Item>
+                            </Menu.Menu>
+                        </>
+                    )}
+                </div>
             </Container>
         </Menu>
     );

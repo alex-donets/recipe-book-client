@@ -8,8 +8,10 @@ import { isEmpty } from 'lodash';
 import { fetchCategories } from '../../../categories/actions';
 import IngredientForm from '../../../ingredients/components/Form/IngredientForm';
 import IngredientHeading from '../../../ingredients/components/Heading/IngredientHeading';
+import { FormikProps } from 'formik/dist/types';
+import { RecipeFormValues, SubmitRecipes } from '../../types';
 
-const RecipeForm = (props: any) => {
+const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
     const dispatch = useDispatch();
     const categoryList = useSelector(getCategoryList);
 
@@ -77,7 +79,7 @@ const RecipeForm = (props: any) => {
     };
 
     return (
-        <Form size="large" className="form-holder" onSubmit={handleOnSubmit} fluid>
+        <Form size="large" className="form-holder" onSubmit={handleOnSubmit}>
             <Form.Group widths="equal">
                 <Form.Input
                     id="recipe-name-input"
@@ -142,7 +144,6 @@ const RecipeForm = (props: any) => {
                 value={directions}
                 onChange={handleInputChange}
                 error={touched.directions && errors.directions}
-                fluid
                 rows={8}
                 placeholder="Write your recipe here..."
             />

@@ -9,7 +9,6 @@ export interface AuthState {
     email: string | null;
     fullName: string | null;
     role: string | null;
-    googleId: string | null;
 }
 
 export interface HandleLogin extends Action {

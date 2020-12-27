@@ -1,7 +1,7 @@
 import { createReducer } from 'redux-create-reducer';
 import { reducer as reduxFormReducer } from 'redux-form';
 
-import { ADD_INGREDIENT, DELETE_INGREDIENT, FILL_INGREDIENTS_LIST } from './constants';
+import { ADD_INGREDIENT, CLEAR, DELETE_INGREDIENT, FILL_INGREDIENTS_LIST } from './constants';
 
 import { IngredientState } from './types';
 import { v4 as uuidv4 } from 'uuid';
@@ -42,4 +42,6 @@ export default createReducer(initialState, {
             ingredientList: updatedList,
         };
     },
+
+    [CLEAR]: () => ({ ...initialState }),
 });

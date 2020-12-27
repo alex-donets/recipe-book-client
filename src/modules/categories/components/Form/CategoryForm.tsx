@@ -59,7 +59,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
     };
 
     return (
-        <Form size="large" className="form-holder" onSubmit={handleOnSubmit} fluid>
+        <Form size="large" className="form-holder" onSubmit={handleOnSubmit}>
             <Form.Input
                 id="category-name-input"
                 name="name"

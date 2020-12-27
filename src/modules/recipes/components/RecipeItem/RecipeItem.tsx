@@ -58,7 +58,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                     className="recipe-img-holder"
                 >
                     {isShowLoadImg && (
-                        <Placeholder className="placeholder-recipe" padded>
+                        <Placeholder className="placeholder-recipe">
                             <Placeholder.Image square />
                         </Placeholder>
                     )}

@@ -97,3 +97,7 @@ export interface ParamTypes {
     categoryId: string;
     recipeId: string;
 }
+
+export interface SubmitRecipes {
+    submitIngredients: (formData: IngredientFormValues) => void;
+}
