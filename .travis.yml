@@ -24,7 +24,7 @@ jobs:
         provider: pages
         skip-cleanup: true
         github-token: $GITHUB_TOKEN
-        local_dir: build
+        local-dir: build
         keep-history: true
         on:
           all_branches: true
