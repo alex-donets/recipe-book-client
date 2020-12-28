@@ -26,6 +26,7 @@ jobs:
         github-token: $GITHUB_TOKEN
         local-dir: build
         keep-history: true
+        edge: true
         on:
           all_branches: true
 #      if: (type = push AND branch = master)
