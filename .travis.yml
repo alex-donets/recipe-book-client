@@ -20,10 +20,11 @@ jobs:
       script: yarn run build
 
     - stage: deploy
-    if: (type = push AND branch = master)
-    provider: pages
-      skip_cleanup: true
-      github_token: $GITHUB_TOKEN
-      keep_history: true
-      on:
-        branch: master
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: true
+        edge: true
+        on:
+          all_branches: true
