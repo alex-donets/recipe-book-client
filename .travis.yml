@@ -24,13 +24,7 @@ jobs:
         provider: pages
         skip-cleanup: true
         github-token: $GITHUB_TOKEN
-#        local-dir: build
         keep-history: true
         edge: true
         on:
-          all_branches: true
-#      if: (type = push AND branch = master)
-#      github_token: $GITHUB_TOKEN
-#      username: $USER_NAME
-#      password: $PASS
-#      script: yarn run deploy
+          branch: master
