@@ -19,16 +19,16 @@ jobs:
     - stage: build
       script: yarn run build
 
-    - stage: deploy
 #      if: (type = push AND branch = master)
 #      github_token: $GITHUB_TOKEN
 #      username: $USER_NAME
 #      password: $PASS
 #      script: yarn run deploy
-      provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN
-        local_dir: build
-        keep-history: true
-        on:
-          branch: develop
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local_dir: build
+  keep-history: true
+  on:
+    branch: develop
