@@ -20,6 +20,7 @@ jobs:
       script: yarn run build
 
     - stage: deploy
+      if: (type IN (push, pull_request) AND (branch = master))
       deploy:
         provider: pages
         skip-cleanup: true
