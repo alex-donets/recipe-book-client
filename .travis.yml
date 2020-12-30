@@ -28,4 +28,4 @@ jobs:
         keep-history: true
         edge: true
         on:
-          all_branches: true
+          branches: master
