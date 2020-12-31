@@ -10,7 +10,7 @@ import { addRecipe, updateRecipe } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsEditMode, getSelectedRecipe, getSelectedRecipeId } from '../../selectors';
 import { queryToForm } from '../../helpers';
-import { RecipeFormValues } from '../../types';
+import { QueryAddRecipe, QueryUpdateRecipe, RecipeFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
 import { IngredientFormValues } from '../../../ingredients/types';
 import { addIngredient, clear } from '../../../ingredients/actions';
@@ -42,7 +42,7 @@ const RecipeContent = () => {
         <RecipeForm {...props} submitIngredients={submitIngredients} />
     );
 
-    const submitRecipe = (formData: RecipeFormValues) => {
+    const submitRecipe = (formData: QueryAddRecipe & QueryUpdateRecipe) => {
         const formDataPayload = trimFormValues(formData);
 
         const resultAction = selectedRecipe ? updateRecipe : addRecipe;

@@ -19,7 +19,7 @@ import {
     SET_CONTENT_VISIBLE,
 } from './constants';
 
-import { AddCategory, Category, PreviewCard, UpdateCategory } from './types';
+import { CategoryFormValues, Category, PreviewCard, CategoryAddValues } from './types';
 
 import { AxiosError } from 'axios';
 
@@ -37,7 +37,7 @@ export const fetchCategoriesError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const addCategory = (data: AddCategory) => ({
+export const addCategory = (data: CategoryAddValues) => ({
     type: ADD_CATEGORY_PENDING,
     payload: data,
 });
@@ -52,7 +52,7 @@ export const addCategoryError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const updateCategory = (data: UpdateCategory) => ({
+export const updateCategory = (data: CategoryFormValues) => ({
     type: UPDATE_CATEGORY_PENDING,
     payload: data,
 });

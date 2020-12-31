@@ -43,11 +43,11 @@ export interface AddCategory extends Action {
 }
 
 export interface UpdateCategory extends Action {
-    payload: {
-        _id: string;
-        name?: string;
-        photo?: File;
-    };
+    payload: UpdateCategoryValues;
+}
+
+export interface UpdateCategoryValues extends QueryUpdateCategory {
+    _id: string;
 }
 
 export interface QueryAddCategory {
@@ -70,7 +70,11 @@ export interface PreviewCard {
     previewTitle?: string;
 }
 
-export interface CategoryFormValues {
+export interface CategoryFormValues extends CategoryAddValues {
+    _id?: string;
+}
+
+export interface CategoryAddValues {
     name: string;
     photo: File | null;
 }

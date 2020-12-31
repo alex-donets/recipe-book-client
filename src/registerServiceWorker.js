@@ -1,5 +1,7 @@
+import { uiUrl } from './backend/services';
+
 export const registerServiceWorker = () => {
-    const swUrl = `${process.env.REACT_APP_UI_URL}/serviceWorker.js`;
+    const swUrl = `${uiUrl}/serviceWorker.js`;
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
             .register(swUrl)

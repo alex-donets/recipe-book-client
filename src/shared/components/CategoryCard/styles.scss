@@ -27,3 +27,9 @@
     z-index: 1;
   }
 }
+
+.placeholder-title {
+  &.center.aligned.content > div {
+    color: #e0e1e2;
+  }
+}
