@@ -38,13 +38,36 @@
 
 .message-content {
   overflow-wrap: anywhere;
+  position: relative;
 }
 
 .time {
-  display: flex;
-  justify-content: flex-end;
+  position: relative;
+  top: -8px;
+  right: -8px;
+  float: right;
   font-size: 0.8rem;
   color: gray;
+  padding-left: 1rem;
+}
+
+.divider-medium {
+  &.ui.divider {
+    margin: 0.5rem;
+  }
+}
+
+.icon-holder {
+  margin-right: 0.5rem;
+  max-width: 1rem;
+  position: relative;
+  top: 2px;
+  right: 0;
+}
+
+.author-name {
+  color: #4183c4;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 750px) {

@@ -42,6 +42,10 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
         dispatch(setDeleteDialogIsVisible(true));
     };
 
+    const handleOnClick = () => {
+        history.push(`/recipes/${item.categoryId}/${item._id}`)
+    };
+
     return (
         <Grid key={item._id} textAlign="center">
             <Grid.Row>
@@ -52,10 +56,9 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
 
             <Grid.Row className="directions-holder">
                 <Grid.Column
-                    as="a"
-                    href={`/recipes/${item.categoryId}/${item._id}`}
                     width={5}
                     className="recipe-img-holder"
+                    onClick={handleOnClick}
                 >
                     {isShowLoadImg && (
                         <Placeholder className="placeholder-recipe">

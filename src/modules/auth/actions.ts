@@ -18,7 +18,7 @@ import {
     SET_PASSWORD_ERROR,
 } from './constants';
 
-import { LoginData, RegisterData, ResetPassword, SetPassword, UserData, UserInfo } from './types';
+import { LoginData, RegisterFormValues, ResetPassword, SetPassword, UserData, UserInfo } from './types';
 
 import { AxiosError } from 'axios';
 
@@ -37,7 +37,7 @@ export const loginError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const register = (data: RegisterData) => ({
+export const register = (data: RegisterFormValues) => ({
     type: REGISTER_PENDING,
     payload: data,
 });

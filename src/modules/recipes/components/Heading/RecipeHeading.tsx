@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { isEmpty } from 'lodash';
 
-import { Container, Header, Loader, Pagination, PaginationProps, Segment } from 'semantic-ui-react';
+import { Container, Header, Pagination, PaginationProps, Segment } from 'semantic-ui-react';
 import {
     getActivePage,
     getIsDeleteDialogVisible,
@@ -17,6 +17,7 @@ import { deleteRecipe, fetchRecipes, setActivePage, setDeleteDialogIsVisible } f
 import RecipeItem from '../RecipeItem/RecipeItem';
 import { listPerPage } from '../../helpers';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
+import RecipeItemLoaded from "../RecipeItem/RecipeItemLoaded";
 
 const ConfirmationModal = lazy(() => import('../../../../shared/components/ConfirmationModal/ConfirmationModal'));
 
@@ -34,6 +35,8 @@ const RecipeHeading = () => {
     const totalPages = recipeList ? Math.ceil(recipeList.length / 5) : 0;
     const canShowPagination = totalPages > 1 && !isRecipeListLoading;
     const paginationList = listPerPage(recipeList, activePage, 5);
+
+    const recipeLoader = [1, 2, 3];
 
     useEffect(() => {
         dispatch(fetchRecipes(selectedCategoryId));
@@ -54,16 +57,27 @@ const RecipeHeading = () => {
 
     return (
         <>
-            {isRecipeListLoading && <Loader size="large">Loading</Loader>}
-
-            {!isRecipeListLoading && isEmpty(recipeList) && (
-                <div className="empty-holder">No recipes added in this category</div>
-            )}
-
-            {!isRecipeListLoading && !isEmpty(recipeList) && (
+            {selectedCategoryId && (
                 <Header as="h2" className="primary-text heading">
                     Collection
                 </Header>
+            )}
+
+            {isRecipeListLoading && (
+                <div className="category-content">
+                    <Segment padded="very">
+                        {recipeLoader.map((item, index) => {
+                            const lastIndex = paginationList.length - 1;
+                            const showDivider = index !== lastIndex;
+
+                            return <RecipeItemLoaded key={item} showDivider={showDivider} />
+                        })}
+                    </Segment>
+                </div>
+            )}
+
+            {!isRecipeListLoading && isEmpty(recipeList) && (
+                <div className="empty-holder">No recipes added in this category</div>
             )}
 
             {canShowPagination && (

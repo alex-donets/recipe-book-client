@@ -46,6 +46,11 @@ const ChatRoom = () => {
 
     const renderForm = (props: FormikProps<MessageFormValues>) => <ChatForm {...props} />;
 
+    const handleOnLoad = () => {
+        const element = document.getElementById("chat-holder");
+        element.scrollTop = element.scrollHeight;
+    };
+
     return (
         <div className="chat-container">
             <Header as="h2" className="primary-text">
@@ -56,7 +61,7 @@ const ChatRoom = () => {
                 <Grid stackable padded>
                     <Grid.Row>
                         <Grid.Column>
-                            <div className="chat-content">
+                            <div id="chat-holder" className="chat-content" onLoad={handleOnLoad}>
                                 {isEmpty(messageList) && (
                                     <div className="empty-holder">No messages available yet. Submit the first one.</div>
                                 )}

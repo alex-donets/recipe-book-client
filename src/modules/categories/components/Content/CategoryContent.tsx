@@ -18,7 +18,7 @@ import {
 import { queryToForm } from '../../helpers';
 import { categoryPhotoUrl } from '../../../../backend/constants';
 import DefaultIcon from '../../../../assets/plus.svg';
-import { CategoryFormValues } from '../../types';
+import { CategoryAddValues, CategoryFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
 
 const CategoryContent = () => {
@@ -50,7 +50,7 @@ const CategoryContent = () => {
 
     const renderForm = (props: FormikProps<CategoryFormValues>) => <CategoryForm {...props} />;
 
-    const handleOnSubmit = (formData: CategoryFormValues) => {
+    const handleOnSubmit = (formData: CategoryFormValues | CategoryAddValues) => {
         const formDataPayload = trimFormValues(formData);
 
         const resultAction = selectedCategory ? updateCategory : addCategory;
