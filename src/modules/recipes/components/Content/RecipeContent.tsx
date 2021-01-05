@@ -6,14 +6,14 @@ import { addValidationSchema, formInitialValues, updateValidationSchema } from '
 
 import RecipeForm from '../Form/RecipeForm';
 import { trimFormValues } from '../../../../utils/helpers';
-import { addRecipe, updateRecipe } from '../../actions';
+import { addRecipe, clear as clearRecipe, updateRecipe } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsEditMode, getSelectedRecipe, getSelectedRecipeId } from '../../selectors';
 import { queryToForm } from '../../helpers';
 import { QueryAddRecipe, QueryUpdateRecipe, RecipeFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
 import { IngredientFormValues } from '../../../ingredients/types';
-import { addIngredient } from '../../../ingredients/actions';
+import { addIngredient, clear as clearIngredients } from '../../../ingredients/actions';
 import { reset } from 'redux-form';
 
 const RecipeContent = () => {
@@ -37,6 +37,13 @@ const RecipeContent = () => {
             current.setValues({ ...queryToForm(selectedRecipe) });
         }
     }, [selectedRecipeId]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearRecipe());
+            dispatch(clearIngredients());
+        }
+    }, []);
 
     const renderForm = (props: FormikProps<RecipeFormValues>) => (
         <RecipeForm {...props} submitIngredients={submitIngredients} />

@@ -5,7 +5,6 @@ import { reduxForm, Field, InjectedFormProps } from 'redux-form';
 import { MEASURES } from '../../constants';
 import { IngredientFormProps, IngredientFormValues } from '../../types';
 import { connect } from 'react-redux';
-import { addIngredient } from '../../actions';
 import Input from './components/Input/Input';
 import Select from './components/Select/Select';
 import { formValidationSchema } from './constants';
@@ -19,7 +18,7 @@ class IngredientForm extends Component<
         const { valid, submitting, handleSubmit, error } = this.props;
 
         return (
-            <Form onSubmit={handleSubmit}>
+            <Form>
                 <Form.Group>
                     <Field
                         component={Input}
@@ -59,7 +58,7 @@ class IngredientForm extends Component<
                             id="add-ingredients-btn"
                             labelPosition="right"
                             size="large"
-                            type="submit"
+                            type="button"
                             onClick={handleSubmit}
                             disabled={!valid && submitting}
                             className="add-btn"
@@ -85,7 +84,7 @@ const mapStateToProps = (state: RootReducerTypes) => {
     return { ingredientList, reduxForm };
 };
 
-const ingredientForm = connect(mapStateToProps, { addIngredient })(IngredientForm);
+const ingredientForm = connect(mapStateToProps)(IngredientForm);
 
 export default reduxForm<IngredientFormValues>({
     form: 'IngredientsForm',
