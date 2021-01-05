@@ -53,10 +53,13 @@
   width: 100%;
 }
 
+.directions {
+  white-space: pre-wrap;
+}
+
 .directions-content {
   overflow: hidden;
   position: relative;
-
   max-height: $recipe-img-side;
 }
 
