@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://veronika-donets.github.io/recipe-book-client/precache-manifest.829216f403c1dbf5e0d2e722edef4ca4.js"
+  "https://veronika-donets.github.io/recipe-book-client/precache-manifest.d2d4f0444c1560fbf904dd02d6da4147.js"
 );
 
 self.addEventListener('message', (event) => {
