@@ -1,14 +1,21 @@
-import React, { BaseSyntheticEvent } from 'react';
+import React, { BaseSyntheticEvent, useEffect } from 'react';
 import { Button, Header, Icon, Table } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientList } from '../../selectors';
 import { isEmpty } from 'lodash';
 import './styles.scss';
-import { deleteIngredient } from '../../actions';
+import { clear, deleteIngredient } from '../../actions';
+import { getIsEditMode } from "../../../recipes/selectors";
 
 const IngredientHeading = () => {
     const dispatch = useDispatch();
+
+    const isEditMode = useSelector(getIsEditMode);
     const ingredientList = useSelector(getIngredientList);
+
+    useEffect(() => {
+        !isEditMode && dispatch(clear());
+    });
 
     const handleClick = (e: BaseSyntheticEvent) => {
         dispatch(deleteIngredient(e.target.id));

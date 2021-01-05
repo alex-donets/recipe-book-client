@@ -12,7 +12,7 @@ console.log('uiUrl', uiUrl);
 console.log('apiUrl', apiUrl);
 
 export const apiClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL_DEV,
+    baseURL: apiUrl,
     withCredentials: true,
 });
 
