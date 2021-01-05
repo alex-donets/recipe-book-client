@@ -2,7 +2,7 @@
   "files": {
     "static/js/0.33d05112.chunk.js": "https://veronika-donets.github.io/recipe-book-client/static/js/0.33d05112.chunk.js",
     "static/js/0.33d05112.chunk.js.map": "https://veronika-donets.github.io/recipe-book-client/static/js/0.33d05112.chunk.js.map",
-    "main.css": "https://veronika-donets.github.io/recipe-book-client/static/css/main.f7068b4f.chunk.css",
+    "main.css": "https://veronika-donets.github.io/recipe-book-client/static/css/main.ce2a165b.chunk.css",
     "main.js": "https://veronika-donets.github.io/recipe-book-client/static/js/main.f33c1198.chunk.js",
     "main.js.map": "https://veronika-donets.github.io/recipe-book-client/static/js/main.f33c1198.chunk.js.map",
     "runtime-main.js": "https://veronika-donets.github.io/recipe-book-client/static/js/runtime-main.494867dd.js",
@@ -10,9 +10,9 @@
     "static/js/3.d69dff46.chunk.js": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js",
     "static/js/3.d69dff46.chunk.js.map": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js.map",
     "index.html": "https://veronika-donets.github.io/recipe-book-client/index.html",
-    "precache-manifest.139a2574a4ed49b0faa550b1138306cf.js": "https://veronika-donets.github.io/recipe-book-client/precache-manifest.139a2574a4ed49b0faa550b1138306cf.js",
+    "precache-manifest.d81f49c698dfa1c092a110fe16f4027c.js": "https://veronika-donets.github.io/recipe-book-client/precache-manifest.d81f49c698dfa1c092a110fe16f4027c.js",
     "service-worker.js": "https://veronika-donets.github.io/recipe-book-client/service-worker.js",
-    "static/css/main.f7068b4f.chunk.css.map": "https://veronika-donets.github.io/recipe-book-client/static/css/main.f7068b4f.chunk.css.map",
+    "static/css/main.ce2a165b.chunk.css.map": "https://veronika-donets.github.io/recipe-book-client/static/css/main.ce2a165b.chunk.css.map",
     "static/js/3.d69dff46.chunk.js.LICENSE.txt": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js.LICENSE.txt",
     "static/media/chat.svg": "https://veronika-donets.github.io/recipe-book-client/static/media/chat.6423c4b2.svg",
     "static/media/comment.svg": "https://veronika-donets.github.io/recipe-book-client/static/media/comment.4d33618f.svg",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.494867dd.js",
     "static/js/3.d69dff46.chunk.js",
-    "static/css/main.f7068b4f.chunk.css",
+    "static/css/main.ce2a165b.chunk.css",
     "static/js/main.f33c1198.chunk.js"
   ]
 }

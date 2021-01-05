@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df9c3e50704bdf902841d33d763acc0a",
+    "revision": "3553ac46adf65ad559a3698b8be7ce86",
     "url": "https://veronika-donets.github.io/recipe-book-client/index.html"
   },
   {
-    "revision": "302884e4b4de62afbc27",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/css/main.f7068b4f.chunk.css"
+    "revision": "b367215ac5a62f0b1068",
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/css/main.ce2a165b.chunk.css"
   },
   {
     "revision": "d35c1ab1f491378b99a2",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "302884e4b4de62afbc27",
+    "revision": "b367215ac5a62f0b1068",
     "url": "https://veronika-donets.github.io/recipe-book-client/static/js/main.f33c1198.chunk.js"
   },
   {
