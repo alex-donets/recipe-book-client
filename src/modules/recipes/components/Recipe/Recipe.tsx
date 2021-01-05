@@ -57,7 +57,7 @@ const Recipe = () => {
                     </Grid.Row>
 
                     <Grid.Row>
-                        <Grid.Column textAlign="justified">{recipe.directions}</Grid.Column>
+                        <Grid.Column textAlign="justified" className="directions">{recipe.directions}</Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Segment>
