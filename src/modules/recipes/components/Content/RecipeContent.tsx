@@ -13,7 +13,7 @@ import { queryToForm } from '../../helpers';
 import { QueryAddRecipe, QueryUpdateRecipe, RecipeFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
 import { IngredientFormValues } from '../../../ingredients/types';
-import { addIngredient, clear } from '../../../ingredients/actions';
+import { addIngredient } from '../../../ingredients/actions';
 import { reset } from 'redux-form';
 
 const RecipeContent = () => {
@@ -53,7 +53,6 @@ const RecipeContent = () => {
     const submitIngredients = (formData: IngredientFormValues) => {
         dispatch(addIngredient(formData));
         dispatch(reset('IngredientsForm'));
-        dispatch(clear());
     };
 
     return (

@@ -17,6 +17,7 @@
     object-fit: cover;
     cursor: pointer;
   }
+
   &.ui.grid>.row>[class*="six wide"].column {
     width: $recipe-img-side;
   }
