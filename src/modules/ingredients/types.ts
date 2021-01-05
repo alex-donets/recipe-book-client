@@ -1,4 +1,3 @@
-import { FormReducer } from 'redux-form/lib/reducer';
 import { WrappedFieldProps } from 'redux-form';
 
 export interface IngredientFormValues {
@@ -14,7 +13,6 @@ export interface IngredientFormProps {
 
 export interface IngredientState {
     ingredientList: IngredientFormValues[];
-    form: FormReducer;
     errors: string | null;
 }
 

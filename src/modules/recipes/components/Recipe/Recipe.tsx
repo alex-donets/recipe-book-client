@@ -42,7 +42,7 @@ const Recipe = () => {
                                 Ingredients
                             </Header>
 
-                            <Table className="ui very basic table ingredient">
+                            <Table className="ui very basic table unstackable ingredient">
                                 <Table.Body>
                                     {recipe.ingredients.map(({ id, name, quantity, measure }) => (
                                         <Table.Row key={id}>

@@ -46,6 +46,10 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
         history.push(`/recipes/${item.categoryId}/${item._id}`)
     };
 
+    const handleShowMore = () => {
+        history.push(`/recipes/${item.categoryId}/${item._id}`);
+    };
+
     return (
         <Grid key={item._id} textAlign="center">
             <Grid.Row>
@@ -78,7 +82,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                     <Grid.Row className="directions-content">{item.directions}</Grid.Row>
 
                     {showMore && (
-                        <Grid.Row as="a" href={`/recipes/${item.categoryId}/${item._id}`} className="directions-more">
+                        <Grid.Row as="a" onClick={handleShowMore} className="directions-more">
                             Read more...
                         </Grid.Row>
                     )}

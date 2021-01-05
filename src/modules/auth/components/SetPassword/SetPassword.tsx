@@ -9,11 +9,13 @@ import { setPassword } from '../../actions';
 import SetPassForm from './components/SetPassForm/SetPassForm';
 import { formInitialValues, formValidationSchema } from './constants';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const SetPassword = () => {
     const dispatch = useDispatch();
 
     const { token, email } = useParams<ParamTypes>();
+    const { history } = useReactRouter();
 
     const renderForm = (props: FormikProps<SetPassFormValues>) => <SetPassForm {...props} />;
 
@@ -22,6 +24,10 @@ const SetPassword = () => {
         const data = { ...formData, token, key, email };
 
         dispatch(setPassword(data));
+    };
+
+    const handleClick = () => {
+        history.push('/login');
     };
 
     return (
@@ -41,7 +47,7 @@ const SetPassword = () => {
 
                 <Message>
                     Back to
-                    <a href="/login"> Login</a>
+                    <a onClick={handleClick}> Login</a>
                 </Message>
             </Grid.Column>
         </Grid>

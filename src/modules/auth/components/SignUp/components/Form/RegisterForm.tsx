@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getLoading } from '../../../../selectors';
 import { RegisterFormValues } from '../../../../types';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
     const {
@@ -14,12 +15,18 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
         handleChange,
     } = props;
 
+    const { history } = useReactRouter();
+
     const isLoading = useSelector(getLoading);
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         handleSubmit(e);
+    };
+
+    const handleClick = () => {
+        history.push('/terms-and-conditions');
     };
 
     return (
@@ -87,7 +94,7 @@ const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
                     error={touched.agreeTaC && errors.agreeTaC}
                     label={
                         <label>
-                            I agree to the <a href="/terms-and-conditions">Terms and Conditions</a>
+                            I agree to the <a onClick={handleClick}>Terms and Conditions</a>
                         </label>
                     }
                 />

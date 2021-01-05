@@ -1,5 +1,9 @@
 @import "variables";
 
+a {
+    cursor: pointer;
+}
+
 .wrapper {
     max-width: $primary-width;
     margin: 7em auto 4em;

@@ -10,9 +10,12 @@ import { trimFormValues } from '../../../../utils/helpers';
 import { LoginFormValues } from '../../types';
 import GoogleBtn from './components/GoogleSignIn/GoogleBtn';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const SignIn = () => {
     const dispatch = useDispatch();
+
+    const { history } = useReactRouter();
 
     const renderForm = (props: FormikProps<LoginFormValues>) => <LoginForm {...props} />;
 
@@ -20,6 +23,10 @@ const SignIn = () => {
         const formDataPayload = trimFormValues(formData);
 
         dispatch(login(formDataPayload));
+    };
+
+    const handleClick = () => {
+        history.push('/register');
     };
 
     return (
@@ -39,7 +46,7 @@ const SignIn = () => {
 
                 <Message>
                     New to us?
-                    <a href="/register"> Sign Up</a>
+                    <a onClick={handleClick}> Sign Up</a>
                 </Message>
                 <Message className="sing-in-google">
                     <div className="text-holder">Sign in with Google:</div>

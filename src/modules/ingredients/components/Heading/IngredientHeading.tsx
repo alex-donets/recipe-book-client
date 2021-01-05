@@ -1,21 +1,15 @@
-import React, { BaseSyntheticEvent, useEffect } from 'react';
+import React, { BaseSyntheticEvent } from 'react';
 import { Button, Header, Icon, Table } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientList } from '../../selectors';
 import { isEmpty } from 'lodash';
 import './styles.scss';
-import { clear, deleteIngredient } from '../../actions';
-import { getIsEditMode } from "../../../recipes/selectors";
+import { deleteIngredient } from '../../actions';
 
 const IngredientHeading = () => {
     const dispatch = useDispatch();
 
-    const isEditMode = useSelector(getIsEditMode);
     const ingredientList = useSelector(getIngredientList);
-
-    useEffect(() => {
-        !isEditMode && dispatch(clear());
-    });
 
     const handleClick = (e: BaseSyntheticEvent) => {
         dispatch(deleteIngredient(e.target.id));
@@ -28,7 +22,7 @@ const IngredientHeading = () => {
             </Header>
 
             {!isEmpty(ingredientList) && (
-                <Table className="ui very basic compact collapsing table ingredient">
+                <Table className="ui very basic compact collapsing unstackable table ingredient">
                     <Table.Body>
                         {ingredientList.map(({ id, name, quantity, measure }) => (
                             <Table.Row key={id}>
