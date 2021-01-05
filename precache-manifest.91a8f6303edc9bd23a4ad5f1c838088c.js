@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3553ac46adf65ad559a3698b8be7ce86",
+    "revision": "5fc4f17dfa65a666daafd96b9e605f1f",
     "url": "https://veronika-donets.github.io/recipe-book-client/index.html"
   },
   {
-    "revision": "b367215ac5a62f0b1068",
+    "revision": "592b468596141d2bd16a",
     "url": "https://veronika-donets.github.io/recipe-book-client/static/css/main.ce2a165b.chunk.css"
   },
   {
-    "revision": "d35c1ab1f491378b99a2",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/0.33d05112.chunk.js"
+    "revision": "35ba6a2d5a5776c215b6",
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/0.0dfc0fc0.chunk.js"
   },
   {
-    "revision": "3aa71aea0a919d0692ec",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js"
+    "revision": "36388c31e91560fe774f",
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/3.9960f260.chunk.js"
   },
   {
     "revision": "983bcd1ee933bf084a61ec7eccbb0a83",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/3.d69dff46.chunk.js.LICENSE.txt"
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/3.9960f260.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b367215ac5a62f0b1068",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/main.f33c1198.chunk.js"
+    "revision": "592b468596141d2bd16a",
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/main.34d595bc.chunk.js"
   },
   {
-    "revision": "3d53464d0f041415c624",
-    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/runtime-main.494867dd.js"
+    "revision": "ca2de564742f482091dc",
+    "url": "https://veronika-donets.github.io/recipe-book-client/static/js/runtime-main.0700b87e.js"
   },
   {
     "revision": "6423c4b28428560e3ccb3ad7b0b0786c",
