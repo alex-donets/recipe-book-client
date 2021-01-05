@@ -10,9 +10,12 @@ import { resetPassword } from '../../actions';
 import ResetPassForm from './components/ResetPassForm/ResetPassForm';
 import { formInitialValues, formValidationSchema } from './constants';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
+
+    const { history } = useReactRouter();
 
     const renderForm = (props: FormikProps<ResetPassFormValues>) => <ResetPassForm {...props} />;
 
@@ -20,6 +23,10 @@ const ResetPassword = () => {
         const formDataPayload = trimFormValues(formData);
 
         dispatch(resetPassword(formDataPayload));
+    };
+
+    const handleClick = () => {
+        history.push('/login');
     };
 
     return (
@@ -39,7 +46,7 @@ const ResetPassword = () => {
 
                 <Message>
                     Back to
-                    <a href="/login"> Login</a>
+                    <a onClick={handleClick}> Login</a>
                 </Message>
             </Grid.Column>
         </Grid>

@@ -5,8 +5,13 @@ import { useSelector } from 'react-redux';
 import { getLoading } from '../../../../selectors';
 import { LoginFormValues } from '../../../../types';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const LoginForm = (props: FormikProps<LoginFormValues>) => {
+    const { history } = useReactRouter();
+
+    const isLoading = useSelector(getLoading);
+
     const {
         values: { email, password },
         errors,
@@ -21,7 +26,9 @@ const LoginForm = (props: FormikProps<LoginFormValues>) => {
         handleSubmit(e);
     };
 
-    const isLoading = useSelector(getLoading);
+    const handleClick = () => {
+        history.push('/forgot-password');
+    };
 
     return (
         <Form size="large" onSubmit={handleOnSubmit}>
@@ -53,7 +60,7 @@ const LoginForm = (props: FormikProps<LoginFormValues>) => {
                 />
 
                 <Container className="forgot-pass-holder">
-                    <a href="/forgot-password">Forgot Password?</a>
+                    <a onClick={handleClick}>Forgot Password?</a>
                 </Container>
 
                 <Button

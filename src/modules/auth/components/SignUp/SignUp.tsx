@@ -9,9 +9,12 @@ import { register } from '../../actions';
 import { trimFormValues } from '../../../../utils/helpers';
 import { RegisterFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
+import useReactRouter from "use-react-router";
 
 const SignUp = () => {
     const dispatch = useDispatch();
+
+    const { history } = useReactRouter();
 
     const renderForm = (props: FormikProps<RegisterFormValues>) => <RegisterForm {...props} />;
 
@@ -19,6 +22,10 @@ const SignUp = () => {
         const formDataPayload = trimFormValues(formData);
 
         dispatch(register(formDataPayload));
+    };
+
+    const handleClick = () => {
+        history.push('/login');
     };
 
     return (
@@ -38,7 +45,7 @@ const SignUp = () => {
 
                 <Message>
                     Already with us?
-                    <a href="/login"> Sign In</a>
+                    <a onClick={handleClick}> Sign In</a>
                 </Message>
             </Grid.Column>
         </Grid>
