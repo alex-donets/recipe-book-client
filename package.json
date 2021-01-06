@@ -20,7 +20,7 @@
     "@types/redux-form": "^8.3.0",
     "@types/socket.io-client": "^1.4.34",
     "@types/uuid": "^8.3.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "babel-plugin-react-css-modules": "^5.2.6",
     "connected-react-router": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
