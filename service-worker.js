@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://recipe-book-ui.herokuapp.com/precache-manifest.76ace0bf6b25fe031054959d5f544ad7.js"
+  "https://recipe-book-ui.herokuapp.com/precache-manifest.d5cc658646fd2ca53cb300cf6b95080a.js"
 );
 
 self.addEventListener('message', (event) => {

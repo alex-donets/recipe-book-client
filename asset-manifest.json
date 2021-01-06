@@ -1,19 +1,19 @@
 {
   "files": {
-    "static/js/0.c34826d3.chunk.js": "https://recipe-book-ui.herokuapp.com/static/js/0.c34826d3.chunk.js",
-    "static/js/0.c34826d3.chunk.js.map": "https://recipe-book-ui.herokuapp.com/static/js/0.c34826d3.chunk.js.map",
-    "main.css": "https://recipe-book-ui.herokuapp.com/static/css/main.fda2ca11.chunk.css",
-    "main.js": "https://recipe-book-ui.herokuapp.com/static/js/main.f511d26b.chunk.js",
-    "main.js.map": "https://recipe-book-ui.herokuapp.com/static/js/main.f511d26b.chunk.js.map",
-    "runtime-main.js": "https://recipe-book-ui.herokuapp.com/static/js/runtime-main.30209e54.js",
-    "runtime-main.js.map": "https://recipe-book-ui.herokuapp.com/static/js/runtime-main.30209e54.js.map",
-    "static/js/3.180d4598.chunk.js": "https://recipe-book-ui.herokuapp.com/static/js/3.180d4598.chunk.js",
-    "static/js/3.180d4598.chunk.js.map": "https://recipe-book-ui.herokuapp.com/static/js/3.180d4598.chunk.js.map",
+    "static/js/0.29721ae2.chunk.js": "https://recipe-book-ui.herokuapp.com/static/js/0.29721ae2.chunk.js",
+    "static/js/0.29721ae2.chunk.js.map": "https://recipe-book-ui.herokuapp.com/static/js/0.29721ae2.chunk.js.map",
+    "main.css": "https://recipe-book-ui.herokuapp.com/static/css/main.626385bb.chunk.css",
+    "main.js": "https://recipe-book-ui.herokuapp.com/static/js/main.9b26e32d.chunk.js",
+    "main.js.map": "https://recipe-book-ui.herokuapp.com/static/js/main.9b26e32d.chunk.js.map",
+    "runtime-main.js": "https://recipe-book-ui.herokuapp.com/static/js/runtime-main.6bffc45c.js",
+    "runtime-main.js.map": "https://recipe-book-ui.herokuapp.com/static/js/runtime-main.6bffc45c.js.map",
+    "static/js/3.d699d6b9.chunk.js": "https://recipe-book-ui.herokuapp.com/static/js/3.d699d6b9.chunk.js",
+    "static/js/3.d699d6b9.chunk.js.map": "https://recipe-book-ui.herokuapp.com/static/js/3.d699d6b9.chunk.js.map",
     "index.html": "https://recipe-book-ui.herokuapp.com/index.html",
-    "precache-manifest.76ace0bf6b25fe031054959d5f544ad7.js": "https://recipe-book-ui.herokuapp.com/precache-manifest.76ace0bf6b25fe031054959d5f544ad7.js",
+    "precache-manifest.d5cc658646fd2ca53cb300cf6b95080a.js": "https://recipe-book-ui.herokuapp.com/precache-manifest.d5cc658646fd2ca53cb300cf6b95080a.js",
     "service-worker.js": "https://recipe-book-ui.herokuapp.com/service-worker.js",
-    "static/css/main.fda2ca11.chunk.css.map": "https://recipe-book-ui.herokuapp.com/static/css/main.fda2ca11.chunk.css.map",
-    "static/js/3.180d4598.chunk.js.LICENSE.txt": "https://recipe-book-ui.herokuapp.com/static/js/3.180d4598.chunk.js.LICENSE.txt",
+    "static/css/main.626385bb.chunk.css.map": "https://recipe-book-ui.herokuapp.com/static/css/main.626385bb.chunk.css.map",
+    "static/js/3.d699d6b9.chunk.js.LICENSE.txt": "https://recipe-book-ui.herokuapp.com/static/js/3.d699d6b9.chunk.js.LICENSE.txt",
     "static/media/chat.svg": "https://recipe-book-ui.herokuapp.com/static/media/chat.6423c4b2.svg",
     "static/media/comment.svg": "https://recipe-book-ui.herokuapp.com/static/media/comment.4d33618f.svg",
     "static/media/note.svg": "https://recipe-book-ui.herokuapp.com/static/media/note.88e055e8.svg",
@@ -22,9 +22,9 @@
     "static/media/stickers.svg": "https://recipe-book-ui.herokuapp.com/static/media/stickers.d4230bf9.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.30209e54.js",
-    "static/js/3.180d4598.chunk.js",
-    "static/css/main.fda2ca11.chunk.css",
-    "static/js/main.f511d26b.chunk.js"
+    "static/js/runtime-main.6bffc45c.js",
+    "static/js/3.d699d6b9.chunk.js",
+    "static/css/main.626385bb.chunk.css",
+    "static/js/main.9b26e32d.chunk.js"
   ]
 }
