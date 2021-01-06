@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 import { RecipeFormValues } from '../../types';
 
-const FILE_SIZE = 5000000; // 5 Mb
+const FILE_SIZE_MAX = 512000; // 500 kB
+const FILE_SIZE_MIN = 5120; // 5 kB
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
 export const formInitialValues: RecipeFormValues = {
@@ -18,8 +19,9 @@ export const addValidationSchema = Yup.object({
         .max(50, 'Name should be no more than 50 characters'),
     photo: Yup.mixed()
         .required('Please add a photo')
-        .test('fileSize', 'File size is too large', (value) => value && value.size <= FILE_SIZE)
-        .test('fileType', 'Unsupported File Format', (value) => value && SUPPORTED_FORMATS.includes(value.type)),
+        .test('fileType', 'Unsupported File Format', (value) => value && SUPPORTED_FORMATS.includes(value.type))
+        .test('fileSize', 'File size should be no more than 500 kB', (value) => value && value.size <= FILE_SIZE_MAX)
+        .test('fileSize', 'File size should be no less than 5 kB', (value) => value && value.size >= FILE_SIZE_MIN),
     categoryId: Yup.string().required('Please select a category'),
     directions: Yup.string()
         .trim()

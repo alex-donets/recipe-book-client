@@ -10,7 +10,6 @@
 
 .header-left {
   display: flex;
-
 }
 
 .header-right {
@@ -24,6 +23,10 @@
 .header-image {
   margin-right: 1.5em;
   object-fit: scale-down;
+}
+
+.ui.dropdown .menu>* {
+  white-space: pre-line;
 }
 
 @media only screen and (max-width: 750px) {

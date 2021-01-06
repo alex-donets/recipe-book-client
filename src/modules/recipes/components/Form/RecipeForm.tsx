@@ -36,6 +36,7 @@ const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
         values: { name, categoryId, photo, directions },
         errors,
         touched,
+        setFieldTouched,
         handleSubmit,
         handleChange,
         setFieldValue,
@@ -60,6 +61,7 @@ const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
         const { current } = fileInputRef;
 
         current && current.click();
+        setFieldTouched('photo', true, true);
     };
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -70,39 +72,46 @@ const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
 
     const handleInputChange = (e: BaseSyntheticEvent) => {
         e.preventDefault();
+        setFieldTouched(e.target.name, true, true);
 
         handleChange(e);
     };
 
     const handleSelectChange = (e: SyntheticEvent<HTMLElement, Event>, { name, value }: DropdownProps) => {
         setFieldValue(name, value);
+        setFieldTouched(name, true, true);
     };
 
     return (
         <Form size="large" className="form-holder" onSubmit={handleOnSubmit}>
             <Form.Group widths="equal">
-                <Form.Input
-                    id="recipe-name-input"
-                    name="name"
-                    label="Recipe name"
-                    placeholder="Recipe name"
-                    value={name}
-                    onChange={handleInputChange}
-                    error={touched.name && errors.name}
-                    fluid
-                />
+                <Form.Field>
+                    <Form.Input
+                        id="recipe-name-input"
+                        name="name"
+                        label="Recipe name"
+                        placeholder="Recipe name"
+                        value={name}
+                        onChange={handleInputChange}
+                        fluid
+                    />
+                    {touched.name && errors.name && <div className="error-text">{errors.name}</div>}
+                </Form.Field>
 
-                <Form.Select
-                    fluid
-                    id="recipe-select-category"
-                    name="categoryId"
-                    label="Category"
-                    options={categoryOptions}
-                    value={categoryId}
-                    onChange={handleSelectChange}
-                    error={touched.categoryId && errors.categoryId}
-                    placeholder="Choose a category"
-                />
+                <Form.Field>
+                    <Form.Select
+                        fluid
+                        id="recipe-select-category"
+                        name="categoryId"
+                        label="Category"
+                        options={categoryOptions}
+                        value={categoryId}
+                        onChange={handleSelectChange}
+                        error={touched.categoryId && errors.categoryId}
+                        placeholder="Choose a category"
+                    />
+                    {touched.categoryId && errors.categoryId && <div className="error-text">{errors.categoryId}</div>}
+                </Form.Field>
             </Form.Group>
 
             <div className="photo-btn">
@@ -138,15 +147,18 @@ const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
                 Directions
             </Header>
 
+            <Form.Field>
             <TextArea
                 id="recipe-directions"
                 name="directions"
                 value={directions}
                 onChange={handleInputChange}
-                error={touched.directions && errors.directions}
                 rows={8}
                 placeholder="Write your recipe here..."
             />
+
+            {touched.directions && errors.directions && <div className="error-text">{errors.directions}</div>}
+            </Form.Field>
 
             <BtnSection formProps={props} />
         </Form>
