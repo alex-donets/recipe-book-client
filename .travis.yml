@@ -20,12 +20,10 @@ jobs:
       script: yarn run build
 
     - stage: deploy
-      if: (type IN (push, pull_request) AND (branch = master))
       deploy:
-        provider: pages
-        cleanup: false
-        github-token: $GITHUB_TOKEN
-        keep-history: true
-        edge: true
+        provider: heroku
+        api_key:
+          secure: "0a4105ef-eac4-4a56-9b15-0e98de35a6be"
+        app: recipe-book-ui
         on:
-          branch: master
+          repo: veronika-donets/recipe-book-client
