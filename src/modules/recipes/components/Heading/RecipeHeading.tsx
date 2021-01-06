@@ -57,7 +57,7 @@ const RecipeHeading = () => {
 
     return (
         <>
-            {selectedCategoryId && (
+            {selectedCategoryId && !isEmpty(recipeList) && (
                 <Header as="h2" className="primary-text heading">
                     Collection
                 </Header>

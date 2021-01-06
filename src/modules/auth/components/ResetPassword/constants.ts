@@ -8,6 +8,6 @@ export const formInitialValues = {
 export const formValidationSchema = Yup.object({
     email: Yup.string()
         .trim()
-        .matches(emailRegExp, 'Max 60 characters, symbol "@" is mandatory')
+        .matches(emailRegExp, 'Please enter a valid email')
         .required('Email is required'),
 });

@@ -9,6 +9,9 @@ const Footer = () => {
         history.push(path);
     };
 
+    const date = new Date();
+    const year = date.getFullYear();
+
     return (
         <Segment vertical className="custom-footer">
             <Container textAlign="center">
@@ -20,7 +23,7 @@ const Footer = () => {
                         Terms and Conditions
                     </List.Item>
                     <List.Item as="a" onClick={() => handleClick('/')}>
-                        TM and copyright © 2020
+                        TM and copyright © {year}
                     </List.Item>
                 </List>
             </Container>

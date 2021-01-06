@@ -7,6 +7,6 @@ export const formInitialValues = {
 };
 
 export const formValidationSchema = Yup.object({
-    email: Yup.string().trim().matches(emailRegExp, 'Symbol "@" is mandatory').required('Please enter your email'),
+    email: Yup.string().trim().matches(emailRegExp, 'Please enter a valid email').required('Please enter your email'),
     password: Yup.string().trim().required('Please enter a password'),
 });

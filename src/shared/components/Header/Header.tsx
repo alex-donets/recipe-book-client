@@ -66,7 +66,7 @@ const Header = () => {
                                 icon={!isTextVisible ? 'user' : undefined}
                             >
                                 <Dropdown.Menu>
-                                    <Dropdown.Item data-cy="logout-btn" text="Log Out" onClick={onLogout} />
+                                    <Dropdown.Item className="header-dropdown" data-cy="logout-btn" text="Log Out" onClick={onLogout} />
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Menu.Menu>
