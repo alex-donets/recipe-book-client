@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Grid, Header, Segment, Table } from 'semantic-ui-react';
+import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
+import { Grid, Header, Placeholder, Segment, Table } from 'semantic-ui-react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeList, getRecipeListLoading } from '../../selectors';
@@ -8,9 +8,12 @@ import { fetchRecipes } from '../../actions';
 import { recipePhotoUrl } from '../../../../backend/constants';
 import { ParamTypes } from '../../types';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
+import DefaultImage from "../../../../assets/default-image.png";
 
 const Recipe = () => {
     const dispatch = useDispatch();
+
+    const [isShowLoadImg, setIsShowLoadImg] = useState(true);
 
     const { categoryId, recipeId } = useParams<ParamTypes>();
 
@@ -24,6 +27,15 @@ const Recipe = () => {
         }
     }, []);
 
+    const handleOnError = (e: BaseSyntheticEvent) => {
+        e.target.src = DefaultImage;
+        e.target.error = null;
+    };
+
+    const handleOnLoad = () => {
+        setIsShowLoadImg(false);
+    };
+
     return recipe ? (
         <div className="recipe-content">
             <Header as="h2" className="primary-text">
@@ -34,7 +46,18 @@ const Recipe = () => {
                 <Grid stackable padded>
                     <Grid.Row>
                         <Grid.Column width={8}>
-                            <img src={recipePhotoUrl + recipe._id} alt={recipe.name} />
+                            {isShowLoadImg && (
+                                <Placeholder>
+                                    <Placeholder.Image square />
+                                </Placeholder>
+                            )}
+
+                            <img
+                                src={recipePhotoUrl + recipe._id}
+                                alt={recipe.name}
+                                onError={handleOnError}
+                                onLoad={handleOnLoad}
+                            />
                         </Grid.Column>
 
                         <Grid.Column width={8}>
