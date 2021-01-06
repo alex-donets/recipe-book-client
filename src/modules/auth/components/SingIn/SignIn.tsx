@@ -10,7 +10,7 @@ import { trimFormValues } from '../../../../utils/helpers';
 import { LoginFormValues } from '../../types';
 import GoogleBtn from './components/GoogleSignIn/GoogleBtn';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const SignIn = () => {
     const dispatch = useDispatch();

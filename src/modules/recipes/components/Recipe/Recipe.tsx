@@ -8,7 +8,7 @@ import { fetchRecipes } from '../../actions';
 import { recipePhotoUrl } from '../../../../backend/constants';
 import { ParamTypes } from '../../types';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
-import DefaultImage from "../../../../assets/default-image.png";
+import DefaultImage from '../../../../assets/default-image.png';
 
 const Recipe = () => {
     const dispatch = useDispatch();
@@ -80,7 +80,9 @@ const Recipe = () => {
                     </Grid.Row>
 
                     <Grid.Row>
-                        <Grid.Column textAlign="justified" className="directions">{recipe.directions}</Grid.Column>
+                        <Grid.Column textAlign="justified" className="directions">
+                            {recipe.directions}
+                        </Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Segment>

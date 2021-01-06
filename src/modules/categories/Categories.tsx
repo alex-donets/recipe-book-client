@@ -11,7 +11,7 @@ import {
 import CategoryContent from './components/Content/CategoryContent';
 import CircularProgress from '../../shared/components/CircularProgress/CircularProgress';
 import { deleteCategory, setDeleteDialogIsVisible } from './actions';
-import CategoryHeadingLoaded from "./components/Heading/CategoryHeadingLoaded";
+import CategoryHeadingLoaded from './components/Heading/CategoryHeadingLoaded';
 
 const ConfirmationModal = lazy(() => import('../../shared/components/ConfirmationModal/ConfirmationModal'));
 

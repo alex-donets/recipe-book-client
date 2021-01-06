@@ -43,7 +43,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
     };
 
     const handleOnClick = () => {
-        history.push(`/recipes/${item.categoryId}/${item._id}`)
+        history.push(`/recipes/${item.categoryId}/${item._id}`);
     };
 
     const handleShowMore = () => {
@@ -59,11 +59,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
             </Grid.Row>
 
             <Grid.Row className="directions-holder">
-                <Grid.Column
-                    width={5}
-                    className="recipe-img-holder"
-                    onClick={handleOnClick}
-                >
+                <Grid.Column width={5} className="recipe-img-holder" onClick={handleOnClick}>
                     {isShowLoadImg && (
                         <Placeholder className="placeholder-recipe">
                             <Placeholder.Image square />

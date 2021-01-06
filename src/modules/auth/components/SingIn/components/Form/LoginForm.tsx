@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getLoading } from '../../../../selectors';
 import { LoginFormValues } from '../../../../types';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const LoginForm = (props: FormikProps<LoginFormValues>) => {
     const { history } = useReactRouter();

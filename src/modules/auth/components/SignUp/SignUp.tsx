@@ -9,7 +9,7 @@ import { register } from '../../actions';
 import { trimFormValues } from '../../../../utils/helpers';
 import { RegisterFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const SignUp = () => {
     const dispatch = useDispatch();

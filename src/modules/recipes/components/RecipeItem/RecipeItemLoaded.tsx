@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../styles.scss';
-import {Divider, Grid, Header, Placeholder} from "semantic-ui-react";
+import { Divider, Grid, Header, Placeholder } from 'semantic-ui-react';
 
-const RecipeItemLoaded = ({ showDivider }: {showDivider: boolean}) => {
+const RecipeItemLoaded = ({ showDivider }: { showDivider: boolean }) => {
     return (
         <Grid textAlign="center">
             <Header as="h2" className="headerHolder">

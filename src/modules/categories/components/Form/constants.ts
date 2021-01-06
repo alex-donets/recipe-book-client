@@ -16,8 +16,12 @@ export const addValidationSchema = Yup.object({
         .required('Please enter a category name'),
     photo: Yup.mixed()
         .required('Please add a photo')
-        .test('fileSize', 'File size is too large', (value) => value && value.size <= FILE_SIZE)
-        .test('fileType', 'Unsupported File Format', (value) => value && SUPPORTED_FORMATS.includes(value.type)),
+        .test(
+            'fileType',
+            'Unsupported File Format.  Please, upload .jpg, .gif or .png',
+            (value) => value && SUPPORTED_FORMATS.includes(value.type),
+        )
+        .test('fileSize', 'File size is too large', (value) => value && value.size <= FILE_SIZE),
 });
 
 export const updateValidationSchema = Yup.object({

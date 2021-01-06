@@ -19,7 +19,11 @@ export const addValidationSchema = Yup.object({
         .max(50, 'Name should be no more than 50 characters'),
     photo: Yup.mixed()
         .required('Please add a photo')
-        .test('fileType', 'Unsupported File Format', (value) => value && SUPPORTED_FORMATS.includes(value.type))
+        .test(
+            'fileType',
+            'Unsupported File Format. Please, upload .jpg, .gif or .png',
+            (value) => value && SUPPORTED_FORMATS.includes(value.type),
+        )
         .test('fileSize', 'File size should be no more than 500 kB', (value) => value && value.size <= FILE_SIZE_MAX)
         .test('fileSize', 'File size should be no less than 5 kB', (value) => value && value.size >= FILE_SIZE_MIN),
     categoryId: Yup.string().required('Please select a category'),

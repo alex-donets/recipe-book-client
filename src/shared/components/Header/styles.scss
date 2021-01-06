@@ -21,7 +21,6 @@
 }
 
 .header-image {
-  margin-right: 1.5em;
   object-fit: scale-down;
 }
 
@@ -29,8 +28,35 @@
   white-space: pre-line;
 }
 
-@media only screen and (max-width: 750px) {
+.header-text-primary {
+  margin-left: 1em;
+
+  & > div {
+    margin: 0 1rem;
+  }
+}
+
+.header-text-secondary {
+  margin-left: 1em;
+}
+
+@media only screen and (max-width: 790px) {
   .header-image {
     margin-right: 0;
+  }
+
+  .header-text-secondary {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  .header-text-primary {
+    display: none;
+
+    & > div {
+      display: none!important;
+    }
   }
 }

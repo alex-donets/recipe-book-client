@@ -6,8 +6,5 @@ export const formInitialValues = {
 };
 
 export const formValidationSchema = Yup.object({
-    email: Yup.string()
-        .trim()
-        .matches(emailRegExp, 'Please enter a valid email')
-        .required('Email is required'),
+    email: Yup.string().trim().matches(emailRegExp, 'Please enter a valid email').required('Email is required'),
 });

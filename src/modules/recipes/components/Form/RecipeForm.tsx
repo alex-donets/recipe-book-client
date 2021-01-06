@@ -148,16 +148,16 @@ const RecipeForm = (props: FormikProps<RecipeFormValues> & SubmitRecipes) => {
             </Header>
 
             <Form.Field>
-            <TextArea
-                id="recipe-directions"
-                name="directions"
-                value={directions}
-                onChange={handleInputChange}
-                rows={8}
-                placeholder="Write your recipe here..."
-            />
+                <TextArea
+                    id="recipe-directions"
+                    name="directions"
+                    value={directions}
+                    onChange={handleInputChange}
+                    rows={8}
+                    placeholder="Write your recipe here..."
+                />
 
-            {touched.directions && errors.directions && <div className="error-text">{errors.directions}</div>}
+                {touched.directions && errors.directions && <div className="error-text">{errors.directions}</div>}
             </Form.Field>
 
             <BtnSection formProps={props} />

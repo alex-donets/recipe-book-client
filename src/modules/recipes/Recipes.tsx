@@ -1,10 +1,10 @@
 import React, { lazy, Suspense } from 'react';
 import CircularProgress from '../../shared/components/CircularProgress/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsDeleteDialogVisible, getRecipeListLoading, getSelectedRecipeId} from '../recipes/selectors';
+import { getIsDeleteDialogVisible, getRecipeListLoading, getSelectedRecipeId } from '../recipes/selectors';
 import RecipeContent from './components/Content/RecipeContent';
-import { deleteRecipe, setDeleteDialogIsVisible } from "./actions";
-import useReactRouter from "use-react-router";
+import { deleteRecipe, setDeleteDialogIsVisible } from './actions';
+import useReactRouter from 'use-react-router';
 
 const ConfirmationModal = lazy(() => import('../../shared/components/ConfirmationModal/ConfirmationModal'));
 
