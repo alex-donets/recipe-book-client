@@ -47,7 +47,7 @@ const ChatRoom = () => {
     const renderForm = (props: FormikProps<MessageFormValues>) => <ChatForm {...props} />;
 
     const handleOnLoad = () => {
-        const element = document.getElementById("chat-holder");
+        const element = document.getElementById('chat-holder');
         element.scrollTop = element.scrollHeight;
     };
 

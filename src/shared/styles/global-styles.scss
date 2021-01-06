@@ -66,14 +66,20 @@ a {
     height: 100%;
 }
 
-@media only screen and (max-width: 1199px) and (min-width: 992px) {
+@media only screen and (max-width: 1199px) and (min-width: 990px) {
     .ui.container {
-        width: 992px;
+        width: 990px;
     }
 }
 
-@media only screen and (max-width: 991px) and (min-width: 768px) {
+@media only screen and (max-width: 989px) and (min-width: 890px) {
     .ui.container {
-        width: 768px;
+        width: 890px;
+    }
+}
+
+@media only screen and (max-width: 889px) and (min-width: 790px) {
+    .ui.container {
+        width: 790px;
     }
 }

@@ -20,10 +20,10 @@ const ChatMessage = (props: MessageProps) => {
     return (
         <div className={`chat-message ${className}`}>
             <Message floating compact floated="right" className="message-content">
-                <img src={CommentIcon} className="icon-holder" alt="comment icon"/>
+                <img src={CommentIcon} className="icon-holder" alt="comment icon" />
                 <span className="author-name">{user.fullName || 'Guest'}</span>
                 <span className="time">{time}</span>
-                <Divider className="divider-medium"/>
+                <Divider className="divider-medium" />
 
                 {message}
             </Message>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const Footer = () => {
     const { history } = useReactRouter();

@@ -17,7 +17,7 @@ import { deleteRecipe, fetchRecipes, setActivePage, setDeleteDialogIsVisible } f
 import RecipeItem from '../RecipeItem/RecipeItem';
 import { listPerPage } from '../../helpers';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
-import RecipeItemLoaded from "../RecipeItem/RecipeItemLoaded";
+import RecipeItemLoaded from '../RecipeItem/RecipeItemLoaded';
 
 const ConfirmationModal = lazy(() => import('../../../../shared/components/ConfirmationModal/ConfirmationModal'));
 
@@ -70,7 +70,7 @@ const RecipeHeading = () => {
                             const lastIndex = paginationList.length - 1;
                             const showDivider = index !== lastIndex;
 
-                            return <RecipeItemLoaded key={item} showDivider={showDivider} />
+                            return <RecipeItemLoaded key={item} showDivider={showDivider} />;
                         })}
                     </Segment>
                 </div>

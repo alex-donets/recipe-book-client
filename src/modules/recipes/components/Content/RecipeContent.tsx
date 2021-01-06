@@ -42,7 +42,7 @@ const RecipeContent = () => {
         return () => {
             dispatch(clearRecipe());
             dispatch(clearIngredients());
-        }
+        };
     }, []);
 
     const renderForm = (props: FormikProps<RecipeFormValues>) => (

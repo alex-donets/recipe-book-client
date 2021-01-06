@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.scss';
-import { Card, Placeholder } from "semantic-ui-react";
-import ImageHolder from "../ImageHolder/ImageHolder";
+import { Card, Placeholder } from 'semantic-ui-react';
+import ImageHolder from '../ImageHolder/ImageHolder';
 import DefaultImage from '../../../assets/default-image.png';
 
 const CategoryCardLoaded = () => {
-    const title = "Loading...";
+    const title = 'Loading...';
 
     return (
         <div className="category-card-holder">

@@ -24,35 +24,33 @@ const Header = () => {
         dispatch(logout());
     };
 
-    const isTextVisible = window.screen.width > 750;
-
     return (
         <Menu fixed="top" inverted className="custom-header">
             <Container className="header-container">
                 <div className="header-left">
                     <Menu.Item header onClick={() => history.push('/')}>
                         <Image size="mini" src={Logo} className="header-image" alt="logo" />
-                        {isTextVisible ? 'Recipe Book' : ''}
+                        <span className="header-text-primary">Recipe Book</span>
                     </Menu.Item>
 
                     {isLoggedIn && (
                         <Menu.Item onClick={() => history.push('/recipes')}>
                             <Image size="mini" src={Note} className="header-image" alt="note image" />
-                            {isTextVisible && 'Create Recipe'}
+                            <span className="header-text-secondary">Create Recipe</span>
                         </Menu.Item>
                     )}
 
                     {isLoggedIn && isAdmin && (
                         <Menu.Item onClick={() => history.push('/categories')}>
                             <Image size="mini" src={Category} className="header-image" alt="sticker image" />
-                            {isTextVisible ? 'Category' : ''}
+                            <span className="header-text-secondary">Category</span>
                         </Menu.Item>
                     )}
 
                     {isLoggedIn && (
                         <Menu.Item onClick={() => history.push('/chat-room')}>
                             <Image size="mini" src={Chat} className="header-image" alt="note image" />
-                            {isTextVisible ? 'Chat room' : ''}
+                            <span className="header-text-secondary">Chat room</span>
                         </Menu.Item>
                     )}
                 </div>
@@ -60,13 +58,14 @@ const Header = () => {
                 <div className="header-right">
                     {isLoggedIn && (
                         <Menu.Menu data-cy="user-info-dropdown">
-                            <Dropdown
-                                item
-                                text={isTextVisible ? userName || 'Guest' : ''}
-                                icon={!isTextVisible ? 'user' : undefined}
-                            >
+                            <Dropdown item className="header-text-primary" text={userName || 'Guest'} icon="user">
                                 <Dropdown.Menu>
-                                    <Dropdown.Item className="header-dropdown" data-cy="logout-btn" text="Log Out" onClick={onLogout} />
+                                    <Dropdown.Item
+                                        className="header-dropdown"
+                                        data-cy="logout-btn"
+                                        text="Log Out"
+                                        onClick={onLogout}
+                                    />
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Menu.Menu>

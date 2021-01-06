@@ -11,10 +11,7 @@ export const formInitialValues = {
 
 export const formValidationSchema = Yup.object({
     name: Yup.string().trim().max(50, 'Name should be no more than 50 characters').required('Name is required'),
-    email: Yup.string()
-        .trim()
-        .matches(emailRegExp, 'Please enter a valid email')
-        .required('Email is required'),
+    email: Yup.string().trim().matches(emailRegExp, 'Please enter a valid email').required('Email is required'),
     password: Yup.string()
         .trim()
         .matches(passwordRegExp, 'Password must contain from 8 to 60 characters')

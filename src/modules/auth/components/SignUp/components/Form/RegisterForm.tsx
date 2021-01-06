@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getLoading } from '../../../../selectors';
 import { RegisterFormValues } from '../../../../types';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const RegisterForm = (props: FormikProps<RegisterFormValues>) => {
     const {

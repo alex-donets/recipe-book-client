@@ -9,7 +9,7 @@ import { setPassword } from '../../actions';
 import SetPassForm from './components/SetPassForm/SetPassForm';
 import { formInitialValues, formValidationSchema } from './constants';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const SetPassword = () => {
     const dispatch = useDispatch();

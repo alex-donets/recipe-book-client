@@ -10,7 +10,7 @@ import { resetPassword } from '../../actions';
 import ResetPassForm from './components/ResetPassForm/ResetPassForm';
 import { formInitialValues, formValidationSchema } from './constants';
 import { FormikProps } from 'formik/dist/types';
-import useReactRouter from "use-react-router";
+import useReactRouter from 'use-react-router';
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
