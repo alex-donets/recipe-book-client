@@ -28,3 +28,11 @@ jobs:
         app: recipe-book-ui
         on:
           repo: veronika-donets/recipe-book-client
+#        deploy:
+#          provider: pages
+#          cleanup: false
+#          github-token: $GITHUB_TOKEN
+#          keep-history: true
+#          edge: true
+#          on:
+#            branch: master

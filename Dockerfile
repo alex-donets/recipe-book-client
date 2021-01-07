@@ -1,16 +1,18 @@
 FROM node:12-alpine AS build
 
-WORKDIR /ui
+WORKDIR /app
 
-ENV PATH /ui/node_modules/.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package.json .
+COPY package.json /app/
+COPY yarn.lock /app/
 
 RUN yarn install
 
-COPY . ./
+COPY . /app/
 
 RUN yarn run build
+
 
 
 

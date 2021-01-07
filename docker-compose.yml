@@ -4,14 +4,14 @@ services:
     build: .
     image: recipe-web
     stdin_open: true
-    ports:
-      - "3000:3000"
-    networks:
-      - recipe-app
+#    ports:
+#      - "80:80"
+#    networks:
+#      - recipe-app
     env_file:
       - ./.env
     container_name: recipe-web
-networks:
-  recipe-app:
-    driver: bridge
+#networks:
+#  recipe-app:
+#    driver: bridge
 
