@@ -18,7 +18,7 @@ import {
     SET_ACTIVE_PAGE,
 } from './constants';
 
-import { QueryAddRecipe, QueryUpdateRecipe, Recipe } from './types';
+import { Recipe, RecipeFormValues } from './types';
 
 import { AxiosError } from 'axios';
 
@@ -37,7 +37,7 @@ export const fetchRecipesError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const addRecipe = (data: QueryAddRecipe) => ({
+export const addRecipe = (data: RecipeFormValues) => ({
     type: ADD_RECIPE_PENDING,
     payload: data,
 });
@@ -52,7 +52,7 @@ export const addRecipeError = (error: AxiosError) => ({
     payload: error,
 });
 
-export const updateRecipe = (data: QueryUpdateRecipe) => ({
+export const updateRecipe = (data: RecipeFormValues) => ({
     type: UPDATE_RECIPE_PENDING,
     payload: data,
 });

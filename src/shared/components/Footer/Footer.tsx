@@ -5,7 +5,7 @@ import useReactRouter from 'use-react-router';
 const Footer = () => {
     const { history } = useReactRouter();
 
-    const handleClick = (path) => {
+    const handleClick = (path: string) => {
         history.push(path);
     };
 

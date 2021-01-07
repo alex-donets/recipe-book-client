@@ -24,8 +24,8 @@ jobs:
       if: (type IN (push, pull_request) AND (branch = master))
       deploy:
         provider: heroku
-        api_key:
-          secure: "0a4105ef-eac4-4a56-9b15-0e98de35a6be"
+        cleanup: false
+        api_key: $API_KEY
         app: recipe-book-ui
         on:
           repo: veronika-donets/recipe-book-client
