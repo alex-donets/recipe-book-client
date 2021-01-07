@@ -1,14 +1,27 @@
-FROM node:12-alpine as builder
+FROM node:12-alpine AS build
 
-WORKDIR /usr/src/app/client
+WORKDIR /ui
 
-COPY ./package.json ./
-COPY ./yarn.lock ./
+ENV PATH /ui/node_modules/.bin:$PATH
+
+COPY package.json .
 
 RUN yarn install
 
-COPY . .
+COPY . ./
 
-EXPOSE 3000
+RUN yarn run build
 
-CMD ["npm", "start"]
+
+
+#FROM nginx:1.17.8-alpine
+#
+#COPY --from=build /ui/build /usr/share/nginx/html
+#
+#RUN rm /etc/nginx/conf.d/default.conf
+#
+#COPY nginx/nginx.conf /etc/nginx/conf.d
+#
+#EXPOSE 3000
+#
+#CMD ["nginx", "-g", "daemon off;"]
