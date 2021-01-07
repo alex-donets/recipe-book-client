@@ -5,7 +5,6 @@ cache: yarn
 env:
   - CI=false
 
-
 jobs:
   include:
     - stage: install
