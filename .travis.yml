@@ -20,7 +20,9 @@ jobs:
     - stage: build
       script: yarn run build
 
+# Deploy to Heroku:
     - stage: deploy
+      if: (type IN (push, pull_request) AND (branch = master))
       deploy:
         provider: heroku
         api_key:
@@ -28,6 +30,9 @@ jobs:
         app: recipe-book-ui
         on:
           repo: veronika-donets/recipe-book-client
+          branch: master
+
+# Deploy to GitHub Pages:
 #        deploy:
 #          provider: pages
 #          cleanup: false
