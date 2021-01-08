@@ -25,7 +25,9 @@ jobs:
       deploy:
         provider: heroku
         cleanup: false
-        api_key: [$API_KEY]
+        github-token: $GITHUB_TOKEN
+        keep-history: true
+        api_key: $HEROKU_API_KEY
         app: recipe-book-ui
         on:
           repo: veronika-donets/recipe-book-client
