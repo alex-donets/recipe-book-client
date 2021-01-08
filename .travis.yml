@@ -34,11 +34,12 @@ jobs:
           branch: master
 
 # Deploy to GitHub Pages:
-#        deploy:
-#          provider: pages
-#          cleanup: false
-#          github-token: $GITHUB_TOKEN
-#          keep-history: true
-#          edge: true
-#          on:
-#            branch: master
+#    - stage: deploy
+#      deploy:
+#        provider: pages
+#        cleanup: false
+#        github-token: $GITHUB_TOKEN
+#        keep-history: true
+#        edge: true
+#        on:
+#          branch: master
