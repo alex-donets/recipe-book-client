@@ -1,7 +1,7 @@
 import isString from 'lodash/isString';
 
 export const trimFormValues = <T>(formFields: T) =>
-    Object.keys(formFields).reduce((total, current) => {
+    Object.keys(formFields).reduce((total: any, current) => {
         const itemValue = total[current];
         return {
             ...total,
