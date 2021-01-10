@@ -1,5 +1,6 @@
 import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { Grid, Header, Placeholder, Segment, Table } from 'semantic-ui-react';
+import '../../styles.scss';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeList, getRecipeListLoading } from '../../selectors';
@@ -69,7 +70,7 @@ const Recipe = () => {
                                 <Table.Body>
                                     {recipe.ingredients.map(({ id, name, quantity, measure }) => (
                                         <Table.Row key={id}>
-                                            <Table.Cell>{name}</Table.Cell>
+                                            <Table.Cell className="ingredient-name">{name}</Table.Cell>
                                             <Table.Cell className="right aligned collapsing">{quantity}</Table.Cell>
                                             <Table.Cell className="collapsing">{measure}</Table.Cell>
                                         </Table.Row>

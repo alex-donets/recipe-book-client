@@ -19,7 +19,6 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
     const { history } = useReactRouter();
 
     const userId = useSelector(getUserId);
-    const showMore = item.directions.length > 635;
 
     const handleOnError = (e: BaseSyntheticEvent) => {
         e.target.src = DefaultImage;
@@ -53,7 +52,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
     return (
         <Grid key={item._id} textAlign="center">
             <Grid.Row>
-                <Header as="h3" className="headerHolder">
+                <Header as="a" onClick={handleShowMore} className="headerHolder">
                     {item.name}
                 </Header>
             </Grid.Row>
@@ -77,11 +76,9 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                 <Grid.Column width={11} textAlign="justified">
                     <Grid.Row className="directions-content">{item.directions}</Grid.Row>
 
-                    {showMore && (
-                        <Grid.Row as="a" onClick={handleShowMore} className="directions-more">
-                            Read more...
-                        </Grid.Row>
-                    )}
+                    <Grid.Row as="a" onClick={handleShowMore} className="directions-more">
+                        Read more...
+                    </Grid.Row>
 
                     {item.userId === userId && (
                         <Grid.Row className="directions-btns">
