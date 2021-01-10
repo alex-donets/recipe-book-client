@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getErrorMessage, getInfoMessage, getSuccessMessage } from '../../../modules/app/selectors';
 import { Container } from 'semantic-ui-react';
 import { getIsAdmin, getIsLoggedIn } from '../../../modules/auth/selectors';
-import CircularProgress from "../CircularProgress/CircularProgress";
+import CircularProgress from '../CircularProgress/CircularProgress';
 
 const TermsAndConditions = lazy(() => import('../../../modules/terms-of-use/TermsAndConditions'));
 const SignIn = lazy(() => import('../../../modules/auth/components/SingIn/SignIn'));
