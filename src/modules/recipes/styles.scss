@@ -113,3 +113,9 @@
   max-width: 200px;
 }
 
+.recipe-btns-holder {
+  &.ui.row {
+    padding-right: 1rem;
+    justify-content: flex-end;
+  }
+}
