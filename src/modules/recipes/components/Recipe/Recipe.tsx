@@ -1,25 +1,34 @@
-import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
-import { Grid, Header, Placeholder, Segment, Table } from 'semantic-ui-react';
+import React, { BaseSyntheticEvent, lazy, Suspense, useEffect, useState } from 'react';
+import { Button, Grid, Header, Placeholder, Segment, Table } from 'semantic-ui-react';
 import '../../styles.scss';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeList, getRecipeListLoading } from '../../selectors';
+import { getIsDeleteDialogVisible, getRecipeList, getRecipeListLoading } from '../../selectors';
 import { isEmpty } from 'lodash';
-import { fetchRecipes } from '../../actions';
+import { deleteRecipe, fetchRecipes, setDeleteDialogIsVisible, setEditMode, setSelectedRecipe } from '../../actions';
 import { recipePhotoUrl } from '../../../../backend/constants';
 import { ParamTypes } from '../../types';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
 import DefaultImage from '../../../../assets/default-image.png';
+import { fillIngredientsList } from '../../../ingredients/actions';
+import useReactRouter from 'use-react-router';
+import { Recipe as RecipeTypes } from '../../types';
+import { getUserId } from '../../../auth/selectors';
+
+const ConfirmationModal = lazy(() => import('../../../../shared/components/ConfirmationModal/ConfirmationModal'));
 
 const Recipe = () => {
     const dispatch = useDispatch();
 
     const [isShowLoadImg, setIsShowLoadImg] = useState(true);
 
+    const { history } = useReactRouter();
     const { categoryId, recipeId } = useParams<ParamTypes>();
 
     const recipeList = useSelector(getRecipeList);
     const isListLoading = useSelector(getRecipeListLoading);
+    const userId = useSelector(getUserId);
+    const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
     const recipe = recipeList ? recipeList.find((item) => item._id === recipeId) : null;
 
     useEffect(() => {
@@ -35,6 +44,28 @@ const Recipe = () => {
 
     const handleOnLoad = () => {
         setIsShowLoadImg(false);
+    };
+
+    const handleOnUpdate = (item: RecipeTypes) => {
+        dispatch(setSelectedRecipe(item._id));
+        dispatch(setEditMode(true));
+        dispatch(fillIngredientsList(item.ingredients));
+        history.push('/recipes');
+    };
+
+    const handleOnDelete = (id: string) => {
+        dispatch(setSelectedRecipe(id));
+        dispatch(setDeleteDialogIsVisible(true));
+    };
+
+    const onConfirm = () => {
+        dispatch(deleteRecipe(recipe._id));
+        history.push('/');
+        dispatch(setDeleteDialogIsVisible(false));
+    };
+
+    const onDiscard = () => {
+        dispatch(setDeleteDialogIsVisible(false));
     };
 
     return recipe ? (
@@ -85,8 +116,26 @@ const Recipe = () => {
                             {recipe.directions}
                         </Grid.Column>
                     </Grid.Row>
+
+                    {recipe.userId === userId && (
+                        <Grid.Row className="ui recipe-btns-holder">
+                            <Button icon="pencil" onClick={() => handleOnUpdate(recipe)} />
+                            <Button icon="trash alternate" onClick={() => handleOnDelete(recipe._id)} />
+                        </Grid.Row>
+                    )}
                 </Grid>
             </Segment>
+
+            <Suspense fallback={CircularProgress}>
+                {isDeleteDialogVisible && (
+                    <ConfirmationModal
+                        title="Deleting a recipe"
+                        content="Please confirm deleting this recipe"
+                        onConfirm={onConfirm}
+                        onDiscard={onDiscard}
+                    />
+                )}
+            </Suspense>
         </div>
     ) : (
         <div className="recipe-content">
