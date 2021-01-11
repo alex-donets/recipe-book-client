@@ -70,6 +70,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                         alt={item.name}
                         onError={handleOnError}
                         onLoad={handleOnLoad}
+                        className="recipe-img"
                     />
                 </Grid.Column>
 

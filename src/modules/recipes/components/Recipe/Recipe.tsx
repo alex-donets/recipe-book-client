@@ -89,6 +89,7 @@ const Recipe = () => {
                                 alt={recipe.name}
                                 onError={handleOnError}
                                 onLoad={handleOnLoad}
+                                className="recipe-img"
                             />
                         </Grid.Column>
 

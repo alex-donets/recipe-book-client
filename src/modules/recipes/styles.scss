@@ -1,8 +1,26 @@
 @import "../../shared/styles/variables";
 
-.recipe-content {
-  max-width: $secondary-width;
-  margin: auto;
+.recipe {
+
+  &-content {
+    max-width: $secondary-width;
+    margin: auto;
+  }
+
+  &-img {
+    border-radius: 5px;
+    box-shadow:
+            0 0 0 1px rgba(34,36,38,.22) inset,
+            0 2px 4px 0 rgba(34,36,38,.12),
+            0 2px 10px 0 rgba(34,36,38,.15);
+  }
+
+  &-btns-holder {
+    &.ui.row {
+      padding-right: 1rem;
+      justify-content: flex-end;
+    }
+  }
 }
 
 .photo-btn {
@@ -10,6 +28,7 @@
 }
 
 .add-btn {
+
   &.wide.field {
     margin-top: 12px;
   }
@@ -34,6 +53,47 @@
 .directions {
   margin-top: 4rem;
   margin-bottom: 3rem;
+  white-space: pre-wrap;
+
+  &-more {
+    position: absolute;
+    padding: 14px 14px 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+    z-index: 1;
+    height: 8rem;
+    background: linear-gradient(0, rgba(255,255,255,1) 40%, rgba(0,0,0,0) 100%);
+  }
+
+  &-content {
+    overflow: hidden;
+    position: relative;
+    max-height: $recipe-img-side;
+    white-space: pre-wrap;
+  }
+
+  &-btns {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 14px;
+    z-index: 3;
+  }
+
+  &-holder {
+    height: calc(#{$recipe-img-side} + 14px * 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.row {
+      padding: 0;
+    }
+  }
 }
 
 .error-text {
@@ -53,50 +113,6 @@
   width: 100%;
 }
 
-.directions {
-  white-space: pre-wrap;
-}
-
-.directions-content {
-  overflow: hidden;
-  position: relative;
-  max-height: $recipe-img-side;
-  white-space: pre-wrap;
-}
-
-.directions-more {
-  position: absolute;
-  padding: 14px 14px 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: flex-end;
-  z-index: 1;
-  height: 8rem;
-  background: linear-gradient(0, rgba(255,255,255,1) 40%, rgba(0,0,0,0) 100%);
-}
-
-.directions-holder {
-  height: calc(#{$recipe-img-side} + 14px * 2);
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  &.row {
-    padding: 0;
-  }
-}
-
-.directions-btns {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-  position: absolute;
-  bottom: 0;
-  right: 14px;
-  z-index: 3;
-}
-
 .placeholder-recipe {
   &.ui.placeholder {
     position: absolute;
@@ -111,11 +127,4 @@
 .ingredient-name {
   overflow-wrap: break-word;
   max-width: 200px;
-}
-
-.recipe-btns-holder {
-  &.ui.row {
-    padding-right: 1rem;
-    justify-content: flex-end;
-  }
 }
