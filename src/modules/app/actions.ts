@@ -4,6 +4,7 @@ import {
     CLEAR_SUCCESS_MESSAGE,
     SET_ERROR_MESSAGE,
     SET_INFO_MESSAGE,
+    SET_SCROLL_HEIGHT,
     SET_SUCCESS_MESSAGE,
 } from './constants';
 
@@ -32,4 +33,8 @@ export const setInfoMessage = (message: string) => ({
 
 export const clearInfoMessage = () => ({
     type: CLEAR_INFO_MESSAGE,
+});
+
+export const setScrollHeight = () => ({
+    type: SET_SCROLL_HEIGHT,
 });

@@ -21,11 +21,13 @@ import { formToQueryAdd, formToQueryUpdate } from './helpers';
 import { AddRecipe, DeleteRecipe, FetchRecipes, UpdateRecipe } from './types';
 import { push } from 'connected-react-router';
 import { getIngredientList } from '../ingredients/selectors';
+import { setScrollHeight } from '../app/actions';
 
 function* handleFetchRecipes({ payload }: FetchRecipes) {
     try {
         const { data } = yield apiClient.get(`/recipes/${payload}/`);
         yield put(fetchRecipesSuccess(data));
+        yield put(setScrollHeight());
     } catch (error) {
         yield put(fetchRecipesError(error));
     }

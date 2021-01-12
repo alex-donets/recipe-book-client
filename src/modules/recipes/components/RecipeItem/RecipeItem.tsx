@@ -58,7 +58,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
             </Grid.Row>
 
             <Grid.Row className="directions-holder">
-                <Grid.Column width={5} className="recipe-img-holder" onClick={handleOnClick}>
+                <Grid.Column className="recipe-img-holder recipe-item" onClick={handleOnClick}>
                     {isShowLoadImg && (
                         <Placeholder className="placeholder-recipe">
                             <Placeholder.Image square />
@@ -74,7 +74,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                     />
                 </Grid.Column>
 
-                <Grid.Column width={11} textAlign="justified">
+                <Grid.Column width={11} textAlign="justified" className="recipe-directions">
                     <Grid.Row className="directions-content">{item.directions}</Grid.Row>
 
                     <Grid.Row as="a" onClick={handleShowMore} className="directions-more">

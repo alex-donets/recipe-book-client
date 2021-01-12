@@ -23,11 +23,13 @@ import {
 
 import { formToQueryAdd, formToQueryUpdate } from './helpers';
 import { AddCategory, DeleteCategory, UpdateCategory } from './types';
+import { setScrollHeight } from '../app/actions';
 
 function* handleFetchCategories() {
     try {
         const { data } = yield apiClient.get(`/categories/`);
         yield put(fetchCategoriesSuccess(data));
+        yield put(setScrollHeight());
     } catch (error) {
         yield put(fetchCategoriesError(error));
     }
