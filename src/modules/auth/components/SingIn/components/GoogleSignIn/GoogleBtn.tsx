@@ -35,7 +35,7 @@ const GoogleBtn = () => {
         <div>
             <GoogleLogin
                 clientId={clientId}
-                buttonText="Login"
+                buttonText="Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={'single_host_origin'}
