@@ -8,3 +8,8 @@ export const getErrorMessage = createSelector([getState], ({ errorMessage }) => 
 export const getSuccessMessage = createSelector([getState], ({ successMessage }) => successMessage);
 
 export const getInfoMessage = createSelector([getState], ({ infoMessage }) => infoMessage);
+
+export const getIsScrollBtnVisible = createSelector(
+    [getState],
+    ({ scrollHeight }) => window.innerHeight < scrollHeight,
+);

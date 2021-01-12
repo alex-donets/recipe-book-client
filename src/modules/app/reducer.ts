@@ -7,6 +7,7 @@ import {
     CLEAR_INFO_MESSAGE,
     SET_SUCCESS_MESSAGE,
     CLEAR_SUCCESS_MESSAGE,
+    SET_SCROLL_HEIGHT,
 } from './constants';
 import { AppState } from './types';
 
@@ -14,6 +15,8 @@ export const initialState: AppState = {
     errorMessage: '',
     infoMessage: '',
     successMessage: '',
+    viewportHeight: 0,
+    scrollHeight: 0,
 };
 
 export default createReducer(initialState, {
@@ -45,5 +48,11 @@ export default createReducer(initialState, {
     [CLEAR_SUCCESS_MESSAGE]: (state) => ({
         ...state,
         successMessage: '',
+    }),
+
+    [SET_SCROLL_HEIGHT]: (state) => ({
+        ...state,
+        viewportHeight: window.innerHeight,
+        scrollHeight: document.body.scrollHeight,
     }),
 });

@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, lazy, Suspense, useEffect } from 'react';
+import React, { BaseSyntheticEvent, lazy, Suspense, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { isEmpty } from 'lodash';
@@ -10,10 +10,10 @@ import {
     getRecipeList,
     getRecipeListLoading,
     getSelectedRecipeId,
-} from '../../../recipes/selectors';
-import { Recipe } from '../../../recipes/types';
+} from '../../selectors';
+import { Recipe } from '../../types';
 import { getSelectedCategoryId } from '../../../categories/selectors';
-import { deleteRecipe, fetchRecipes, setActivePage, setDeleteDialogIsVisible } from '../../../recipes/actions';
+import { deleteRecipe, fetchRecipes, setActivePage, setDeleteDialogIsVisible } from '../../actions';
 import RecipeItem from '../RecipeItem/RecipeItem';
 import { listPerPage } from '../../helpers';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
@@ -23,6 +23,7 @@ const ConfirmationModal = lazy(() => import('../../../../shared/components/Confi
 
 const RecipeHeading = () => {
     const dispatch = useDispatch();
+    const ref = useRef(null);
 
     const recipeList = useSelector(getRecipeList);
     const activePage = useSelector(getActivePage);
@@ -40,6 +41,9 @@ const RecipeHeading = () => {
 
     useEffect(() => {
         dispatch(fetchRecipes(selectedCategoryId));
+        ref.current && ref.current.scrollIntoView();
+
+        return () => window.scrollTo(0, 0);
     }, [selectedCategoryId]);
 
     const handlePageChange = (e: BaseSyntheticEvent, { activePage }: PaginationProps) => {
@@ -56,7 +60,7 @@ const RecipeHeading = () => {
     };
 
     return (
-        <>
+        <div ref={ref}>
             {selectedCategoryId && !isEmpty(recipeList) && (
                 <Header as="h2" className="primary-text heading">
                     Collection
@@ -115,7 +119,7 @@ const RecipeHeading = () => {
                     />
                 )}
             </Suspense>
-        </>
+        </div>
     );
 };
 

@@ -21,6 +21,10 @@
       justify-content: flex-end;
     }
   }
+
+  &-item {
+    width: 31% !important;
+  }
 }
 
 .photo-btn {
@@ -127,4 +131,17 @@
 .ingredient-name {
   overflow-wrap: break-word;
   max-width: 200px;
+}
+
+@media only screen and (max-width: 790px) {
+  .recipe {
+
+    &-item {
+      width: 100%!important;
+    }
+
+    &-directions {
+      display: none !important;
+    }
+  }
 }

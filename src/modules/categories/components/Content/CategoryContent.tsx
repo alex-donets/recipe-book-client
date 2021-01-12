@@ -25,6 +25,7 @@ const CategoryContent = () => {
     const dispatch = useDispatch();
 
     const formRef = useRef(null);
+    const divRef = useRef(null);
 
     const isEditMode = useSelector(getIsEditMode);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
@@ -45,7 +46,10 @@ const CategoryContent = () => {
 
         if (current && isEditMode && selectedCategory) {
             current.setValues({ ...queryToForm(selectedCategory) });
+            divRef.current && divRef.current.scrollIntoView();
         }
+
+        return () => window.scrollTo(0, 0);
     }, [selectedCategoryId]);
 
     const renderForm = (props: FormikProps<CategoryFormValues>) => <CategoryForm {...props} />;
@@ -59,7 +63,7 @@ const CategoryContent = () => {
     };
 
     return (
-        <div className="category-content">
+        <div className="category-content" ref={divRef}>
             <Header as="h2" className="primary-text">
                 {selectedCategory ? 'Update ' : 'Create '} a category
             </Header>

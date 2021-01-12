@@ -12,6 +12,8 @@ import CategoryContent from './components/Content/CategoryContent';
 import CircularProgress from '../../shared/components/CircularProgress/CircularProgress';
 import { deleteCategory, setDeleteDialogIsVisible } from './actions';
 import CategoryHeadingLoaded from './components/Heading/CategoryHeadingLoaded';
+import MoveTopBtn from '../../shared/components/MoveTopBtn/MoveTopBtn';
+import { getIsScrollBtnVisible } from '../app/selectors';
 
 const ConfirmationModal = lazy(() => import('../../shared/components/ConfirmationModal/ConfirmationModal'));
 
@@ -22,6 +24,7 @@ const Categories = () => {
     const isDeleteDialogVisible = useSelector(getIsDeleteDialogVisible);
     const isListLoading = useSelector(getCategoryListLoading);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
+    const isScrollBtnVisible = useSelector(getIsScrollBtnVisible);
 
     const onConfirm = () => {
         dispatch(deleteCategory(selectedCategoryId));
@@ -38,6 +41,8 @@ const Categories = () => {
             {isListLoading && <CategoryHeadingLoaded />}
 
             {isContentVisible && <CategoryContent />}
+
+            {isScrollBtnVisible && <MoveTopBtn />}
 
             <Suspense fallback={CircularProgress}>
                 {isDeleteDialogVisible && (
