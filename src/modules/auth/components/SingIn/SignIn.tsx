@@ -33,7 +33,7 @@ const SignIn = () => {
         <Grid textAlign="center" className="auth-wrapper" verticalAlign="middle">
             <Grid.Column className="auth-holder">
                 <Header as="h2" className="primary-text">
-                    Log-in to your account
+                    Log in to your account
                 </Header>
 
                 <Formik
