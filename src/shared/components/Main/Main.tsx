@@ -3,8 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getErrorMessage, getInfoMessage, getSuccessMessage } from '../../../modules/app/selectors';
 import { Container } from 'semantic-ui-react';
-import { getIsAdmin, getIsLoggedIn } from '../../../modules/auth/selectors';
+import { getIsAdmin } from '../../../modules/auth/selectors';
 import CircularProgress from '../CircularProgress/CircularProgress';
+import ProtectedRoute from '../../../modules/auth/components/ProtectedRoute/ProtectedRoute';
 
 const TermsAndConditions = lazy(() => import('../../../modules/terms-of-use/TermsAndConditions'));
 const SignIn = lazy(() => import('../../../modules/auth/components/SingIn/SignIn'));
@@ -20,13 +21,13 @@ const ResetPassword = lazy(() => import('../../../modules/auth/components/ResetP
 const Recipes = lazy(() => import('../../../modules/recipes/Recipes'));
 const Recipe = lazy(() => import('../../../modules/recipes/components/Recipe/Recipe'));
 const ChatRoom = lazy(() => import('../../../modules/chat/ChatRoom'));
+const OfflinePage = lazy(() => import('../OfflinePage/OfflinePage'));
 
 const Main = () => {
     const errorMessage = useSelector(getErrorMessage);
     const successMessage = useSelector(getSuccessMessage);
     const infoMessage = useSelector(getInfoMessage);
     const isAdmin = useSelector(getIsAdmin);
-    const isLoggedIn = useSelector(getIsLoggedIn);
 
     return (
         <Container className="wrapper">
@@ -36,14 +37,15 @@ const Main = () => {
                     <Route exact path="/register" component={SignUp} />
                     <Route path="/forgot-password" component={ResetPassword} />
                     <Route path="/set-password/:token" component={SetPassword} />
+                    <Route exact path="/offline" component={OfflinePage} />
 
                     <Route exact path="/" component={Home} />
                     <Route exact path="/recipes/:categoryId/:recipeId" component={Recipe} />
 
-                    {isLoggedIn && <Route exact path="/recipes" component={Recipes} />}
-                    {isLoggedIn && <Route exact path="/chat-room" component={ChatRoom} />}
+                    <ProtectedRoute exact path="/recipes" component={Recipes} />
+                    <ProtectedRoute exact path="/chat-room" component={ChatRoom} />
 
-                    {isLoggedIn && isAdmin && <Route exact path="/categories" component={Categories} />}
+                    {isAdmin && <ProtectedRoute exact path="/categories" component={Categories} />}
 
                     <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
                 </Switch>

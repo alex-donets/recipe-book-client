@@ -1,4 +1,6 @@
 import { Action } from 'redux';
+import { ComponentType, LazyExoticComponent } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 export interface AuthState {
     errors: string | null;
@@ -104,4 +106,10 @@ export interface UserInfo {
 export interface ParamTypes {
     token: string;
     email: string;
+}
+
+export interface ProtectedRouteType {
+    component: LazyExoticComponent<ComponentType<RouteComponentProps>>;
+    exact?: boolean;
+    path: string;
 }
