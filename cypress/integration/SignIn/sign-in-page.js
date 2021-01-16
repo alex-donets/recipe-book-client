@@ -4,7 +4,7 @@ describe('Login page', () => {
     });
 
     it('Login page has been rendered', () => {
-        cy.contains('Log-in to your account');
+        cy.contains('Log in to your account');
         cy.contains('Forgot Password?');
         cy.contains('New to us? Sign Up');
         cy.contains('Sign in with Google:');

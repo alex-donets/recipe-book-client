@@ -2,19 +2,20 @@ const staticCacheName = 'recipe-static-v1.0';
 const dynamicCacheName = 'recipe-dynamic-v1.0';
 
 const staticAssets = [
+    '/',
     '/index.html',
     '/categories',
-    '/',
+    '/serviceWorker.js',
 ];
 
-self.addEventListener('install', async (event) => {
+self.addEventListener('install', async () => {
     const cache = await caches.open(staticCacheName);
     await cache.addAll((staticAssets));
 
-    console.log("Service Worker has been installed")
+    console.log("Service worker has been installed")
 });
 
-self.addEventListener('activate', async (event) => {
+self.addEventListener('activate', async () => {
     const cachesKeys = await caches.keys();
 
     const checkKeys = cachesKeys.map(async (key) => {
@@ -27,26 +28,25 @@ self.addEventListener('activate', async (event) => {
 });
 
 self.addEventListener('fetch', async (event) => {
-    if(!navigator.onLine) {
+    if (!navigator.onLine) {
         event.respondWith(checkCache(event.request));
     }
+
+    await addResToDynamicCache(event.request);
 });
 
-const checkCache = async(req) => {
-    const cachedResponce = await caches.match(req);
-
-    return cachedResponce || checkOnline(req);
-};
-
-const checkOnline = async(req) => {
-    const cache = await caches.open(dynamicCacheName);
-
+const addResToDynamicCache = async(req) => {
     try {
+        const cache = await caches.open(dynamicCacheName);
         const res = await fetch(req);
-        await cache.put(req, res.clone());
 
-        return res;
+        await cache.put(req, res.clone());
     } catch (e) {
-        return await cache.match(req);
+        console.warn(`Failed adding ${req.url} to cache.`);
     }
 };
+
+const checkCache = (req) => caches.match(req);
+
+//TODO add redirecting non-cached response to OfflinePage
+//TODO add replacing non-cached images to default image

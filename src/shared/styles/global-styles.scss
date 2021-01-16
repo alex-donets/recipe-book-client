@@ -81,6 +81,15 @@ a {
     }
 }
 
+.empty-holder {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 990px) {
     .ui.container {
         width: 990px;
