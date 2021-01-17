@@ -32,7 +32,9 @@ self.addEventListener('fetch', async (event) => {
         event.respondWith(checkCache(event.request));
     }
 
-    await addResToDynamicCache(event.request);
+    if (event.request.method === "GET") {
+        await addResToDynamicCache(event.request);
+    }
 });
 
 const addResToDynamicCache = async(req) => {
