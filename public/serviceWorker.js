@@ -2,16 +2,15 @@ const staticCacheName = 'recipe-static-v1.0';
 const dynamicCacheName = 'recipe-dynamic-v1.0';
 
 const staticAssets = [
-    '/',
     '/index.html',
-    '/categories',
     '/serviceWorker.js',
 ];
 
-self.addEventListener('install', async () => {
+self.addEventListener('install', async (event) => {
+    await event.waitUntil(self.clients.claim());
+
     const cache = await caches.open(staticCacheName);
     await cache.addAll((staticAssets));
-
     console.log("Service worker has been installed")
 });
 
@@ -30,9 +29,7 @@ self.addEventListener('activate', async () => {
 self.addEventListener('fetch', async (event) => {
     if (!navigator.onLine) {
         event.respondWith(checkCache(event.request));
-    }
-
-    if (event.request.method === "GET") {
+    } else if (event.request.method === "GET") {
         await addResToDynamicCache(event.request);
     }
 });
@@ -48,7 +45,13 @@ const addResToDynamicCache = async(req) => {
     }
 };
 
-const checkCache = (req) => caches.match(req);
+const checkCache = async(req) => {
+    const cachedResponce = await caches.match(req);
 
-//TODO add redirecting non-cached response to OfflinePage
-//TODO add replacing non-cached images to default image
+    if (cachedResponce) {
+        return cachedResponce;
+    } else {
+        //TODO add redirecting non-cached response to '/offline'
+        //TODO add replacing non-cached images to default image
+    }
+};
