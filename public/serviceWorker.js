@@ -1,29 +1,32 @@
-const staticCacheName = 'recipe-static-v1.0';
-const dynamicCacheName = 'recipe-dynamic-v1.0';
+const version = 'v2.0';
+const staticCacheName = `recipe-static-${version}`;
+const dynamicCacheName = `recipe-dynamic-${version}`;
 
 const staticAssets = [
     '/index.html',
     '/serviceWorker.js',
 ];
 
-self.addEventListener('install', async (event) => {
-    await event.waitUntil(self.clients.claim());
-
+self.addEventListener('install', async () => {
     const cache = await caches.open(staticCacheName);
     await cache.addAll((staticAssets));
-    console.log("Service worker has been installed")
+    await self.skipWaiting();
+
+    console.log(`Service worker ${version} has been installed.`);
 });
 
 self.addEventListener('activate', async () => {
     const cachesKeys = await caches.keys();
 
-    const checkKeys = cachesKeys.map(async (key) => {
+    const keys = cachesKeys.map(async (key) => {
         if (staticCacheName !== key) {
             await caches.delete(key);
         }
     });
 
-    await Promise.all(checkKeys);
+    await Promise.all(keys);
+
+    console.log(`Service worker ${version} has been activated.`);
 });
 
 self.addEventListener('fetch', async (event) => {
