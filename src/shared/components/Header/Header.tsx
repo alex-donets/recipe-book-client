@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="header-left">
                     <Menu.Item header onClick={() => history.push('/')}>
                         <Image size="mini" src={Logo} className="header-image" alt="logo" />
-                        <span className="header-text-primary">Recipe Book</span>
+                        <span className="header-text-primary">Recipe Books</span>
                     </Menu.Item>
 
                     {isLoggedIn && (
