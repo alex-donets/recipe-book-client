@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { CategoryFormValues } from '../../types';
 
-const FILE_SIZE = 5000000; // 5 Mb
+const FILE_SIZE = 512000; // 500 kB
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
 export const formInitialValues: CategoryFormValues = {
@@ -27,6 +27,6 @@ export const addValidationSchema = Yup.object({
 export const updateValidationSchema = Yup.object({
     name: Yup.string()
         .trim()
-        .max(50, 'Category name should be no more than 500 characters')
+        .max(50, 'Category name should be no more than 50 characters')
         .required('Please enter a category name'),
 });

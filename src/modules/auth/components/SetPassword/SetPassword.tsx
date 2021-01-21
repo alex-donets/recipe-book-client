@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Header, Message } from 'semantic-ui-react';
 import { Formik } from 'formik';
 import { useParams } from 'react-router';
+import '../../styles.scss';
 
 import { useDispatch } from 'react-redux';
 import { ParamTypes, SetPassFormValues } from '../../types';
