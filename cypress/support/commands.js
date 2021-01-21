@@ -1,11 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
 import { isEmpty } from 'lodash';
 
 const AUTH_TOKEN_KEY = 'recipe-book:user-auth-token';
@@ -27,10 +19,13 @@ Cypress.Commands.add("logout", () => {
 });
 
 Cypress.Commands.add("delete_user", (email) => {
+    const { token } = JSON.parse(window.localStorage.getItem(AUTH_TOKEN_KEY));
+
     cy.request({
         method: 'DELETE',
         url: `${Cypress.env('api_url')}users/delete`,
-        body: { email }
+        body: { email },
+        headers: { jwt: token }
     })
         .then((response) => {
             expect(response.status).to.eq(200);
@@ -38,10 +33,13 @@ Cypress.Commands.add("delete_user", (email) => {
 });
 
 Cypress.Commands.add("add_category", (name) => {
+    const { token } = JSON.parse(window.localStorage.getItem(AUTH_TOKEN_KEY));
+
     cy.request({
         method: 'POST',
         url: `${Cypress.env('api_url')}categories/add`,
-        body: { name }
+        body: { name },
+        headers: { jwt: token }
     })
         .then((response) => {
             expect(response.status).to.eq(200);
@@ -49,9 +47,12 @@ Cypress.Commands.add("add_category", (name) => {
 });
 
 Cypress.Commands.add("delete_categories", (categoryList) => {
+    const { token } = JSON.parse(window.localStorage.getItem(AUTH_TOKEN_KEY));
+
     cy.request({
         method: 'GET',
         url: `${Cypress.env('api_url')}categories/`,
+        headers: { jwt: token }
     })
         .then((response) => {
             expect(response.status).to.eq(200);
@@ -65,6 +66,7 @@ Cypress.Commands.add("delete_categories", (categoryList) => {
                     cy.request({
                         method: 'DELETE',
                         url: `${Cypress.env('api_url')}categories/${item._id}`,
+                        headers: { jwt: token }
                     })
                         .then((response) => {
                             expect(response.status).to.eq(200);
@@ -75,16 +77,3 @@ Cypress.Commands.add("delete_categories", (categoryList) => {
         });
 
 });
-
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-//Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })

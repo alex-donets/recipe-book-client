@@ -7,7 +7,7 @@ const successHandler = (config: AxiosRequestConfig) => {
     const authToken = getAuthToken();
 
     if (authToken) {
-        set(config, 'headers.X-Token', authToken.token);
+        set(config, 'headers.jwt', authToken.token);
     }
 
     return config;
