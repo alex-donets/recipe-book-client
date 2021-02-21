@@ -9,6 +9,7 @@ import { trimFormValues } from '../../../../utils/helpers';
 import { addCategory, updateCategory } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+    getCategoryUpdatedAt,
     getIsEditMode,
     getPreviewTitle,
     getPreviewUrl,
@@ -29,12 +30,13 @@ const CategoryContent = () => {
 
     const isEditMode = useSelector(getIsEditMode);
     const selectedCategoryId = useSelector(getSelectedCategoryId);
+    const updatedAt = useSelector(getCategoryUpdatedAt);
 
     const selectedCategory = useSelector(getSelectedCategory);
     const previewURL = useSelector(getPreviewUrl);
     const previewTitle = useSelector(getPreviewTitle);
 
-    const photoUrl = selectedCategoryId ? categoryPhotoUrl + selectedCategoryId : null;
+    const photoUrl = selectedCategoryId ? categoryPhotoUrl + selectedCategoryId + '/' + updatedAt : null;
     const title = selectedCategory ? selectedCategory.name : 'Add New';
 
     useEffect(() => {

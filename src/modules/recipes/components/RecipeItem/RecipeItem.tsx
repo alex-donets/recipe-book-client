@@ -66,7 +66,7 @@ const RecipeItem = ({ item, showDivider }: RecipeItemTypes) => {
                     )}
 
                     <img
-                        src={recipePhotoUrl + item._id}
+                        src={recipePhotoUrl + item._id + '/' + item.updatedAt}
                         alt={item.name}
                         onError={handleOnError}
                         onLoad={handleOnLoad}

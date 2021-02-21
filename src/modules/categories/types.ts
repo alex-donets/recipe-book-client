@@ -27,6 +27,7 @@ export interface CategoryState {
 export interface Category {
     _id: string;
     name: string;
+    updatedAt: number;
     photo: {
         contentType: string;
         data: {

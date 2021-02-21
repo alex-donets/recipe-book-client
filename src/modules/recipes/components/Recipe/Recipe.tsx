@@ -85,7 +85,7 @@ const Recipe = () => {
                             )}
 
                             <img
-                                src={recipePhotoUrl + recipe._id}
+                                src={recipePhotoUrl + recipe._id + '/' + recipe.updatedAt}
                                 alt={recipe.name}
                                 onError={handleOnError}
                                 onLoad={handleOnLoad}

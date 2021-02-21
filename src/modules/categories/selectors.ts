@@ -19,6 +19,10 @@ export const getSelectedCategoryId = createSelector([getState], ({ selectedCateg
     selectedCategory ? selectedCategory._id : '',
 );
 
+export const getCategoryUpdatedAt = createSelector([getState], ({ selectedCategory }) =>
+    selectedCategory ? selectedCategory.updatedAt : '',
+);
+
 export const getIsEditMode = createSelector([getState], ({ isEditMode }) => isEditMode);
 
 export const getIsContentVisible = createSelector([getState], ({ isContentVisible }) => isContentVisible);
