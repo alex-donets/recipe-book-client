@@ -48,7 +48,7 @@ const CategoryHeading = () => {
                         key={item._id}
                         id={item._id}
                         title={item.name}
-                        photoUrl={categoryPhotoUrl + item._id || DefaultIcon}
+                        photoUrl={categoryPhotoUrl + item._id + '/' + item.updatedAt || DefaultIcon}
                         onSelect={handleSelect}
                         isSelected={item._id === selectedCategoryId}
                     />

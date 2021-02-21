@@ -40,6 +40,7 @@ export interface Recipe {
     categoryId: string;
     userId: string;
     ingredients: IngredientFormValues[];
+    updatedAt: number;
 }
 
 export interface RecipeItemTypes {
