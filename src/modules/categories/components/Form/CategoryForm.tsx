@@ -62,6 +62,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
         <Form size="large" className="form-holder" onSubmit={handleOnSubmit}>
             <Form.Input
                 id="category-name-input"
+                data-cy="category-name-input"
                 name="name"
                 label="Category name"
                 placeholder="Category name"
@@ -75,6 +76,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
             <Form.Field>
                 <Button
                     id="category-photo-btn"
+                    data-cy="category-photo-btn"
                     content="Choose Photo"
                     labelPosition="left"
                     icon="file"
@@ -84,6 +86,7 @@ const CategoryForm = (props: FormikProps<CategoryFormValues>) => {
 
                 <input
                     id="category-photo-input"
+                    data-cy="category-photo-input"
                     ref={fileInputRef}
                     name="photo"
                     type="file"

@@ -24,6 +24,7 @@ const BtnSection = ({ formProps: { isValid } }: CategoryFormProps) => {
                 size="large"
                 disabled={!isValid}
                 loading={isEditMode ? updateLoading : addLoading}
+                data-cy="category-action-btn"
             >
                 {isEditMode ? 'Update' : 'Add'}
             </Button>
@@ -35,6 +36,7 @@ const BtnSection = ({ formProps: { isValid } }: CategoryFormProps) => {
                     floated="right"
                     onClick={handleOnPopupDelete}
                     loading={deleteLoading}
+                    data-cy="category-delete-btn"
                 >
                     Delete
                 </Button>
