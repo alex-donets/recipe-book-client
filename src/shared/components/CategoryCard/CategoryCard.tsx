@@ -18,7 +18,7 @@ const CategoryCard = ({ id, title, photoUrl, isSelected, onSelect }: CategoryCar
     };
 
     return (
-        <div className="category-card-holder">
+        <div className="category-card-holder" id={id}>
             <Card onClick={() => onSelect && onSelect(id)} color={isSelected ? 'green' : undefined}>
                 <ImageHolder className="category-img-holder">
                     {isShowLoadImg && (

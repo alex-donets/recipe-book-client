@@ -19,13 +19,10 @@ Cypress.Commands.add("logout", () => {
 });
 
 Cypress.Commands.add("delete_user", (email) => {
-    const { token } = JSON.parse(window.localStorage.getItem(AUTH_TOKEN_KEY));
-
     cy.request({
         method: 'DELETE',
         url: `${Cypress.env('api_url')}users/delete`,
         body: { email },
-        headers: { jwt: token }
     })
         .then((response) => {
             expect(response.status).to.eq(200);
