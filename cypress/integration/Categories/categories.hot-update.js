@@ -22,23 +22,24 @@ describe('Categories page', () => {
         categoryData.forEach(el => {
             cy.get('[data-cy=category-name-input]')
                 .children()
-                .type(el, { force: true })
+                .type(el, { force: true });
 
-            cy.fixture('images/default-image.png').as('image')
+            cy.fixture('images/default-image.png').as('image');
+
             cy.get('input[type=file]').then(function (el) {
                 // convert the logo base64 string to a blob
-                const blob = Cypress.Blob.base64StringToBlob(this.image, 'image/png')
+                const blob = Cypress.Blob.base64StringToBlob(this.image, 'image/png');
 
-                const file = new File([blob], 'images/default-image.png', { type: 'image/png' })
-                const list = new DataTransfer()
+                const file = new File([blob], 'images/default-image.png', { type: 'image/png' });
+                const list = new DataTransfer();
 
-                list.items.add(file)
-                const myFileList = list.files
+                list.items.add(file);
+                const myFileList = list.files;
 
-                el[0].files = myFileList
-                el[0].dispatchEvent(new Event('change', { bubbles: true }))
+                el[0].files = myFileList;
+                el[0].dispatchEvent(new Event('change', { bubbles: true }));
             }).then(() => {
-                cy.get('[data-cy=category-action-btn]').click({force: true})
+                cy.get('[data-cy=category-action-btn]').click({force: true});
 
                 cy.visit(`${Cypress.env('ui_url')}`);
 
