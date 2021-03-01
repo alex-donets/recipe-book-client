@@ -29,7 +29,6 @@ describe('Categories page', () => {
             cy.get('input[type=file]').then(function (el) {
                 // convert the logo base64 string to a blob
                 const blob = Cypress.Blob.base64StringToBlob(this.image, 'image/png');
-
                 const file = new File([blob], 'images/default-image.png', { type: 'image/png' });
                 const list = new DataTransfer();
 
