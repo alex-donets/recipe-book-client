@@ -34,9 +34,8 @@ describe('Categories page', () => {
                 const list = new DataTransfer();
 
                 list.items.add(file);
-                const myFileList = list.files;
 
-                el[0].files = myFileList;
+                el[0].files = list.files;
                 el[0].dispatchEvent(new Event('change', { bubbles: true }));
             }).then(() => {
                 cy.get('[data-cy=category-action-btn]').click({force: true});
