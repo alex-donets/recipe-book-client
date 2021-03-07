@@ -7,7 +7,7 @@ import { FormikProps } from 'formik/dist/types';
 import { messageFormToQuery } from './helpers';
 import { isEmpty } from 'lodash';
 import { useDispatch } from 'react-redux';
-import { socket } from '../../backend/services';
+import { socket } from '../../services/services';
 import { ChatMessageTypes, MessageFormValues } from './types';
 import { setErrorMessage } from '../app/actions';
 import { trimFormValues } from '../../utils/helpers';

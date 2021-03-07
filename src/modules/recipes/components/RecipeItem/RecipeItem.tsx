@@ -2,7 +2,7 @@ import React, { BaseSyntheticEvent, useState } from 'react';
 import '../../styles.scss';
 
 import { Button, Divider, Grid, Header, Placeholder } from 'semantic-ui-react';
-import { recipePhotoUrl } from '../../../../backend/constants';
+import { recipePhotoUrl } from '../../../../services/constants';
 import { Recipe, RecipeItemTypes } from '../../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserId } from '../../../auth/selectors';

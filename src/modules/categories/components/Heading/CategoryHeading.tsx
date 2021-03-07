@@ -8,7 +8,7 @@ import { clear, fetchCategories, setContentVisible, setEditMode, setSelectedCate
 import { getCategoryList, getSelectedCategoryId } from '../../selectors';
 import CategoryCard from '../../../../shared/components/CategoryCard/CategoryCard';
 import DefaultIcon from '../../../../assets/plus.svg';
-import { categoryPhotoUrl } from '../../../../backend/constants';
+import { categoryPhotoUrl } from '../../../../services/constants';
 import { Category } from '../../types';
 
 const CategoryHeading = () => {

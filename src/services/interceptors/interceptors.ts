@@ -1,7 +1,7 @@
 import { apiClient } from '../services';
 
 import injectToken from './injectToken';
-import refreshToken from './refreshToken';
+import refreshToken from './handlers';
 
 const requestInterceptors = [{ ...injectToken }];
 const responseInterceptors = [{ ...refreshToken }];

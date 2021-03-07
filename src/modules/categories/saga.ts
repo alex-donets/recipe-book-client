@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { apiClient } from '../../backend/services';
+import { apiClient } from '../../services/services';
 
 import {
     addCategoryError,

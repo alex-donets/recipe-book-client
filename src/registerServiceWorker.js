@@ -1,4 +1,4 @@
-import { uiUrl } from './backend/services';
+import { uiUrl } from './services/services';
 
 export const registerServiceWorker = () => {
     const swUrl = `${uiUrl}/serviceWorker.js`;

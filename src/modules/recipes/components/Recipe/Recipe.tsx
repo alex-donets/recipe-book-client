@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsDeleteDialogVisible, getRecipeList, getRecipeListLoading } from '../../selectors';
 import { isEmpty } from 'lodash';
 import { deleteRecipe, fetchRecipes, setDeleteDialogIsVisible, setEditMode, setSelectedRecipe } from '../../actions';
-import { recipePhotoUrl } from '../../../../backend/constants';
+import { recipePhotoUrl } from '../../../../services/constants';
 import { ParamTypes } from '../../types';
 import CircularProgress from '../../../../shared/components/CircularProgress/CircularProgress';
 import DefaultImage from '../../../../assets/default-image.png';

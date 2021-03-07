@@ -17,7 +17,7 @@ import {
     getSelectedCategoryId,
 } from '../../selectors';
 import { queryToForm } from '../../helpers';
-import { categoryPhotoUrl } from '../../../../backend/constants';
+import { categoryPhotoUrl } from '../../../../services/constants';
 import DefaultIcon from '../../../../assets/plus.svg';
 import { CategoryAddValues, CategoryFormValues } from '../../types';
 import { FormikProps } from 'formik/dist/types';

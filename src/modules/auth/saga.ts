@@ -22,7 +22,7 @@ import {
     SET_PASSWORD_PENDING,
 } from './constants';
 
-import { apiClient } from '../../backend/services';
+import { apiClient } from '../../services/services';
 import { removeAuthToken, setAuthToken } from '../../utils/localStorage';
 import { loginFormToQuery, registerFormToQuery, setFormToQuery } from './helpers';
 import { HandleLogin, HandleRegister, HandleResetPassword, HandleSetPassword } from './types';
